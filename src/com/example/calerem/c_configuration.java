@@ -17,7 +17,10 @@ String v_eortologio_xml;
 
 public void f_set_date_format(String v_new_format)
 {
-	
+	if (v_new_format.equals("DD-MM-YYYY"))
+		v_date_format = v_new_format;
+	else if (v_new_format.equals("MM-DD-YYYY"))
+		v_date_format = v_new_format;
 };
 
 public void f_set_notification_sound(String v_new_path)
