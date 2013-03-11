@@ -40,7 +40,7 @@ public class c_event extends Activity
 
 	public void f_change_event_date(Integer v_new_date) 
 	  	{
-			if (v_event_date > 0)
+			if (v_new_date > 0)
 			{
 				v_event_date = v_new_date; 
 			}
