@@ -2,7 +2,6 @@ package com.example.calerem;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -33,12 +32,12 @@ public class c_database extends SQLiteOpenHelper {
 	
 	public void f_delete_event(Integer v_event_id)
 	{
-		
+		myDataBase.execSQL("DELETE FROM events WHERE id=" + v_event_id +";");
 	}
 	
 	public void f_update_event(c_event v_new_event)
 	{
-		
+		myDataBase.execSQL("UPDATE events SET name=" + v_new_event.v_event_name + ", type=" + v_new_event.v_event_type + ", date=" + v_new_event.v_event_date + ", description=" + v_new_event.v_event_description + ", Contact_id=" + v_new_event.v_event_contact.v_id + " where id=" + v_new_event.v_event_id + ";");
 	}
 	
 	public void f_import_events(String v_export_path)
@@ -118,6 +117,11 @@ public class c_database extends SQLiteOpenHelper {
 	public void f_update_contact(c_contact v_contact){
 		
 	}
+	
+	protected void finalize () 
+	{     //Destructor function
+       myDataBase.close();
+    }
 		
 	@Override
 	public void onCreate(SQLiteDatabase db) {
