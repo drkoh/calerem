@@ -1,6 +1,8 @@
 package com.example.calerem;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -8,17 +10,25 @@ public class c_database extends SQLiteOpenHelper {
 
 	public SQLiteDatabase myDataBase;
 	private static Context myContext;
-	public static String v_sqlite_path = "/data/data/com/example/calerem/databases/calerem.db";
+	public static String v_sqlite_path = "/data/data/com.example.calerem/databases/calerem.db";
 
 	public c_database(Context context) {
 		super(myContext, "calerem", null, 1);
 		this.myContext = context;
+		myDataBase = SQLiteDatabase.openDatabase(v_sqlite_path, null,
+				SQLiteDatabase.OPEN_READWRITE);
 		// TODO Auto-generated constructor stub
 	}
 
 	public void f_add_event(c_event v_new_event)
 	{
-		
+		ContentValues cv= new ContentValues();
+		cv.put("name", v_new_event.v_event_name);
+		cv.put("type", v_new_event.v_event_type);
+		cv.put("date", v_new_event.v_event_date);
+		cv.put("description", v_new_event.v_event_description);
+		cv.put("Contact_id", v_new_event.v_event_contact.v_id);
+		myDataBase.insert("events", null, cv);
 	}
 	
 	public void f_delete_event(Integer v_event_id)
@@ -112,8 +122,7 @@ public class c_database extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
-		myDataBase = SQLiteDatabase.openDatabase(v_sqlite_path, null,
-				SQLiteDatabase.OPEN_READWRITE);
+		
 	}
 
 	@Override
