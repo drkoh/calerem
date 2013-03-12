@@ -11,7 +11,7 @@ public class c_contact extends Activity
 	public String v_lastname;
 	public int v_phone;
 	public String v_email;
-	
+	public Integer v_id;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
