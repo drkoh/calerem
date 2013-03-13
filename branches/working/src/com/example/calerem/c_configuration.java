@@ -1,5 +1,7 @@
 package com.example.calerem;
 
+import java.io.File;
+
 import android.app.Activity;
 import android.os.Bundle;
 
@@ -25,7 +27,13 @@ public void f_set_date_format(String v_new_format)
 
 public void f_set_notification_sound(String v_new_path)
 {
-	
+	File file = getBaseContext().getFileStreamPath(v_new_path);
+	if(file.exists()){
+		String fType = v_new_path.substring((v_new_path.lastIndexOf(".") + 1), v_new_path.length());
+		if(fType=="mp3"){
+			v_notification_sound = v_new_path;
+		}
+	}	
 };
 
 public void f_set_language(String v_new_language)

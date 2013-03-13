@@ -33,12 +33,12 @@ public class c_database extends SQLiteOpenHelper {
 	
 	public void f_delete_event(Integer v_event_id)
 	{
-		
+		myDataBase.execSQL("DELETE FROM events WHERE id=" + v_event_id +";");
 	}
 	
 	public void f_update_event(c_event v_new_event)
 	{
-		
+		myDataBase.execSQL("UPDATE events SET name=" + v_new_event.v_event_name + ", type=" + v_new_event.v_event_type + ", date=" + v_new_event.v_event_date + ", description=" + v_new_event.v_event_description + ", Contact_id=" + v_new_event.v_event_contact.v_id + " where id=" + v_new_event.v_event_id + ";");
 	}
 	
 	public void f_import_events(String v_export_path)
@@ -58,18 +58,37 @@ public class c_database extends SQLiteOpenHelper {
 	
 	public c_event f_return_events(Integer v_start_time, Integer v_end_time)
 	{
+		Cursor dbCursor = myDataBase.rawQuery("SELECT name, type, date, Contact_id, id, description FROM events WHERE date>" + v_start_time + " AND date<" + v_end_time + ";" , null);
 		c_event event1 = null;
+		while (!dbCursor.moveToNext())
+        {
+			event1.v_event_name = dbCursor.getString(0);
+			event1.v_event_type = dbCursor.getString(1);
+			event1.v_event_date = dbCursor.getInt(2);
+			event1.v_event_contact.v_id = dbCursor.getInt(3);
+			event1.v_event_id = dbCursor.getInt(4);
+			event1.v_event_description = dbCursor.getString(5);
+        }
 		return event1;
 	}
 	public c_configuration f_read_configuration()
 	{
 		c_configuration config1 = null;
+		Cursor dbCursor = myDataBase.rawQuery("SELECT date_format, sound_path, language, skin_path, eortologio_url FROM Configuration ;", null);
+		while (!dbCursor.moveToNext())
+        {
+			config1.v_date_format = dbCursor.getString(0);
+			config1.v_notification_sound = dbCursor.getString(1);
+			config1.v_language = dbCursor.getString(2);
+			config1.v_skin = dbCursor.getString(3);
+			config1.v_eortologio_xml = dbCursor.getString(4);
+        }
 		return config1;
 	}
 	
 	public void f_update_configuration(c_configuration v_new_configuration)
 	{
-		
+		myDataBase.execSQL("UPDATE configuration SET date_format=" + v_new_configuration.v_date_format + ", sound_path=" + v_new_configuration.v_notification_sound + ", language=" + v_new_configuration.v_language + ", skin_path=" + v_new_configuration.v_skin + ", eortologio_url=" + v_new_configuration.v_eortologio_xml + " ;");
 	}
 	
 	public void f_add_celebration(c_event v_new_cele)
@@ -112,12 +131,24 @@ public class c_database extends SQLiteOpenHelper {
 	
 	public void f_add_contact(c_contact v_contact)
 	{
+		ContentValues cv= new ContentValues();
+		cv.put("name", v_contact.v_name);
+		cv.put("lastname", v_contact.v_lastname);
+		cv.put("phone", v_contact.v_phone);
+		cv.put("email", v_contact.v_email);
 		
+		myDataBase.insert("contacts", null, cv);
 	}
 	
-	public void f_update_contact(c_contact v_contact){
-		
+	public void f_update_contact(c_contact v_contact)
+	{
+		myDataBase.execSQL("UPDATE contacts SET name=" + v_contact.v_name + ", lastname=" + v_contact.v_lastname + ", phone=" + v_contact.v_phone + ", email=" + v_contact.v_email + "WHERE id=" + v_contact.v_id + " ;");
 	}
+	
+	protected void finalize () 
+	{     //Destructor function
+       myDataBase.close();
+    }
 		
 	@Override
 	public void onCreate(SQLiteDatabase db) {
