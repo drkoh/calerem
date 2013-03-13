@@ -74,12 +74,21 @@ public class c_database extends SQLiteOpenHelper {
 	public c_configuration f_read_configuration()
 	{
 		c_configuration config1 = null;
+		Cursor dbCursor = myDataBase.rawQuery("SELECT date_format, sound_path, language, skin_path, eortologio_url FROM Configuration ;", null);
+		while (!dbCursor.moveToNext())
+        {
+			config1.v_date_format = dbCursor.getString(0);
+			config1.v_notification_sound = dbCursor.getString(1);
+			config1.v_language = dbCursor.getString(2);
+			config1.v_skin = dbCursor.getString(3);
+			config1.v_eortologio_xml = dbCursor.getString(4);
+        }
 		return config1;
 	}
 	
 	public void f_update_configuration(c_configuration v_new_configuration)
 	{
-		
+		myDataBase.execSQL("UPDATE configuration SET date_format=" + v_new_configuration.v_date_format + ", sound_path=" + v_new_configuration.v_notification_sound + ", language=" + v_new_configuration.v_language + ", skin_path=" + v_new_configuration.v_skin + ", eortologio_url=" + v_new_configuration.v_eortologio_xml + " ;");
 	}
 	
 	public void f_add_celebration(c_event v_new_cele)
