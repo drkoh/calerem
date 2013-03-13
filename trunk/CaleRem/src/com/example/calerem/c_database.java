@@ -58,7 +58,7 @@ public class c_database extends SQLiteOpenHelper {
 	
 	public c_event f_return_events(Integer v_start_time, Integer v_end_time)
 	{
-		Cursor dbCursor = myDataBase.rawQuery("SELECT * FROM events WHERE date>" + v_start_time + " AND date<" + v_end_time + ";" , null);
+		Cursor dbCursor = myDataBase.rawQuery("SELECT name, type, date, Contact_id, id, description FROM events WHERE date>" + v_start_time + " AND date<" + v_end_time + ";" , null);
 		c_event event1 = null;
 		while (!dbCursor.moveToNext())
         {
