@@ -131,11 +131,18 @@ public class c_database extends SQLiteOpenHelper {
 	
 	public void f_add_contact(c_contact v_contact)
 	{
+		ContentValues cv= new ContentValues();
+		cv.put("name", v_contact.v_name);
+		cv.put("lastname", v_contact.v_lastname);
+		cv.put("phone", v_contact.v_phone);
+		cv.put("email", v_contact.v_email);
 		
+		myDataBase.insert("contacts", null, cv);
 	}
 	
-	public void f_update_contact(c_contact v_contact){
-		
+	public void f_update_contact(c_contact v_contact)
+	{
+		myDataBase.execSQL("UPDATE contacts SET name=" + v_contact.v_name + ", lastname=" + v_contact.v_lastname + ", phone=" + v_contact.v_phone + ", email=" + v_contact.v_email + "WHERE id=" + v_contact.v_id + " ;");
 	}
 	
 	protected void finalize () 
