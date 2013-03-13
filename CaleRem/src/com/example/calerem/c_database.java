@@ -2,6 +2,7 @@ package com.example.calerem;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -57,7 +58,17 @@ public class c_database extends SQLiteOpenHelper {
 	
 	public c_event f_return_events(Integer v_start_time, Integer v_end_time)
 	{
+		Cursor dbCursor = myDataBase.rawQuery("SELECT * FROM events WHERE date>" + v_start_time + " AND date<" + v_end_time + ";" , null);
 		c_event event1 = null;
+		while (!dbCursor.moveToNext())
+        {
+			event1.v_event_name = dbCursor.getString(0);
+			event1.v_event_type = dbCursor.getString(1);
+			event1.v_event_date = dbCursor.getInt(2);
+			event1.v_event_contact.v_id = dbCursor.getInt(3);
+			event1.v_event_id = dbCursor.getInt(4);
+			event1.v_event_description = dbCursor.getString(5);
+        }
 		return event1;
 	}
 	public c_configuration f_read_configuration()
