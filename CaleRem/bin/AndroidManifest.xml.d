@@ -1,2 +1,2 @@
-C:\Users\Public\Documents\calerem\CaleRem\bin\AndroidManifest.xml : \
-C:\Users\Public\Documents\calerem\CaleRem\AndroidManifest.xml \
+C:\Users\Public\Documents\Trunk\CaleRem\bin\AndroidManifest.xml : \
+C:\Users\Public\Documents\Trunk\CaleRem\AndroidManifest.xml \
