@@ -1,4 +1,4 @@
-C:\Users\Public\Documents\Trunk\CaleRem\bin\MainActivity.ap_ \
+C:\Users\Public\Documents\Trunk\CaleRem\gen\com\example\calerem\R.java \
  : C:\Users\Public\Documents\Trunk\CaleRem\res\drawable-hdpi\ic_launcher.png \
 C:\Users\Public\Documents\Trunk\CaleRem\res\drawable-mdpi\ic_launcher.png \
 C:\Users\Public\Documents\Trunk\CaleRem\res\drawable-xhdpi\ic_launcher.png \
@@ -17,5 +17,4 @@ C:\Users\Public\Documents\Trunk\CaleRem\bin\res\drawable-hdpi\ic_launcher.png \
 C:\Users\Public\Documents\Trunk\CaleRem\bin\res\drawable-mdpi\ic_launcher.png \
 C:\Users\Public\Documents\Trunk\CaleRem\bin\res\drawable-xhdpi\ic_launcher.png \
 C:\Users\Public\Documents\Trunk\CaleRem\bin\res\drawable-xxhdpi\ic_launcher.png \
-C:\Users\Public\Documents\Trunk\CaleRem\assets\Calerem.db \
 C:\Users\Public\Documents\Trunk\CaleRem\bin\AndroidManifest.xml \
