@@ -38,12 +38,18 @@ public void f_set_notification_sound(String v_new_path)
 
 public void f_set_language(String v_new_language)
 {
-	
+	File file = getBaseContext().getFileStreamPath(v_new_language);
+	if(file.exists()){
+		v_language = v_new_language;
+	}	
 };
 
 public void f_set_skin(String v_new_path)
 {
-	
+	File file = getBaseContext().getFileStreamPath(v_new_path);
+	if(file.exists()){
+		v_skin = v_new_path;
+	}
 };
 
 
