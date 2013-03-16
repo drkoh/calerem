@@ -1,7 +1,6 @@
 package com.example.calerem;
 
 import java.io.BufferedOutputStream;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -21,67 +20,34 @@ import android.util.Log;
 public class c_database extends SQLiteOpenHelper {
 
 	private static final String EXPORT_FILE_NAME = Environment.getExternalStorageDirectory().getPath() + "/CaleRem/export.xml";
+	private static String v_db_name = "Calerem.db"; 
 	public SQLiteDatabase myDataBase;
 	private static Context myContext;
-	public static String v_sqlite_path = "/Calerem/src/com/example/calerem/databases/";
-	private static String v_db_name = "Calerem.db";
+	public static String v_sqlite_path;
 	private Exporter _exporter;
-	public String path = v_sqlite_path + v_db_name;
 
-	public c_database(Context context) {
-		// constructor
+	public c_database(Context context) throws IOException {
 		super(myContext, "calerem", null, 1);
 		c_database.myContext = context;
-		// function that "opens" the database and enables us to read and write
-		// from and on it
-		myDataBase = SQLiteDatabase.openDatabase(path, null,
-				SQLiteDatabase.OPEN_READWRITE);
-		// TODO Auto-generated constructor stub
-		try {
-			// create a file on the sdcard to export the
-			// database contents to
-			File myFile = new File(EXPORT_FILE_NAME);
-			myFile.createNewFile();
-
-			FileOutputStream fOut = new FileOutputStream(myFile);
-			BufferedOutputStream bos = new BufferedOutputStream(fOut);
-
-			_exporter = new Exporter(bos);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+		v_sqlite_path = c_database.myContext.getDatabasePath(v_db_name).getAbsolutePath();
+		if(this.checkDataBase())
+		{
+			this.openDataBase();
 		}
-
+		else
+		{
+			this.createDataBase();
+		}
 	}
-
-	// ANASTASIAS COPY-PASTE BEGIN
-
-	public void createDataBase() throws IOException {
-
-		boolean dbExist = checkDataBase();
-
-		if (dbExist) {
-			// do nothing - database already exist
-		} else {
-
-			// By calling this method and empty database will be created into
-			// the default system path
-			// of your application so we are gonna be able to overwrite that
-			// database with our database.
-			this.getReadableDatabase();
-
-			try {
-
+	private void createDataBase() throws IOException {
+		myContext.openOrCreateDatabase(v_db_name, myContext.MODE_PRIVATE, null);
+		try {
 				copyDataBase();
-
-			} catch (IOException e) {
-
+			} 
+		catch (IOException e) 
+			{
 				throw new Error("Error copying database");
-
 			}
-		}
-
 	}
 
 	/**
@@ -95,23 +61,16 @@ public class c_database extends SQLiteOpenHelper {
 		SQLiteDatabase checkDB = null;
 
 		try {
-			String myPath = v_sqlite_path + v_db_name;
-			checkDB = SQLiteDatabase.openDatabase(myPath, null,
-					SQLiteDatabase.OPEN_READONLY);
-
-		} catch (SQLiteException e) {
-
-			// database does't exist yet.
-
-		}
-
+			checkDB = SQLiteDatabase.openDatabase(v_sqlite_path, null, SQLiteDatabase.OPEN_READONLY);
+		} catch (SQLiteException e) {}
 		if (checkDB != null) {
-
 			checkDB.close();
-
+			return true;
 		}
-
-		return checkDB != null ? true : false;
+		else
+		{
+			return false;
+		}
 	}
 
 	/**
@@ -125,7 +84,7 @@ public class c_database extends SQLiteOpenHelper {
 		InputStream myInput = myContext.getAssets().open(v_db_name);
 
 		// Path to the just created empty db
-		String outFileName = v_sqlite_path + v_db_name;
+		String outFileName = v_sqlite_path;
 
 		// Open the empty db as the output stream
 		OutputStream myOutput = new FileOutputStream(outFileName);
@@ -141,40 +100,20 @@ public class c_database extends SQLiteOpenHelper {
 		myOutput.flush();
 		myOutput.close();
 		myInput.close();
-
 	}
 
 	public void openDataBase() throws SQLException {
-
 		// Open the database
-		String myPath = v_sqlite_path + v_db_name;
-		myDataBase = SQLiteDatabase.openDatabase(myPath, null,
+		myDataBase = SQLiteDatabase.openDatabase(v_sqlite_path, null,
 				SQLiteDatabase.OPEN_READONLY);
-
 	}
-
+	
 	@Override
 	public synchronized void close() {
-
 		if (myDataBase != null)
 			myDataBase.close();
-
 		super.close();
-
 	}
-
-	@Override
-	public void onCreate(SQLiteDatabase db) {
-
-	}
-
-	@Override
-	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-	}
-
-	// ANASTASIAS COPY-PASTE END
-
 	public void f_add_event(c_event v_new_event) {
 		// insert values in events by using ContentValues var
 		ContentValues cv = new ContentValues();
@@ -494,5 +433,14 @@ public class c_database extends SQLiteOpenHelper {
 	private void log(String msg) {
 		Log.d("DatabaseAssistant", msg);
 	}
-
+	@Override
+	public void onCreate(SQLiteDatabase db) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+		// TODO Auto-generated method stub
+		
+	}
 }
