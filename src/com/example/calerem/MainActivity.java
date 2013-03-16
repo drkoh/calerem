@@ -1,5 +1,6 @@
 package com.example.calerem;
 
+import java.io.IOException;
 import java.util.Locale;
 
 
@@ -48,6 +49,13 @@ public class MainActivity extends FragmentActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        //HACK
+			try {
+				c_database v_db = new c_database(getBaseContext());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
     }
 
