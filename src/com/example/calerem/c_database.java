@@ -15,11 +15,12 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Environment;
 import android.util.Log;
 
 public class c_database extends SQLiteOpenHelper {
 
-	private static final String EXPORT_FILE_NAME = "/sdcard/export.xml";
+	private static final String EXPORT_FILE_NAME = Environment.getExternalStorageDirectory().getPath() + "/CaleRem/export.xml";
 	public SQLiteDatabase myDataBase;
 	private static Context myContext;
 	public static String v_sqlite_path = "/Calerem/src/com/example/calerem/databases/";
@@ -30,14 +31,12 @@ public class c_database extends SQLiteOpenHelper {
 	public c_database(Context context) {
 		// constructor
 		super(myContext, "calerem", null, 1);
-		this.myContext = context;
+		c_database.myContext = context;
 		// function that "opens" the database and enables us to read and write
 		// from and on it
 		myDataBase = SQLiteDatabase.openDatabase(path, null,
 				SQLiteDatabase.OPEN_READWRITE);
 		// TODO Auto-generated constructor stub
-		myContext = myContext;
-		myDataBase = myDataBase;
 		try {
 			// create a file on the sdcard to export the
 			// database contents to
@@ -362,7 +361,7 @@ public class c_database extends SQLiteOpenHelper {
 
 		public Exporter() throws FileNotFoundException {
 			this(new BufferedOutputStream(myContext.openFileOutput(
-					EXPORT_FILE_NAME, Context.MODE_WORLD_READABLE)));
+					EXPORT_FILE_NAME, Context.MODE_PRIVATE)));
 		}
 
 		public Exporter(BufferedOutputStream bos) {
