@@ -3,8 +3,6 @@ package com.example.calerem;
 import android.app.Activity;
 import android.os.Bundle;
 
-
-
 public class c_event extends Activity
 {
 

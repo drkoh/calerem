@@ -3,7 +3,6 @@ package com.example.calerem;
 import java.io.File;
 
 import android.app.Activity;
-import android.os.Bundle;
 
 public class c_configuration extends Activity{
 	String v_date_format;
@@ -11,12 +10,6 @@ public class c_configuration extends Activity{
 	String v_language;
 	String v_skin;
 	String v_eortologio_xml;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-	}
 
 	public c_configuration(String n_date_format,String n_notification_sound,String n_language,String n_skin,String n_eortologio_xml)
 	{
