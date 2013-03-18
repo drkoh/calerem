@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="MainActivity" default="help">
+<project name="CaleRem" default="help">
 
-<target name="jar" depends="release" description="Generates CeleRem.jar file in to the 'jar' directory.">
+<target name="jar" depends="debug" description="Generates CeleRem.jar file in to the 'jar' directory.">
 <mkdir dir="jar"/>
 <jar jarfile="jar/CeleRem.jar" basedir="bin/classes"/>
 </target>
