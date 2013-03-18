@@ -19,11 +19,12 @@ public class c_contact extends Activity
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 	}
-
-	
-
-	
-	
-	
-
+	public c_contact(String n_name,String n_lastname,int n_phone,String n_email,int n_id)
+	{
+		v_name = n_name;
+		v_lastname = n_lastname;
+		v_phone = n_phone;
+		v_email = n_email;
+		v_id = n_id;
+	}
 }

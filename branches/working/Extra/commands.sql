@@ -21,11 +21,12 @@ CREATE TABLE configuration
  language TEXT,
  skin_path TEXT,
  eortologio_url TEXT);
-CREATE TABLE celebration 
+CREATE TABLE celebrations 
 (name TEXT,
  _id INTEGER PRIMARY KEY,
  type TEXT,
- date int);
+ date int,
+ description TEXT);
 CREATE TABLE synchronize_log
 (date int,
  _id INTEGER PRIMARY KEY,
