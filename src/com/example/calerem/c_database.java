@@ -298,13 +298,13 @@ public class c_database extends SQLiteOpenHelper {
 		cv.put("date", v_log.v_date);
 		cv.put("contact_id", v_log.v_contact.v_id);
 		cv.put("message", v_log.v_message);
-		myDataBase.insert("message_log", null, cv);
+		myDataBase.insert("messages", null, cv);
 		cv.clear();
 	}
 
 
 	public c_message_log[] f_read_message_log(int limit) {
-		Cursor dbCursor = myDataBase.query("message_log", null, null, null, null, null, "date DESC", "" + limit);
+		Cursor dbCursor = myDataBase.query("messages", null, null, null, null, null, "date DESC", "" + limit);
 		c_message_log v_log[] = new c_message_log[dbCursor.getCount()];
 		dbCursor.moveToFirst();
 		for(int i=0;i<dbCursor.getCount();i++)
