@@ -14,7 +14,8 @@ CREATE TABLE messages
 (_id INTEGER PRIMARY KEY,
  message TEXT,
  date INTEGER,
- type TEXT);
+ type TEXT,
+ contact_id INTEGER);
 CREATE TABLE configuration
 (date_format TEXT,
  sound_path TEXT,
@@ -31,12 +32,6 @@ CREATE TABLE synchronize_log
 (date int,
  _id INTEGER PRIMARY KEY,
  type TEXT);
-CREATE TABLE message_log
-(date int,
- _id INTEGER PRIMARY KEY,
- type TEXT,
- message TEXT,
- contact_id INTEGER);
 CREATE TABLE android_metadata 
 (locale TEXT DEFAULT 'en_US');
 INSERT INTO android_metadata 
