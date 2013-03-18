@@ -40,7 +40,7 @@ public class c_database extends SQLiteOpenHelper {
 		}
 	}
 	private void createDataBase() throws IOException {
-		myContext.openOrCreateDatabase(v_db_name, myContext.MODE_PRIVATE, null);
+		myContext.openOrCreateDatabase(v_db_name, Context.MODE_PRIVATE, null);
 		try {
 				copyDataBase();
 			} 
@@ -105,7 +105,7 @@ public class c_database extends SQLiteOpenHelper {
 	public void openDataBase() throws SQLException {
 		// Open the database
 		myDataBase = SQLiteDatabase.openDatabase(v_sqlite_path, null,
-				SQLiteDatabase.OPEN_READONLY);
+				SQLiteDatabase.OPEN_READWRITE);
 	}
 	
 	@Override
@@ -114,30 +114,48 @@ public class c_database extends SQLiteOpenHelper {
 			myDataBase.close();
 		super.close();
 	}
+	
+	// insert values in events by using ContentValues API
 	public void f_add_event(c_event v_new_event) {
-		// insert values in events by using ContentValues var
 		ContentValues cv = new ContentValues();
 		cv.put("name", v_new_event.v_event_name);
 		cv.put("type", v_new_event.v_event_type);
 		cv.put("date", v_new_event.v_event_date);
+		if(v_new_event.v_event_contact == null)
+		{
+			cv.put("contact_id", (Integer) null);
+		}
+		else
+		{
+			cv.put("contact_id", v_new_event.v_event_contact.v_id);	
+		}
 		cv.put("description", v_new_event.v_event_description);
-		cv.put("contact_id", v_new_event.v_event_contact.v_id);
 		myDataBase.insert("events", null, cv);
+		cv.clear();
 	}
-
+	
+	// delete events by id
 	public void f_delete_event(Integer v_event_id) {
-		// delete events by id
-		myDataBase.execSQL("DELETE FROM events WHERE _id=" + v_event_id + ";");
+		myDataBase.delete("events", "_id=" + v_event_id, null);
 	}
-
+	
+	// update events table with query
 	public void f_update_event(c_event v_new_event) {
-		// update events table with query
-		myDataBase.execSQL("UPDATE events SET name=" + v_new_event.v_event_name
-				+ ", type=" + v_new_event.v_event_type + ", date="
-				+ v_new_event.v_event_date + ", description="
-				+ v_new_event.v_event_description + ", contact_id="
-				+ v_new_event.v_event_contact.v_id + " where _id="
-				+ v_new_event.v_event_id + ";");
+		ContentValues cv = new ContentValues();
+		cv.put("name", v_new_event.v_event_name);
+		cv.put("type", v_new_event.v_event_type);
+		cv.put("date", v_new_event.v_event_date);
+		if(v_new_event.v_event_contact == null)
+		{
+			cv.put("contact_id", (Integer) null);
+		}
+		else
+		{
+			cv.put("contact_id", v_new_event.v_event_contact.v_id);	
+		}		
+		cv.put("description", v_new_event.v_event_description);
+		myDataBase.update("events", cv, "_id=" + v_new_event.v_event_id, null);
+		cv.clear();
 	}
 
 	public void f_import_events(String v_export_path) {
@@ -148,138 +166,168 @@ public class c_database extends SQLiteOpenHelper {
 		return "";
 	}
 
+	// Restore Original .db File.
 	public void f_factory_reset() {
-		// delete all the entries from all the tables by using queries
-		myDataBase.execSQL("DELETE * FROM events");
-		myDataBase.execSQL("DELETE * FROM configuration");
-		myDataBase.execSQL("DELETE * FROM contacts");
-		myDataBase.execSQL("DELETE * FROM ");
-		myDataBase.execSQL("DELETE * FROM events");
-		myDataBase.execSQL("DELETE * FROM events");
-		myDataBase.execSQL("DELETE * FROM events");
-
-	}
-
-	public c_event f_return_events(Integer v_start_time, Integer v_end_time) {
-		// create a cursor that gets the values printed by select query and
-		// import them in the c_event's object vars
-		Cursor dbCursor = myDataBase.rawQuery(
-				"SELECT name, type, date, contact_id, _id, description FROM events WHERE date>"
-						+ v_start_time + " AND date<" + v_end_time + ";", null);
-		c_event event1 = new c_event();
-
-		while (!dbCursor.moveToNext()) {
-			event1.v_event_name = dbCursor.getString(0);
-			event1.v_event_type = dbCursor.getString(1);
-			event1.v_event_date = dbCursor.getInt(2);
-			event1.v_event_contact.v_id = dbCursor.getInt(3);
-			event1.v_event_id = dbCursor.getInt(4);
-			event1.v_event_description = dbCursor.getString(5);
+		this.close();
+		try {
+			this.createDataBase();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return event1;
 	}
-
+	
+	//Return applications events based on a period.
+	public c_event[] f_return_events(Integer v_start_time, Integer v_end_time) {
+		Cursor dbCursor = myDataBase.query("events", null, "date>=" + v_start_time + " AND date<=" + v_end_time, null, null, null, null);
+		c_event v_events[] = new c_event[dbCursor.getCount()];
+		dbCursor.moveToFirst();
+		for(int i=0;i<dbCursor.getCount();i++)
+		{
+			c_contact v_contact = (c_contact) null;
+			if(!dbCursor.isNull(dbCursor.getColumnIndex("contact_id")))
+			{
+				v_contact = this.f_get_contact(dbCursor.getInt(dbCursor.getColumnIndex("contact_id")));
+			}
+			v_events[i] = new c_event(
+					dbCursor.getString(dbCursor.getColumnIndex("type")),
+					dbCursor.getString(dbCursor.getColumnIndex("name")),
+					dbCursor.getInt(dbCursor.getColumnIndex("date")),
+					v_contact,
+					dbCursor.getInt(dbCursor.getColumnIndex("_id")),
+					dbCursor.getString(dbCursor.getColumnIndex("description"))
+					); 
+			dbCursor.moveToNext();
+		}
+		return v_events;
+	}
+	
+	//Return applications configuration object.
 	public c_configuration f_read_configuration() {
-		// create a cursor (table) that gets the values printed by the select
-		// query and enter, in every variable of the configuration's class
-		// object, these values
-		c_configuration config1 = new c_configuration();
-		Cursor dbCursor = myDataBase
-				.rawQuery(
-						"SELECT date_format, sound_path, language, skin_path, eortologio_url FROM Configuration ;",
-						null);
-		while (!dbCursor.moveToNext()) {
-			config1.v_date_format = dbCursor.getString(0);
-			config1.v_notification_sound = dbCursor.getString(1);
-			config1.v_language = dbCursor.getString(2);
-			config1.v_skin = dbCursor.getString(3);
-			config1.v_eortologio_xml = dbCursor.getString(4);
-		}
-		return config1;
+		Cursor dbCursor = myDataBase.query("configuration", null, null, null, null, null, null);
+		dbCursor.moveToFirst();
+		c_configuration v_configuration = new c_configuration(
+				dbCursor.getString(dbCursor.getColumnIndex("date_format")),
+				dbCursor.getString(dbCursor.getColumnIndex("sound_path")),
+				dbCursor.getString(dbCursor.getColumnIndex("language")),
+				dbCursor.getString(dbCursor.getColumnIndex("skin_path")),
+				dbCursor.getString(dbCursor.getColumnIndex("eortologio_url"))
+				);
+		return v_configuration;
 	}
-
+	
+	//Update the configuration table with new entries.
 	public void f_update_configuration(c_configuration v_new_configuration) {
-		// update table configuration with given by object v_new_configuration
-		// entries
-		myDataBase.execSQL("UPDATE configuration SET date_format="
-				+ v_new_configuration.v_date_format + ", sound_path="
-				+ v_new_configuration.v_notification_sound + ", language="
-				+ v_new_configuration.v_language + ", skin_path="
-				+ v_new_configuration.v_skin + ", eortologio_url="
-				+ v_new_configuration.v_eortologio_xml + " ;");
+		ContentValues cv = new ContentValues();
+		cv.put("date_format", v_new_configuration.v_date_format);
+		cv.put("sound_path", v_new_configuration.v_notification_sound);
+		cv.put("language", v_new_configuration.v_notification_sound);
+		cv.put("skin_path", v_new_configuration.v_skin);
+		cv.put("eortologio_url", v_new_configuration.v_eortologio_xml);
+		myDataBase.update("configuration", cv, null, null);
+		cv.clear();
 	}
-
+	
+	//Insert new celebration, its actually an event without contact
+	//Example: 28-Oct
 	public void f_add_celebration(c_event v_new_cele) {
-		// insert values in events by using ContentValues var
 		ContentValues cv = new ContentValues();
 		cv.put("name", v_new_cele.v_event_name);
 		cv.put("type", v_new_cele.v_event_type);
 		cv.put("date", v_new_cele.v_event_date);
 		cv.put("description", v_new_cele.v_event_description);
-		cv.put("contact_id", "");
-		myDataBase.insert("events", null, cv);
+		myDataBase.insert("celebrations", null, cv);
+		cv.clear();
 	}
 
+	//Update a celebration
 	public void f_update_celebration(c_event v_new_cele) {
-		myDataBase.execSQL("UPDATE events SET name=" + v_new_cele.v_event_name
-				+ ", type=" + v_new_cele.v_event_type + ", date="
-				+ v_new_cele.v_event_date + ", description="
-				+ v_new_cele.v_event_description + ", contact_id=" + ""
-				+ " where _id=" + v_new_cele.v_event_id + ";");
+		ContentValues cv = new ContentValues();
+		cv.put("name", v_new_cele.v_event_name);
+		cv.put("type", v_new_cele.v_event_type);
+		cv.put("date", v_new_cele.v_event_date);
+		cv.put("description", v_new_cele.v_event_description);
+		myDataBase.update("celebrations", cv, "_id=" + v_new_cele.v_event_id, null);
+		cv.clear();
 	}
 
+	//Delete Celebration
 	public void f_delete_celebration(c_event v_new_cele) {
-		myDataBase.execSQL("DELETE FROM events WHERE _id="
-				+ v_new_cele.v_event_id + ";");
+		myDataBase.delete("celebrations", "_id=" + v_new_cele.v_event_id, null);
 	}
-
+	
+	// Delete all Celebrations.
 	public void f_truncate_celebrations() {
-		// delete the special events from events table
-		myDataBase.execSQL("DELETE * FROM celebrations ;");
+		myDataBase.delete("celebrations", null, null);
 
 	}
-
-	public void f_log_synch(String v_type, Integer v_date) {
-		myDataBase.execSQL("UPDATE synchronize_log SET type=" + v_type
-				+ ", date=" + v_date + ";");
+	
+	//Insert sync date in the table.
+	public void f_log_sync(String v_type, Integer v_date) {
+		ContentValues cv = new ContentValues();
+		cv.put("type", v_type);
+		cv.put("date", v_date);
+		myDataBase.insert("synchronize_log", null, cv);
+		cv.clear();
 	}
-
-	public void f_read_synch_log() {
+	//check
+	public void f_read_sync_log(int limit) {
 		myDataBase
 				.execSQL("SELECT * FROM synchronize_log WHERE _id=(SELECT MAX(_id) from synchronize_log) ;");
 	}
 
-	public void f_log_messages(Integer v_date, String v_type,
-			c_contact v_contact, String v_message) {
-		myDataBase.execSQL("UPDATE message_log SET type=" + v_type + ", date="
-				+ v_date + ", contact_id=" + v_contact.v_id + ", message="
-				+ v_message + ";");
+	//insert a message sent to the log, so we can keep history.
+	public void f_log_messages(Integer v_date, String v_type, c_contact v_contact, String v_message) {
+		ContentValues cv = new ContentValues();
+		cv.put("type", v_type);
+		cv.put("date", v_date);
+		cv.put("contact_id", v_contact.v_id);
+		cv.put("message", v_message);
+		myDataBase.insert("message_log", null, cv);
+		cv.clear();
 	}
-
+	//check
 	public void f_read_message_log() {
 		myDataBase.execSQL("SELECT * FROM message_log ;");
 	}
 
+	//Add a contact to the database.
 	public void f_add_contact(c_contact v_contact) {
-		// insert values in contacts by ContentValues var
 		ContentValues cv = new ContentValues();
 		cv.put("name", v_contact.v_name);
 		cv.put("lastname", v_contact.v_lastname);
 		cv.put("phone", v_contact.v_phone);
 		cv.put("email", v_contact.v_email);
-
 		myDataBase.insert("contacts", null, cv);
+		cv.clear();
 	}
-
+	// update a contact.
 	public void f_update_contact(c_contact v_contact) {
-		// update contacts by using the proper query
-		myDataBase.execSQL("UPDATE contacts SET name=" + v_contact.v_name
-				+ ", lastname=" + v_contact.v_lastname + ", phone="
-				+ v_contact.v_phone + ", email=" + v_contact.v_email
-				+ "WHERE _id=" + v_contact.v_id + " ;");
+		ContentValues cv = new ContentValues();
+		cv.put("name", v_contact.v_name);
+		cv.put("lastname", v_contact.v_lastname);
+		cv.put("phone", v_contact.v_phone);
+		cv.put("email", v_contact.v_email);
+		myDataBase.update("cotnacts", cv, "_id=" + v_contact.v_id, null);
+		cv.clear();
 	}
-
-	protected void finalize() { // Destructor function
+	//Get a contact from the database.
+	public c_contact f_get_contact(int v_contact_id)
+	{
+		Cursor dbCursor = myDataBase.query("contacts", null, "_id=" + v_contact_id, null, null, null, null);
+		dbCursor.moveToFirst();
+		c_contact v_contact = new c_contact(
+				dbCursor.getString(dbCursor.getColumnIndex("name")),
+				dbCursor.getString(dbCursor.getColumnIndex("lastname")),
+				dbCursor.getInt(dbCursor.getColumnIndex("phone")),
+				dbCursor.getString(dbCursor.getColumnIndex("email")),
+				dbCursor.getInt(dbCursor.getColumnIndex("_id"))
+				);
+		return v_contact;
+	}
+	
+	// Destructor function
+	protected void finalize() { 
 		myDataBase.close();
 	}
 
@@ -384,7 +432,7 @@ public class c_database extends SQLiteOpenHelper {
 
 	private void exportTable(String tableName) throws IOException {
 		String tables[] = { "events", "contacts", "messages", "configuration",
-				"celebration", "synchronize_log", "message_log" };
+				"celebrations", "synchronize_log", "message_log" };
 		for (int i = 0; i <= 6; i++) {
 
 			_exporter.startTable(tableName);
