@@ -199,6 +199,7 @@ public class c_database extends SQLiteOpenHelper {
 					); 
 			dbCursor.moveToNext();
 		}
+		dbCursor.close();
 		return v_events;
 	}
 	
@@ -213,6 +214,7 @@ public class c_database extends SQLiteOpenHelper {
 				dbCursor.getString(dbCursor.getColumnIndex("skin_path")),
 				dbCursor.getString(dbCursor.getColumnIndex("eortologio_url"))
 				);
+		dbCursor.close();
 		return v_configuration;
 	}
 	
@@ -263,32 +265,66 @@ public class c_database extends SQLiteOpenHelper {
 	}
 	
 	//Insert sync date in the table.
-	public void f_log_sync(String v_type, Integer v_date) {
+	public void f_log_sync(c_sync_log v_log) {
 		ContentValues cv = new ContentValues();
-		cv.put("type", v_type);
-		cv.put("date", v_date);
+		cv.put("type", v_log.v_type);
+		cv.put("date", v_log.v_date);
 		myDataBase.insert("synchronize_log", null, cv);
 		cv.clear();
 	}
-	//check
-	public void f_read_sync_log(int limit) {
-		myDataBase
-				.execSQL("SELECT * FROM synchronize_log WHERE _id=(SELECT MAX(_id) from synchronize_log) ;");
+	
+	//Return the sync log based on how many entries the developer asked for.
+	public c_sync_log[] f_read_sync_log(int limit) {
+		Cursor dbCursor = myDataBase.query("synchronize_log", null, null, null, null, null, "date DESC", "" + limit);
+		c_sync_log v_log[] = new c_sync_log[dbCursor.getCount()];
+		dbCursor.moveToFirst();
+		for(int i=0;i<dbCursor.getCount();i++)
+		{
+			v_log[i] = new c_sync_log(
+				dbCursor.getInt(dbCursor.getColumnIndex("date")),
+				dbCursor.getString(dbCursor.getColumnIndex("type")),
+				dbCursor.getInt(dbCursor.getColumnIndex("_id"))
+				);
+			dbCursor.moveToNext();
+		}
+		dbCursor.close();
+		return v_log;
 	}
 
 	//insert a message sent to the log, so we can keep history.
-	public void f_log_messages(Integer v_date, String v_type, c_contact v_contact, String v_message) {
+	public void f_log_messages(c_message_log v_log) {
 		ContentValues cv = new ContentValues();
-		cv.put("type", v_type);
-		cv.put("date", v_date);
-		cv.put("contact_id", v_contact.v_id);
-		cv.put("message", v_message);
+		cv.put("type", v_log.v_type);
+		cv.put("date", v_log.v_date);
+		cv.put("contact_id", v_log.v_contact.v_id);
+		cv.put("message", v_log.v_message);
 		myDataBase.insert("message_log", null, cv);
 		cv.clear();
 	}
-	//check
-	public void f_read_message_log() {
-		myDataBase.execSQL("SELECT * FROM message_log ;");
+
+
+	public c_message_log[] f_read_message_log(int limit) {
+		Cursor dbCursor = myDataBase.query("message_log", null, null, null, null, null, "date DESC", "" + limit);
+		c_message_log v_log[] = new c_message_log[dbCursor.getCount()];
+		dbCursor.moveToFirst();
+		for(int i=0;i<dbCursor.getCount();i++)
+		{
+			c_contact v_contact = (c_contact) null;
+			if(!dbCursor.isNull(dbCursor.getColumnIndex("contact_id")))
+			{
+				v_contact = this.f_get_contact(dbCursor.getInt(dbCursor.getColumnIndex("contact_id")));
+			}
+			v_log[i] = new c_message_log(
+				dbCursor.getInt(dbCursor.getColumnIndex("date")),
+				dbCursor.getInt(dbCursor.getColumnIndex("_id")),
+				dbCursor.getString(dbCursor.getColumnIndex("type")),
+				dbCursor.getString(dbCursor.getColumnIndex("message")),
+				v_contact
+				);
+			dbCursor.moveToNext();
+		}
+		dbCursor.close();
+		return v_log;
 	}
 
 	//Add a contact to the database.
@@ -323,6 +359,7 @@ public class c_database extends SQLiteOpenHelper {
 				dbCursor.getString(dbCursor.getColumnIndex("email")),
 				dbCursor.getInt(dbCursor.getColumnIndex("_id"))
 				);
+		dbCursor.close();
 		return v_contact;
 	}
 	
