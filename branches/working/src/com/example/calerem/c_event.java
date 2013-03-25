@@ -1,9 +1,7 @@
 package com.example.calerem;
 
-import android.app.Activity;
-import android.os.Bundle;
 
-public class c_event extends Activity
+public class c_event
 {
 
 	public String v_event_type;
@@ -12,14 +10,6 @@ public class c_event extends Activity
 	public c_contact v_event_contact;
 	public Integer v_event_id;
 	public String v_event_description;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		
-	}
 
 	public c_event(String n_event_type,String n_event_name,Integer n_event_date,c_contact n_event_contact,Integer n_event_id,String n_event_description)
 	{
