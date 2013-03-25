@@ -15,5 +15,7 @@
     <string name="Desc">Description</string>
     <string name="Type">Type</string>
     <string name="TitleV">View Event</string>
+    <string name="title_activity_new_event">NewEvent</string>
+    <string name="SaveButton">Save</string>
 
 </resources>
