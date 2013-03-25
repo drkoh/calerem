@@ -1,8 +1,6 @@
 package com.example.calerem;
 
-import android.app.Activity;
-
-public class c_contact extends Activity
+public class c_contact
 {
 	public String v_name;
 	public String v_lastname;
