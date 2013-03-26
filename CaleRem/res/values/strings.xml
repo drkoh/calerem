@@ -17,5 +17,11 @@
     <string name="TitleV">View Event</string>
     <string name="title_activity_new_event">NewEvent</string>
     <string name="SaveButton">Save</string>
+    <string name="notifyDate">Notification Date - DD.MM.YYYY</string>
+    <string name="whoCelebrates">Who is celebrating</string>
+    <string name="remindText">Remind me to do ..........</string>
+    <string name="dateTitleToRemind">Reminder setted on:</string>
+    <string name="settedDate">setted date to remind - DD.MM.YYYY</string>
+    <string name="settedTime">setted time to remind - HH.MM</string>
 
 </resources>
