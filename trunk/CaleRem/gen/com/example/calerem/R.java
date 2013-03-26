@@ -24,9 +24,11 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080019;
+        public static final int action_settings=0x7f08001f;
         public static final int btnSave=0x7f080008;
+        public static final int celebPerson=0x7f08001a;
         public static final int datePicker=0x7f080005;
+        public static final int dtTitle=0x7f08001c;
         public static final int etContact=0x7f080006;
         public static final int etDescription=0x7f080007;
         public static final int etDt=0x7f08000e;
@@ -36,9 +38,13 @@ public final class R {
         public static final int etNameC=0x7f080012;
         public static final int etPhn=0x7f080016;
         public static final int etType=0x7f08000c;
+        public static final int notiDt=0x7f080019;
         public static final int pager=0x7f080000;
         public static final int pager_title_strip=0x7f080001;
+        public static final int remText=0x7f08001b;
         public static final int section_label=0x7f080002;
+        public static final int setDate=0x7f08001d;
+        public static final int setTime=0x7f08001e;
         public static final int spinnerType=0x7f080003;
         public static final int tvContact=0x7f080010;
         public static final int tvDate=0x7f08000d;
@@ -56,6 +62,7 @@ public final class R {
         public static final int fragment_main_dummy=0x7f030001;
         public static final int new_event=0x7f030002;
         public static final int view_event=0x7f030003;
+        public static final int view_notification=0x7f030004;
     }
     public static final class menu {
         public static final int main=0x7f070000;
@@ -73,10 +80,16 @@ public final class R {
         public static final int Type=0x7f05000c;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
+        public static final int dateTitleToRemind=0x7f050013;
+        public static final int notifyDate=0x7f050010;
+        public static final int remindText=0x7f050012;
+        public static final int settedDate=0x7f050014;
+        public static final int settedTime=0x7f050015;
         public static final int title_activity_new_event=0x7f05000e;
         public static final int title_section1=0x7f050002;
         public static final int title_section2=0x7f050003;
         public static final int title_section3=0x7f050004;
+        public static final int whoCelebrates=0x7f050011;
     }
     public static final class style {
         /** 
