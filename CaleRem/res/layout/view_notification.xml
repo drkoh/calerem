@@ -26,6 +26,14 @@
         android:text="@string/whoCelebrates"/>
 
     <EditText
+        android:id="@+id/evType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="@string/evType"
+        android:ems="10" />
+
+    <EditText
         android:id="@+id/remText"
         android:layout_width="278dp"
         android:layout_height="206dp"
