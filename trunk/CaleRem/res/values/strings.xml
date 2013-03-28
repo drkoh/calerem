@@ -23,5 +23,6 @@
     <string name="dateTitleToRemind">Reminder setted on:</string>
     <string name="settedDate">setted date to remind - DD.MM.YYYY</string>
     <string name="settedTime">setted time to remind - HH.MM</string>
+    <string name="evType">Event Type</string>
 
 </resources>
