@@ -20,6 +20,7 @@ import com.facebook.model.GraphUser;
 
 public class c_Facebook_API extends Activity {
 	
+	static final String applicationId = "488108911245147";
 	private Session.StatusCallback statusCallback = new SessionStatusCallback();
 	private Session session;
 	private Bundle saved_Instance_State;
@@ -32,52 +33,43 @@ public class c_Facebook_API extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
 		saved_Instance_State = savedInstanceState;
 	}
 	
 	private void loginActivity () {
-		Intent intent = new Intent(c_Facebook_API.this, c_Facebook_API.class);
-        startActivity(intent);
+		
+		session = createSession();
 		
 		Settings.addLoggingBehavior(LoggingBehavior.INCLUDE_ACCESS_TOKENS);
 		
-		session = Session.getActiveSession();
-		if(session == null) {
-			if(saved_Instance_State != null) {
-				session = Session.restoreSession(this, null, statusCallback, saved_Instance_State);
-			}
-			if (session == null) {
-				session = new Session(this);
-			}
-			Session.setActiveSession(session);
-			if (session.getState().equals(SessionState.CREATED_TOKEN_LOADED)) {
-				session.openForRead(new Session.OpenRequest(this).setCallback(statusCallback));
-			}
-		}	
+		if (session.getState().equals(SessionState.CREATED_TOKEN_LOADED)) {
+			session.openForRead(new Session.OpenRequest(this).setCallback(statusCallback));
+		}
+		//if user has successfully logged in do :
+		//getFriends();
+		//else to check if user has successfully logged in do : 
 		getUserData(session);
 	}
 	
-	private void getUserData(final Session session) {
-		Request request = Request.newMeRequest(session, new Request.GraphUserCallback() {
-						
-			@Override
-			public void onCompleted(GraphUser user, Response response) {
-				if (user!= null && session == Session.getActiveSession()){
-					getFriends();
-				}
-				if(response.getError() != null) {
-					
-				}
-			}
-		});
-		request.executeAsync();
+	private void getUserData(final Session session) {				  
+		 		Request request = Request.newMeRequest(session, new Request.GraphUserCallback() {
+         					
+		 		@Override
+		 		public void onCompleted(GraphUser user, Response response) {
+		 			if (user!= null && session == Session.getActiveSession()){
+		 				getFriends();
+		 			}
+		  			if(response.getError() != null) {
+		 			
+		 			}
+		 		}
+		 	 });
+		 request.executeAsync();
 	}
 	
 	private void getFriends(){
 
-		//String fqlQuery = "select uid, name, pic_square, is_app_user from user where uid in (select uid2 from friend where uid1 = me())";
-		//Bundle params = new Bundle();
-		//params.putString("q", fqlQuery);
 		Session activeSession = Session.getActiveSession();
 		if(activeSession.getState().isOpened()) {
 			Request friendRequest = Request.newMyFriendsRequest(activeSession,new GraphUserListCallback() {
@@ -97,8 +89,20 @@ public class c_Facebook_API extends Activity {
 	private class SessionStatusCallback implements Session.StatusCallback {
 		@Override
 		public void call(Session session, SessionState state, Exception exception) {
-			
+			//testing if the session is opened if not creates her
+			if (exception != null) {
+                session = createSession();
+            }
 		}
+	}
+	
+	private Session createSession() {
+		Session activeSession = Session.getActiveSession();
+        if (activeSession == null || activeSession.getState().isClosed()) {
+            activeSession = new Session.Builder(this).setApplicationId(applicationId).build();
+            Session.setActiveSession(activeSession);
+        }
+        return activeSession;
 	}
 }
 

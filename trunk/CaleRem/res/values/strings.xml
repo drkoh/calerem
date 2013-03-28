@@ -24,5 +24,6 @@
     <string name="settedDate">setted date to remind - DD.MM.YYYY</string>
     <string name="settedTime">setted time to remind - HH.MM</string>
     <string name="evType">Event Type</string>
+    <string name="login_failed_dialog_title">Login failed</string>
 
 </resources>
