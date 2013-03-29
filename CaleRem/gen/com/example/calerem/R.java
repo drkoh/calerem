@@ -24,11 +24,11 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f08001f;
+        public static final int action_settings=0x7f080020;
         public static final int btnSave=0x7f080008;
         public static final int celebPerson=0x7f08001a;
         public static final int datePicker=0x7f080005;
-        public static final int dtTitle=0x7f08001c;
+        public static final int dtTitle=0x7f08001d;
         public static final int etContact=0x7f080006;
         public static final int etDescription=0x7f080007;
         public static final int etDt=0x7f08000e;
@@ -38,13 +38,14 @@ public final class R {
         public static final int etNameC=0x7f080012;
         public static final int etPhn=0x7f080016;
         public static final int etType=0x7f08000c;
+        public static final int evType=0x7f08001b;
         public static final int notiDt=0x7f080019;
         public static final int pager=0x7f080000;
         public static final int pager_title_strip=0x7f080001;
-        public static final int remText=0x7f08001b;
+        public static final int remText=0x7f08001c;
         public static final int section_label=0x7f080002;
-        public static final int setDate=0x7f08001d;
-        public static final int setTime=0x7f08001e;
+        public static final int setDate=0x7f08001e;
+        public static final int setTime=0x7f08001f;
         public static final int spinnerType=0x7f080003;
         public static final int tvContact=0x7f080010;
         public static final int tvDate=0x7f08000d;
@@ -81,6 +82,8 @@ public final class R {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int dateTitleToRemind=0x7f050013;
+        public static final int evType=0x7f050016;
+        public static final int login_failed_dialog_title=0x7f050017;
         public static final int notifyDate=0x7f050010;
         public static final int remindText=0x7f050012;
         public static final int settedDate=0x7f050014;
