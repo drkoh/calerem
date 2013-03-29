@@ -9,45 +9,38 @@ import org.junit.Test;
 
 public class c_configurationTest {
 
-	@Before
-	public void setUp() throws Exception {
-	}
+c_configuration c_config = new c_configuration(null, null, null, null, null);
 
-	@After
-	public void tearDown() throws Exception {
-	}
-
-     
+	
 	@Test
 	public void testF_set_date_format() {
-		String v1 = "DD-MM-YYYY";
-		String v2 = "MM-DD-YYYY";
-		String v_date_format=null;
-        c_configuration tester1= new c_configuration();
-        c_configuration tester2= new c_configuration();
-        
-        tester1.f_set_date_format(v1);
-        tester2.f_set_date_format(v2);
-        assertEquals(v1,v_date_format);
-        assertEquals(v2,v_date_format);
-        
-     
-		//fail("Not yet implemented");
+		String date = "DD-MM-YYYY";
+		c_config.f_set_date_format(date);
+		assertEquals(date,c_config.v_date_format);
+		date = "MM-DD-YYYY";
+		c_config.f_set_date_format(date);
+		assertEquals(date,c_config.v_date_format);
 	}
 
-//	@Test
-	//public void testF_set_notification_sound() {
-		//fail("Not yet implemented");
-	//}
+	@Test
+	public void testF_set_notification_sound() {
+		String sound = "my notification.mp3";
+		c_config.f_set_notification_sound(sound);
+		assertEquals(sound,c_config.v_notification_sound);
+	}
 
-	//@Test
-	//public void testF_set_language() {
-		//fail("Not yet implemented");
-	//}
+	@Test
+	public void testF_set_language() {
+		String lang = "Greek";
+		c_config.f_set_language(lang);
+		assertEquals(lang,c_config.v_language);
+	}
 
-	//@Test
-	//public void testF_set_skin() {
-		//fail("Not yet implemented");
-	//}
+	@Test
+	public void testF_set_skin() {
+		String skin = "Black";
+		c_config.f_set_skin(skin);
+		assertEquals(skin,c_config.v_skin);
+	}
 
 }
