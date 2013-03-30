@@ -1,4 +1,4 @@
-package com.example.calerem;
+package com.calerem.classes;
 
 import java.io.BufferedOutputStream;
 import java.io.FileNotFoundException;
@@ -37,6 +37,7 @@ public class c_database extends SQLiteOpenHelper {
 		else
 		{
 			this.createDataBase();
+			this.openDataBase();
 		}
 	}
 	private void createDataBase() throws IOException {
@@ -157,6 +158,26 @@ public class c_database extends SQLiteOpenHelper {
 		myDataBase.update("events", cv, "_id=" + v_new_event.v_event_id, null);
 		cv.clear();
 	}
+	public c_event f_get_event(int v_event_id)
+	{
+		Cursor dbCursor = myDataBase.query("events", null, "_id=" + v_event_id, null, null, null,  "1");
+		dbCursor.moveToFirst();
+		c_event v_event;
+		c_contact v_contact = null;
+		if(!dbCursor.isNull(dbCursor.getColumnIndex("contact_id")))
+		{
+			v_contact = this.f_get_contact(dbCursor.getInt(dbCursor.getColumnIndex("contact_id")));
+		}
+		v_event = new c_event(
+				dbCursor.getString(dbCursor.getColumnIndex("type")),
+				dbCursor.getString(dbCursor.getColumnIndex("name")),
+				dbCursor.getInt(dbCursor.getColumnIndex("date")),
+				v_contact,
+				dbCursor.getInt(dbCursor.getColumnIndex("_id")),
+				dbCursor.getString(dbCursor.getColumnIndex("description"))
+				);
+		return v_event;
+	}	
 
 	public void f_import_events(String v_export_path) {
 
@@ -171,6 +192,7 @@ public class c_database extends SQLiteOpenHelper {
 		this.close();
 		try {
 			this.createDataBase();
+			this.openDataBase();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -184,7 +206,7 @@ public class c_database extends SQLiteOpenHelper {
 		dbCursor.moveToFirst();
 		for(int i=0;i<dbCursor.getCount();i++)
 		{
-			c_contact v_contact = (c_contact) null;
+			c_contact v_contact = null;
 			if(!dbCursor.isNull(dbCursor.getColumnIndex("contact_id")))
 			{
 				v_contact = this.f_get_contact(dbCursor.getInt(dbCursor.getColumnIndex("contact_id")));
@@ -309,7 +331,7 @@ public class c_database extends SQLiteOpenHelper {
 		dbCursor.moveToFirst();
 		for(int i=0;i<dbCursor.getCount();i++)
 		{
-			c_contact v_contact = (c_contact) null;
+			c_contact v_contact = null;
 			if(!dbCursor.isNull(dbCursor.getColumnIndex("contact_id")))
 			{
 				v_contact = this.f_get_contact(dbCursor.getInt(dbCursor.getColumnIndex("contact_id")));
@@ -362,8 +384,27 @@ public class c_database extends SQLiteOpenHelper {
 		dbCursor.close();
 		return v_contact;
 	}
+	public c_contact[] f_get_contacts()
+	{
+		Cursor dbCursor = myDataBase.query("contacts", null, null, null, null, null, null);
+		dbCursor.moveToFirst();
+		c_contact v_contact[] = new c_contact[dbCursor.getCount()]; 
+		for(int i=0;i<dbCursor.getCount();i++)
+		{
+			v_contact[i] = new c_contact(
+				dbCursor.getString(dbCursor.getColumnIndex("name")),
+				dbCursor.getString(dbCursor.getColumnIndex("lastname")),
+				dbCursor.getInt(dbCursor.getColumnIndex("phone")),
+				dbCursor.getString(dbCursor.getColumnIndex("email")),
+				dbCursor.getInt(dbCursor.getColumnIndex("_id"))
+				);
+		}
+		dbCursor.close();
+		return v_contact;
+	}
 	
 	// Destructor function
+	@Override
 	protected void finalize() { 
 		myDataBase.close();
 	}

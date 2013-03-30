@@ -1,17 +1,10 @@
-package com.example.calerem;
+package com.calerem.classes;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.facebook.LoggingBehavior;
-import com.facebook.Session;
-import com.facebook.SessionState;
-import com.facebook.Settings;
-
 
 
 public class c_facebook_API extends Activity {
-	
+	/*
 	private Session.StatusCallback statusCallback = new SessionStatusCallback();
 	private Session session;
 	private Bundle saved_Instance_State;
@@ -53,5 +46,5 @@ public class c_facebook_API extends Activity {
 		public void call(Session session, SessionState state, Exception exception) {
 			
 		}
-	}
+	}*/
 }
