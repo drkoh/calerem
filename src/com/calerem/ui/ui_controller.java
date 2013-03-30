@@ -11,14 +11,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-public class ui_controller extends Activity {
+public class ui_controller{
 	private c_database db;
 	private static Gson gson = new Gson();
 	private Context basecontext;
 
 	public ui_controller(Context context)
 	{
-		basecontext = context; 
+		basecontext = context;
 		try {
 			db = new c_database(basecontext);
 		} catch (IOException e) {
@@ -39,7 +39,21 @@ public class ui_controller extends Activity {
 		Intent intent = new Intent(basecontext, NewEvent.class);
 		c_contact v_contact[] = db.f_get_contacts();
 		intent.putExtra("Data", gson.toJson(v_contact));
-		basecontext.startActivity(intent);
+		((Activity) basecontext).startActivityForResult(intent, 1);
 	}
-	
+	public void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		/* Request Codes
+		 * 1 = New Event
+		 */
+		if (requestCode == 1) {
+		     if(resultCode == Activity.RESULT_OK){      
+		         c_event v_event = gson.fromJson(data.getStringExtra("result"), c_event.class);
+		         db.f_add_event(v_event);
+		     }
+		     if (resultCode == Activity.RESULT_CANCELED) {    
+		         //Write your code on no result return 
+		     }
+		  }			
+	}	
 }

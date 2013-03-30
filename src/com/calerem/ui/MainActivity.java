@@ -2,8 +2,7 @@ package com.calerem.ui;
 
 import java.util.Locale;
 
-import com.calerem.R;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -15,6 +14,8 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.calerem.R;
 
 public class MainActivity extends FragmentActivity {
 
@@ -46,7 +47,16 @@ public class MainActivity extends FragmentActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        new ui_controller(this).f_new_NewEvent();
+        
+        //new ui_controller(this).f_new_NewEvent();
+        new ui_controller(this).f_new_ViewEvent(1);
+    }    
+    
+    //hack
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+    	new ui_controller(this).onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -56,8 +66,6 @@ public class MainActivity extends FragmentActivity {
         return true;
     }
     
-    
-
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
