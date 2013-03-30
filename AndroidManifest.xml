@@ -24,9 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-		<activity android:name="ViewEvent" android:label="@string/app_name"></activity>
 		<activity android:name=".ui.ViewEvent"></activity>
 		<activity android:name=".ui.NewEvent"></activity>
+		<activity android:name=".ui.SendEmail"></activity>
     </application>
 
 </manifest>

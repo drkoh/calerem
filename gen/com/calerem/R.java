@@ -25,37 +25,42 @@ public final class R {
     }
     public static final class id {
         public static final int Spinner01=0x7f080003;
-        public static final int action_settings=0x7f080019;
+        public static final int action_settings=0x7f08001d;
+        public static final int bSendEmail=0x7f08000c;
         public static final int btnSave=0x7f080006;
         public static final int datePicker=0x7f080007;
         public static final int etDescription=0x7f080005;
-        public static final int etDt=0x7f08000e;
-        public static final int etLast=0x7f080014;
-        public static final int etMail=0x7f080018;
+        public static final int etDt=0x7f080012;
+        public static final int etEmail=0x7f080009;
+        public static final int etLast=0x7f080018;
+        public static final int etMail=0x7f08001c;
+        public static final int etMessage=0x7f08000b;
         public static final int etName=0x7f080004;
-        public static final int etNameC=0x7f080012;
-        public static final int etPhn=0x7f080016;
-        public static final int etType=0x7f08000c;
+        public static final int etNameC=0x7f080016;
+        public static final int etPhn=0x7f08001a;
+        public static final int etSubject=0x7f08000a;
+        public static final int etType=0x7f080010;
         public static final int pager=0x7f080000;
         public static final int pager_title_strip=0x7f080001;
         public static final int section_label=0x7f080002;
         public static final int spinner_contacts=0x7f080008;
-        public static final int tvContact=0x7f080010;
-        public static final int tvDate=0x7f08000d;
-        public static final int tvDescription=0x7f08000f;
-        public static final int tvLast=0x7f080013;
-        public static final int tvMail=0x7f080017;
-        public static final int tvName=0x7f08000a;
-        public static final int tvNameC=0x7f080011;
-        public static final int tvPhone=0x7f080015;
-        public static final int tvTitle=0x7f080009;
-        public static final int tvType=0x7f08000b;
+        public static final int tvContact=0x7f080014;
+        public static final int tvDate=0x7f080011;
+        public static final int tvDescription=0x7f080013;
+        public static final int tvLast=0x7f080017;
+        public static final int tvMail=0x7f08001b;
+        public static final int tvName=0x7f08000e;
+        public static final int tvNameC=0x7f080015;
+        public static final int tvPhone=0x7f080019;
+        public static final int tvTitle=0x7f08000d;
+        public static final int tvType=0x7f08000f;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int fragment_main_dummy=0x7f030001;
         public static final int new_event=0x7f030002;
-        public static final int view_event=0x7f030003;
+        public static final int sendemail=0x7f030003;
+        public static final int view_event=0x7f030004;
     }
     public static final class menu {
         public static final int main=0x7f070000;
@@ -66,26 +71,30 @@ public final class R {
         public static final int NewEvent_Name=0x7f040002;
         public static final int NewEvent_SaveButton=0x7f040001;
         public static final int NewEvent_title_activity_new_event=0x7f040000;
-        public static final int ViewEvent_Contact=0x7f040005;
-        public static final int ViewEvent_Date=0x7f040009;
-        public static final int ViewEvent_Desc=0x7f04000b;
-        public static final int ViewEvent_Email=0x7f04000a;
-        public static final int ViewEvent_Last=0x7f040007;
-        public static final int ViewEvent_Name=0x7f040006;
-        public static final int ViewEvent_Phone=0x7f040008;
-        public static final int ViewEvent_TitleV=0x7f04000d;
-        public static final int ViewEvent_Type=0x7f04000c;
-        public static final int action_settings=0x7f04000f;
-        public static final int app_name=0x7f04000e;
-        public static final int dateTitleToRemind=0x7f040016;
-        public static final int notifyDate=0x7f040013;
-        public static final int remindText=0x7f040015;
-        public static final int settedDate=0x7f040017;
-        public static final int settedTime=0x7f040018;
-        public static final int title_section1=0x7f040010;
-        public static final int title_section2=0x7f040011;
-        public static final int title_section3=0x7f040012;
-        public static final int whoCelebrates=0x7f040014;
+        public static final int SendEmail_Email_Address=0x7f040005;
+        public static final int SendEmail_Send_Email=0x7f040007;
+        public static final int SendEmail_Subject=0x7f040008;
+        public static final int SendEmail_Text_Message=0x7f040006;
+        public static final int ViewEvent_Contact=0x7f040009;
+        public static final int ViewEvent_Date=0x7f04000d;
+        public static final int ViewEvent_Desc=0x7f04000f;
+        public static final int ViewEvent_Email=0x7f04000e;
+        public static final int ViewEvent_Last=0x7f04000b;
+        public static final int ViewEvent_Name=0x7f04000a;
+        public static final int ViewEvent_Phone=0x7f04000c;
+        public static final int ViewEvent_TitleV=0x7f040011;
+        public static final int ViewEvent_Type=0x7f040010;
+        public static final int action_settings=0x7f040013;
+        public static final int app_name=0x7f040012;
+        public static final int dateTitleToRemind=0x7f04001a;
+        public static final int notifyDate=0x7f040017;
+        public static final int remindText=0x7f040019;
+        public static final int settedDate=0x7f04001b;
+        public static final int settedTime=0x7f04001c;
+        public static final int title_section1=0x7f040014;
+        public static final int title_section2=0x7f040015;
+        public static final int title_section3=0x7f040016;
+        public static final int whoCelebrates=0x7f040018;
     }
     public static final class style {
         /** 

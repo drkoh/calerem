@@ -49,7 +49,7 @@ public class MainActivity extends FragmentActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
         
         //new ui_controller(this).f_new_NewEvent();
-        new ui_controller(this).f_new_ViewEvent(1);
+        //new ui_controller(this).f_new_SendEmail((Integer)null,"","");
     }    
     
     //hack
