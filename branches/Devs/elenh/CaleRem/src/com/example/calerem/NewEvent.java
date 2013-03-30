@@ -13,13 +13,12 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 public class NewEvent extends Activity implements OnClickListener,
 		OnItemSelectedListener {
 	// Statement of variables
 	Spinner spinner;
-	String[] types = { "No Selection", "Birthday", "Nameday" };
+	String[] types = { "Birthday", "Nameday" };
 	DatePicker datePicker;
 	EditText etName, etContact, etDesc;
 	Button buttonSave;
@@ -66,10 +65,11 @@ public class NewEvent extends Activity implements OnClickListener,
 		if (etContact.getText().toString().trim().length() == 0) {
 			eventContact = " ";
 		} else {
-			//newEvent.v_event_contact = contact.v_name(etContact.getText()); // TODO
-																			// handle
-																			// as
-																			// object
+			// newEvent.v_event_contact = contact.v_name(etContact.getText());
+			// // TODO
+			// handle
+			// as
+			// object
 		}
 
 		if (etDesc.getText().toString().trim().length() == 0) {
@@ -86,21 +86,16 @@ public class NewEvent extends Activity implements OnClickListener,
 		int position = spinner.getSelectedItemPosition();
 		switch (position) {
 		case 0:
-			Toast.makeText(getApplicationContext(),
-					"You need to select Event Type", Toast.LENGTH_LONG).show();
-			break;
-		case 1:
 			newEvent.v_event_type = types[1];
 			break;
-		case 2:
+		case 1:
 			newEvent.v_event_type = types[2];
 		}
 	}
 
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) {
-		Toast.makeText(getApplicationContext(),
-				"You need to select Event Type", Toast.LENGTH_LONG).show();
+
 	}
 
 }
