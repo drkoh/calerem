@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:weightSum="100" >
+
+    <Spinner
+        android:id="@+id/spinnerType"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/Name"
+        android:singleLine="true" />
+
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:calendarViewShown="true" />
+
+    <EditText
+        android:id="@+id/etContact"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/Contact"
+        android:nextFocusDown="@+id/etDescription"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@id/etDescription"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Desc"
+        android:nextFocusDown="@+id/btnSave"
+        android:singleLine="true" />
+
+    <Button
+        android:id="@id/btnSave"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/SaveButton" />
+
+</LinearLayout>
