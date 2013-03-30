@@ -1,9 +1,12 @@
-package com.example.calerem;
+package com.calerem.ui;
 
+import com.calerem.R;
+import com.calerem.classes.c_event;
 import com.google.gson.Gson;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -49,15 +52,15 @@ public class ViewEvent extends Activity {
 	public void checkContact(){
 		//if the event isn't connected to a contract make the visual objects, that exist for printing contact's info, invisible
 		if(event1.v_event_contact == null){
-			edNameC.setVisibility(EditText.INVISIBLE);
-			edLastC.setVisibility(EditText.INVISIBLE);
-			edPhone.setVisibility(EditText.INVISIBLE);
-			edMail.setVisibility(EditText.INVISIBLE);
-			title.setVisibility(TextView.INVISIBLE);
-			name.setVisibility(TextView.INVISIBLE);
-			last.setVisibility(TextView.INVISIBLE);
-			phone.setVisibility(TextView.INVISIBLE);
-			mail.setVisibility(TextView.INVISIBLE);
+			edNameC.setVisibility(View.INVISIBLE);
+			edLastC.setVisibility(View.INVISIBLE);
+			edPhone.setVisibility(View.INVISIBLE);
+			edMail.setVisibility(View.INVISIBLE);
+			title.setVisibility(View.INVISIBLE);
+			name.setVisibility(View.INVISIBLE);
+			last.setVisibility(View.INVISIBLE);
+			phone.setVisibility(View.INVISIBLE);
+			mail.setVisibility(View.INVISIBLE);
 		}
 		else{
 			//else print info in these objects

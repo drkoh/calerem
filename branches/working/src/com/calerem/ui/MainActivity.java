@@ -1,6 +1,8 @@
-package com.example.calerem;
+package com.calerem.ui;
 
 import java.util.Locale;
+
+import com.calerem.R;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -44,6 +46,7 @@ public class MainActivity extends FragmentActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        new ui_controller(this).f_new_NewEvent();
     }
 
     @Override

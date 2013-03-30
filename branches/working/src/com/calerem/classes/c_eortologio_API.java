@@ -1,4 +1,4 @@
-package com.example.calerem;
+package com.calerem.classes;
 
 import java.io.File;
 import java.io.FileOutputStream;

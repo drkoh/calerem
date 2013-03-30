@@ -1,4 +1,4 @@
-package com.example.calerem;
+package com.calerem.classes;
 
 public class c_sync_log {
 
