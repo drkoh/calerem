@@ -1,5 +1,7 @@
 package com.example.calerem;
 
+import com.example.calerem.c_event;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
@@ -17,15 +19,13 @@ public class NewEvent extends Activity implements OnClickListener,
 		OnItemSelectedListener {
 	// Statement of variables
 	Spinner spinner;
-	String[] types = { "Birthday", "Nameday" };
+	String[] types = { "No Selection", "Birthday", "Nameday" };
 	DatePicker datePicker;
-	EditText name, contact, desc;
+	EditText etName, etContact, etDesc;
 	Button buttonSave;
 	String eventType, eventName, eventDate, eventContact, eventDesc;
-	private int year;
-	private int month;
-	private int day;
 	c_event newEvent;
+	c_contact contact;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,69 +43,62 @@ public class NewEvent extends Activity implements OnClickListener,
 	}
 
 	private void initializeVars() {
-		// TODO Auto-generated method stub
 		datePicker = (DatePicker) findViewById(R.id.datePicker);
-		name = (EditText) findViewById(R.id.etName);
-		contact = (EditText) findViewById(R.id.etContact);
-		desc = (EditText) findViewById(R.id.etDescription);
+		etName = (EditText) findViewById(R.id.etName);
+		etContact = (EditText) findViewById(R.id.etContact);
+		etDesc = (EditText) findViewById(R.id.etDescription);
 		buttonSave = (Button) findViewById(R.id.btnSave);
 		spinner = (Spinner) findViewById(R.id.spinnerType);
 	}
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 
-		if (name.getText().toString().trim().length() == 0) {
-			name.setError("You need to enter a name for the Event");
+		if (etName.getText().toString().trim().length() == 0) {
+			etName.setError("You need to enter a name for the Event");
 		} else {
-			eventName = name.getText().toString();
+			newEvent.v_event_name = etName.getText().toString();
 		}
 
-		StringBuilder sb = new StringBuilder().append(day).append("-")
-				.append(month + 1).append("-").append(year).append(" ");
-		eventDate = sb.toString();
+		eventDate = "" + datePicker.getDayOfMonth() + "-"
+				+ datePicker.getMonth() + "-" + datePicker.getYear();
 
-		if (contact.getText().toString().trim().length() == 0) {
+		if (etContact.getText().toString().trim().length() == 0) {
 			eventContact = " ";
 		} else {
-			eventContact = contact.getText().toString();
+			//newEvent.v_event_contact = contact.v_name(etContact.getText()); // TODO
+																			// handle
+																			// as
+																			// object
 		}
 
-		if (desc.getText().toString().trim().length() == 0) {
+		if (etDesc.getText().toString().trim().length() == 0) {
 			eventDesc = " ";
 		} else {
-			eventDesc = desc.getText().toString();
+			newEvent.v_event_description = etDesc.getText().toString();
 		}
 
-		/*
-		 * newEvent.f_change_event_type(eventType);
-		 * newEvent.f_change_event_name(eventName);
-		 * newEvent.f_change_event_date(eventDate); //TODO event date is a String not an integer
-		 * newEvent.f_change_event_contact(eventContact); //TODO Contact is A Contact obj not String
-		 * 
-		 * //newEvent.c_event(eventType,eventName,eventDate,eventContact,"1",eventDesc);
-		 */
 	}
 
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
 			long arg3) {
-		// TODO Auto-generated method stub
 		int position = spinner.getSelectedItemPosition();
 		switch (position) {
 		case 0:
-			eventType = types[0];
+			Toast.makeText(getApplicationContext(),
+					"You need to select Event Type", Toast.LENGTH_LONG).show();
 			break;
 		case 1:
-			eventType = types[1];
+			newEvent.v_event_type = types[1];
 			break;
+		case 2:
+			newEvent.v_event_type = types[2];
 		}
 	}
 
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) {
-		// TODO Auto-generated method stub
 		Toast.makeText(getApplicationContext(),
 				"You need to select Event Type", Toast.LENGTH_LONG).show();
 	}
