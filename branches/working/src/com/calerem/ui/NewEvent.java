@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.Locale;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+
 import com.calerem.R;
 import com.calerem.classes.c_contact;
 import com.calerem.classes.c_event;
@@ -131,7 +132,10 @@ public class NewEvent extends Activity {
 					{
 						v_event = new c_event(eventType,eventName,(int) epoch,contacts_obj[contact_position-1],(Integer) null,eventDesc);
 					}
-					Log.w("asd",new Gson().toJson(v_event));
+					Intent intent_ret = new Intent();
+					intent_ret.putExtra("result", new Gson().toJson(v_event));
+					setResult(RESULT_OK,intent_ret);
+					finish();
 				} else {
 					name.setError("You need to enter a name for the Event");
 				}
