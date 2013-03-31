@@ -1,0 +1,131 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" 
+      xmlns:tools="http://schemas.android.com/tools"
+     android:scrollbars="vertical" 
+     android:layout_height="fill_parent" 
+     android:layout_width="fill_parent">
+
+
+
+
+
+<TableLayout 
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".configurationActivity" >
+    
+  <TableRow >
+    <TextView
+        android:id="@+id/txtDateFormat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dateformat"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+  </TableRow>
+  
+  <TableRow >
+    <Spinner
+        android:id="@+id/spnDateFormat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:entries="@array/spnDateFormatItems" />
+  </TableRow>  
+  
+  <TableRow >
+    <TextView
+        android:id="@+id/txtNotificationsSound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/notificationsound"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+  </TableRow>
+  
+  <TableRow >
+    <Spinner
+        android:id="@+id/spnNotificationsSound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10" 
+        android:entries="@array/spnNotificationsSoundItems" />
+  </TableRow>   
+  
+  <TableRow >
+    <TextView
+        android:id="@+id/txtLangiage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/language"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+  </TableRow>
+
+  <TableRow >
+    <Spinner
+        android:id="@+id/spnLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:entries="@array/spnLanguageItems" />   
+  </TableRow>
+
+  <TableRow >
+    <TextView
+        android:id="@+id/txtSkin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/skin"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+  </TableRow>
+
+  <TableRow >
+    <Spinner
+        android:id="@+id/spnSkin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+         android:entries="@array/spnSkinItems" />
+  </TableRow>
+  
+  <TableRow >
+    <TextView
+        android:id="@+id/txtEortologioXml"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/eortologioxml"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+  </TableRow>
+
+  <TableRow >
+    <Spinner
+        android:id="@+id/spnEortologioXml"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:entries="@array/spnEortologioXmlItems"/>   
+  </TableRow>
+  
+  <TableRow >
+      
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:ems="10" 
+        android:onClick="clkSave"/>   
+  </TableRow>
+
+  <TableRow >
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reset"
+        android:onClick="clkReset"
+/>
+  </TableRow>
+
+
+  </TableLayout>
+   
+
+</ScrollView>

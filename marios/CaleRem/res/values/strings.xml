@@ -25,5 +25,39 @@
     <string name="settedTime">setted time to remind - HH.MM</string>
     <string name="evType">Event Type</string>
     <string name="login_failed_dialog_title">Login failed</string>
+     <string name="dateformat">Τύπος ημερομηνίας</string>
+    <string name="notificationsound">Ήχος Ειδοποίησης</string>
+    <string name="language">Γλώσσα</string>
+    <string name="skin">Θέμα</string>
+    <string name="eortologioxml">Εμφάνιση αποτελεσμάτων για:</string>
+    <string name="save">Αποθήκευση</string>
+    <string name="reset">Επαναφορά</string>
+     <string-array name="spnDateFormatItems">
+        <item>μμ/ΜΜ/χχχχ</item>
+        <item>χχχχ/ΜΜ/μμ</item>
+    </string-array>
+    
+      <string-array name="spnNotificationsSoundItems">
+        <item>Ήχος1</item>
+        <item>Ήχος2</item>
+        <item>Ήχος3</item>
+    </string-array>
+    
+    <string-array name="spnLanguageItems">
+        <item>Ελληνικά</item>
+        <item>Αγγλικά</item>
+    </string-array>
+    
+    <string-array name="spnSkinItems">
+        <item>Θέμα1</item>
+        <item>Θέμα2</item>
+        <item>Θέμα3</item>
+    </string-array>
+    
+    <string-array name="spnEortologioXmlItems">
+        <item>Σήμερα</item>
+        <item>Σήμερα-Άυριο</item>
+        <item>Σήμερα-Άυριο-Μεθάυριο</item>
+    </string-array>
 
 </resources>
