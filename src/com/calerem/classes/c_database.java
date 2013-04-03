@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import com.calerem.interfaces.i_database;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -12,9 +14,9 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
-public class c_database extends SQLiteOpenHelper {
+
+public class c_database extends SQLiteOpenHelper implements i_database {
 
 	//private static final String EXPORT_FILE_NAME = Environment.getExternalStorageDirectory().getPath() + "/CaleRem/export.xml";
 	private static String v_db_name = "Calerem.db"; 
@@ -100,12 +102,18 @@ public class c_database extends SQLiteOpenHelper {
 		myInput.close();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#openDataBase()
+	 */
 	public void openDataBase() throws SQLException {
 		// Open the database
 		myDataBase = SQLiteDatabase.openDatabase(v_sqlite_path, null,
 				SQLiteDatabase.OPEN_READWRITE);
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#close()
+	 */
 	@Override
 	public synchronized void close() {
 		if (myDataBase != null)
@@ -114,6 +122,9 @@ public class c_database extends SQLiteOpenHelper {
 	}
 	
 	// insert values in events by using ContentValues API
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_add_event(com.calerem.classes.c_event)
+	 */
 	public void f_add_event(c_event v_new_event) {
 		String name, type, date, description,contact_id;
 		contact_id="contact_id;";
@@ -132,7 +143,7 @@ public class c_database extends SQLiteOpenHelper {
 		}
 		else
 		{
-			cv.put(contact_id, v_new_event.v_event_contact.v_id);	
+			cv.put(contact_id, v_new_event.v_event_contact.getV_id());	
 		}
 		cv.put(description, v_new_event.v_event_description);
 		myDataBase.insert("events", null, cv);
@@ -140,12 +151,18 @@ public class c_database extends SQLiteOpenHelper {
 	}
 	
 	// delete events by id
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_delete_event(java.lang.Integer)
+	 */
 	public void f_delete_event(Integer v_event_id) {
 		String id= "_id";
 		myDataBase.delete("events",id + "=" + v_event_id, null);
 	}
 	
 	// update events table with query
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_update_event(com.calerem.classes.c_event)
+	 */
 	public void f_update_event(c_event v_new_event) {
 		String name, type, date, description,contact_id;
 		contact_id="contact_id;";
@@ -164,12 +181,15 @@ public class c_database extends SQLiteOpenHelper {
 		}
 		else
 		{
-			cv.put(contact_id, v_new_event.v_event_contact.v_id);	
+			cv.put(contact_id, v_new_event.v_event_contact.getV_id());	
 		}		
 		cv.put(description, v_new_event.v_event_description);
 		myDataBase.update("events", cv, id + "=" + v_new_event.v_event_id, null);
 		cv.clear();
 	}
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_get_event(int)
+	 */
 	public c_event f_get_event(int v_event_id)
 	{
 		String name, type, date, description,contact_id;
@@ -198,15 +218,24 @@ public class c_database extends SQLiteOpenHelper {
 		return v_event;
 	}	
 
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_import_events(java.lang.String)
+	 */
 	public void f_import_events(String v_export_path) {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_export_events(java.lang.String)
+	 */
 	public String f_export_events(String v_export_path) {
 		return "";
 	}
 
 	// Restore Original .db File.
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_factory_reset()
+	 */
 	public void f_factory_reset() {
 		this.close();
 		try {
@@ -219,6 +248,9 @@ public class c_database extends SQLiteOpenHelper {
 	}
 	
 	//Return applications events based on a period.
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_return_events(java.lang.Integer, java.lang.Integer)
+	 */
 	public c_event[] f_return_events(Integer v_start_time, Integer v_end_time) {
 		String name, type, date, description,contact_id;
 		contact_id="contact_id;";
@@ -252,6 +284,9 @@ public class c_database extends SQLiteOpenHelper {
 	}
 	
 	//Return applications configuration object.
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_read_configuration()
+	 */
 	public c_configuration f_read_configuration() {
 		String date_format="date_format";
 		String sound_path="sound_path";
@@ -272,6 +307,9 @@ public class c_database extends SQLiteOpenHelper {
 	}
 	
 	//Update the configuration table with new entries.
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_update_configuration(com.calerem.classes.c_configuration)
+	 */
 	public void f_update_configuration(c_configuration v_new_configuration) {
 		String date_format="date_format";
 		String sound_path="sound_path";
@@ -280,16 +318,19 @@ public class c_database extends SQLiteOpenHelper {
 		String eortologio_url = "eortologio_url";
 		ContentValues cv = new ContentValues();
 		cv.put(date_format, v_new_configuration.getV_date_format());
-		cv.put(sound_path, v_new_configuration.v_notification_sound);
-		cv.put(language, v_new_configuration.v_language);
-		cv.put(skin_path, v_new_configuration.v_skin);
-		cv.put(eortologio_url, v_new_configuration.v_eortologio_xml);
+		cv.put(sound_path, v_new_configuration.getV_notification_sound());
+		cv.put(language, v_new_configuration.getV_language());
+		cv.put(skin_path, v_new_configuration.getV_skin());
+		cv.put(eortologio_url, v_new_configuration.getV_eortologio_xml());
 		myDataBase.update("configuration", cv, null, null);
 		cv.clear();
 	}
 	
 	//Insert new celebration, its actually an event without contact
 	//Example: 28-Oct
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_add_celebration(com.calerem.classes.c_event)
+	 */
 	public void f_add_celebration(c_event v_new_cele) {
 		String name="name";
 		String type="type";
@@ -305,6 +346,9 @@ public class c_database extends SQLiteOpenHelper {
 	}
 
 	//Update a celebration
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_update_celebration(com.calerem.classes.c_event)
+	 */
 	public void f_update_celebration(c_event v_new_cele) {
 		String name="name";
 		String type="type";
@@ -321,18 +365,27 @@ public class c_database extends SQLiteOpenHelper {
 	}
 
 	//Delete Celebration
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_delete_celebration(com.calerem.classes.c_event)
+	 */
 	public void f_delete_celebration(c_event v_new_cele) {
 		String id = "_id";
 		myDataBase.delete("celebrations", id+"=" + v_new_cele.v_event_id, null);
 	}
 	
 	// Delete all Celebrations.
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_truncate_celebrations()
+	 */
 	public void f_truncate_celebrations() {
 		myDataBase.delete("celebrations", null, null);
 
 	}
 	
 	//Insert sync date in the table.
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_log_sync(com.calerem.classes.c_sync_log)
+	 */
 	public void f_log_sync(c_sync_log v_log) {
 		String type="type";
 		String date="date";
@@ -344,6 +397,9 @@ public class c_database extends SQLiteOpenHelper {
 	}
 	
 	//Return the sync log based on how many entries the developer asked for.
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_read_sync_log(int)
+	 */
 	public c_sync_log[] f_read_sync_log(int limit) {
 		String type="type";
 		String date="date";
@@ -365,6 +421,9 @@ public class c_database extends SQLiteOpenHelper {
 	}
 
 	//insert a message sent to the log, so we can keep history.
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_log_messages(com.calerem.classes.c_message_log)
+	 */
 	public void f_log_messages(c_message_log v_log) {
 		String type="type";
 		String date="date";
@@ -373,13 +432,16 @@ public class c_database extends SQLiteOpenHelper {
 		ContentValues cv = new ContentValues();
 		cv.put(type, v_log.v_type);
 		cv.put(date, v_log.v_date);
-		cv.put(contact_id, v_log.v_contact.v_id); 
+		cv.put(contact_id, v_log.v_contact.getV_id()); 
 		cv.put(message, v_log.v_message);
 		myDataBase.insert("messages", null, cv);
 		cv.clear();
 	}
 
 
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_read_message_log(int)
+	 */
 	public c_message_log[] f_read_message_log(int limit) {
 		String type="type";
 		String date="date";
@@ -410,34 +472,43 @@ public class c_database extends SQLiteOpenHelper {
 	}
 
 	//Add a contact to the database.
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_add_contact(com.calerem.classes.c_contact)
+	 */
 	public void f_add_contact(c_contact v_contact) {
 		String name = "name";
 		String lastname = "lastname";
 		String phone = "phone";
 		String email="email";
 		ContentValues cv = new ContentValues();
-		cv.put(name, v_contact.v_name);
-		cv.put(lastname, v_contact.v_lastname);
-		cv.put(phone, v_contact.v_phone);
-		cv.put(email, v_contact.v_email);
+		cv.put(name, v_contact.getV_name());
+		cv.put(lastname, v_contact.getV_lastname());
+		cv.put(phone, v_contact.getV_phone());
+		cv.put(email, v_contact.getV_email());
 		myDataBase.insert("contacts", null, cv);
 		cv.clear();
 	}
 	// update a contact.
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_update_contact(com.calerem.classes.c_contact)
+	 */
 	public void f_update_contact(c_contact v_contact) {
 		String name = "name";
 		String lastname = "lastname";
 		String phone = "phone";
 		String email="email";
 		ContentValues cv = new ContentValues();
-		cv.put(name, v_contact.v_name);
-		cv.put(lastname, v_contact.v_lastname);
-		cv.put(phone, v_contact.v_phone);
-		cv.put(email, v_contact.v_email);
-		myDataBase.update("cotnacts", cv, "_id=" + v_contact.v_id, null);
+		cv.put(name, v_contact.getV_name());
+		cv.put(lastname, v_contact.getV_lastname());
+		cv.put(phone, v_contact.getV_phone());
+		cv.put(email, v_contact.getV_email());
+		myDataBase.update("cotnacts", cv, "_id=" + v_contact.getV_id(), null);
 		cv.clear();
 	}
 	//Get a contact from the database.
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_get_contact(int)
+	 */
 	public c_contact f_get_contact(int v_contact_id)
 	{
 		String name = "name";
@@ -457,6 +528,9 @@ public class c_database extends SQLiteOpenHelper {
 		dbCursor.close();
 		return v_contact;
 	}
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#f_get_contacts()
+	 */
 	public c_contact[] f_get_contacts()
 	{
 		String name = "name";
@@ -492,14 +566,18 @@ public class c_database extends SQLiteOpenHelper {
 
 
 
-	private void log(String msg) {
-		Log.d("DatabaseAssistant", msg);
-	}
+	
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#onCreate(android.database.sqlite.SQLiteDatabase)
+	 */
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
 		
 	}
+	/* (non-Javadoc)
+	 * @see com.calerem.classes.i_database#onUpgrade(android.database.sqlite.SQLiteDatabase, int, int)
+	 */
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub
