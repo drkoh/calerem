@@ -2,6 +2,7 @@ package com.calerem.ui;
 
 import com.calerem.R;
 import com.calerem.classes.c_event;
+import com.calerem.interfaces.i_ViewEvent;
 import com.google.gson.Gson;
 
 import android.app.Activity;
@@ -10,7 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class ViewEvent extends Activity {
+public class ViewEvent extends Activity implements i_ViewEvent {
 	//Statement of variables
 	TextView title,name,last,phone,mail;
 	EditText edName, edType, edDate, edDescription, edNameC, edLastC, edPhone, edMail;
@@ -33,6 +34,9 @@ public class ViewEvent extends Activity {
 		edDescription.setText(event1.v_event_description);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.calerem.ui.i_ViewEvent#initVars()
+	 */
 	public void initVars(){
 		//link vars to visual objects via id method
 		edName= (EditText) findViewById (R.id.etName);
@@ -49,6 +53,9 @@ public class ViewEvent extends Activity {
 		phone= (TextView) findViewById (R.id.tvPhone);
 		mail= (TextView) findViewById (R.id.tvMail);
 	}
+	/* (non-Javadoc)
+	 * @see com.calerem.ui.i_ViewEvent#checkContact()
+	 */
 	public void checkContact(){
 		//if the event isn't connected to a contract make the visual objects, that exist for printing contact's info, invisible
 		if(event1.v_event_contact == null){
@@ -64,10 +71,10 @@ public class ViewEvent extends Activity {
 		}
 		else{
 			//else print info in these objects
-			edNameC.setText(event1.v_event_contact.v_name);
-			edLastC.setText(event1.v_event_contact.v_lastname);
-			edPhone.setText(""+event1.v_event_contact.v_phone);
-			edMail.setText(event1.v_event_contact.v_email);
+			edNameC.setText(event1.v_event_contact.getV_name());
+			edLastC.setText(event1.v_event_contact.getV_lastname());
+			edPhone.setText(""+event1.v_event_contact.getV_phone());
+			edMail.setText(event1.v_event_contact.getV_email());
 		}
 		
 	}

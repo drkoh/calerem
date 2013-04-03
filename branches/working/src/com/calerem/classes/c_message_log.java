@@ -1,6 +1,8 @@
 package com.calerem.classes;
 
-public class c_message_log {
+import com.calerem.interfaces.i_message_log;
+
+public class c_message_log implements i_message_log {
 
 	public Integer v_date;
 	public Integer v_id;

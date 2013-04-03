@@ -9,9 +9,10 @@ import android.widget.EditText;
 
 import com.calerem.R;
 import com.calerem.classes.c_contact;
+import com.calerem.interfaces.i_SendEmail;
 import com.google.gson.Gson;
 
-public class SendEmail extends Activity implements View.OnClickListener  
+public class SendEmail extends Activity implements View.OnClickListener, i_SendEmail  
 {
 	EditText v_person_email,v_person_message, v_person_subject;
 	String v_email_address, v_text_message, v_email_subject;
@@ -31,9 +32,9 @@ public class SendEmail extends Activity implements View.OnClickListener
 		initializeVars();
 		if(v_contact != null)
 		{
-			if(v_contact.v_email.isEmpty())
+			if(v_contact.getV_email().isEmpty())
 			{
-				v_person_email.setText(v_contact.v_email);
+				v_person_email.setText(v_contact.getV_email());
 			}
 		}		
 		if(!data_subject.isEmpty())
@@ -56,6 +57,9 @@ public class SendEmail extends Activity implements View.OnClickListener
 		v_send_email = (Button) findViewById(R.id.bSendEmail);
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.calerem.ui.i_SendEmail#onClick(android.view.View)
+	 */
 	public void onClick(View v)
 	{
 		Intent intent_ret = new Intent();
