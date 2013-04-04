@@ -1,9 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="CaleRem" default="help">
+<project name="Calerem" default="all">
+<property file="build.properties" />
+<property file="C:/Users/AnastasiaSwthria/Documents/AATEXNOLOGIA LOGISMIKOY/upw.properties"/>
+<typedef resource="C:/ant/lib/svnantlib.xml" classpath="C:/ant/lib/svnant.jar;C:/ant/lib/svnClientAdapter.jar;C:/ant/lib/svnkit.jar;C:/ant/lib/svnjavahl.jar" />
+
+<target name="all" depends="svn-commit,init,jar,javadoc,zip"/>
+
+<target name="svn-update">
+    <svn username="${mail.user}" password="${svn.password}">
+        <update revision="HEAD" dir="C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\working\src"/>
+    </svn>
+</target>
+
+<target name="svn-info">
+      <C:\ant\lib\svn.exe>
+        <info
+            path="C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\working"
+            committedRevisionProperty="revisionVersion"
+            authorProperty="revisionAuthor"
+            committedDateProperty="revisionDate"/>
+    </svn>
+    <property
+        name="version"
+        value="CaleRem_V${app.version}.${revisionVersion}_${revisionDate}"/>
+</target>
+
+<target name="mailto" description="Sends e-mail to the dev"> 
+  <mail
+    tolist="athaboil90@hotmail.gr"
+    from="pli1885@gmail.com"
+    subject="ant mail test"
+    mailhost="smtp.gmail.com"
+    mailport="465"
+    ssl="true"
+    user="${mail.user}"
+    password="${mail.pass}">
+    <message>Example email sent by Ant Mail task.</message>
+  </mail>
+</target>
+
+<target name="svn-commit" description="Commit trunk/tags">
+	<mkdir dir="${main.tags}\${value}"/>
+	<copy todir="${main.tags}\${value}">
+    		<fileset dir="src_dir"/>
+  	</copy>
+    <svn>
+        <commit
+            path="${main.trunk}"
+            commitMessage="Test commit"
+            force="true"
+            username="${mail.user}" password="${svn.password}"
+        />
+	<commit
+            path="${main.tags}"
+            commitMessage="Test commit"
+            force="true"
+            username="${mail.user}" password="${svn.password}"
+        />
+    </svn>
+</target>
+
+<target name="init">
+	<mkdir dir="${main.working}\${build.dir}"/>
+	<mkdir dir="${main.working}\${dist.dir}"/>
+	<mkdir dir="${main.working}\${jar.dir}"/>
+	<mkdir dir="${main.working}\${test.dir}"/>
+	<mkdir dir="${main.working}\${test.report.dir}"/>
+	<mkdir dir="${main.working}\${javadoc.dir}"/>
+</target>
 
 <target name="jar" depends="debug" description="Generates CeleRem.jar file in to the 'jar' directory.">
-<mkdir dir="jar"/>
-<jar jarfile="jar/CeleRem.jar" basedir="bin/classes"/>
+	<jar jarfile="${main.working}/${jar.dir}\${app.name}-v${app.version}.${revisionVersion}.jar" basedir="${classes.dir}">
+	<manifest>
+		<attribute name="Class-Path" value="${main.working}\${lib.dir}"/>
+		<attribute name="Main-Class" value="${main.working}\${main.class}"/>
+	</manifest>
+	</jar>
+</target>
+
+<target name = "rnApk" description="Renames the final apk">
+	<move file="${main.working}\bin\Calerem.apk" tofile="${main.working}\bin\${app.name}-v${app.version}.${revisionVersion}jar"/>
+</target>
+
+<target name="javadoc" description="generate documentation">
+    	<mkdir dir="${main.working}\JavaDReports"/>
+    	<javadoc sourcepath="${main.working}\${src.dir}" destdir="${main.working}\JavaDReports"/>
+    	<formatter type="plain"/>
+    	<formatter type="xml"/>
+</target>
+
+<target name="zip">
+	<zip destfile="CaleRem.zip" basedir="${main.working}\${proj.dir}" includes="${main.working}\${javadoc.dir}/**,jar/**,${main.working}\${test.report.dir}/**,${main.working}\${javadoc.report.dir}/**" />
+</target>
+
+<target name="test">
+	<junit printsummary="yes" haltonfailure="no">
+  		<classpath>
+    			<pathelement location="${test.build}"/>
+    			<pathelement path="TCaleRemTest\com.calerem.test"/>
+			<fileset dir = "C:\Users\AnastasiaSwthria\Documents\android\android" includes="*.class"/>
+			<fileset dir="C:\Program Files\Java\jdk1.7.0_15\plugins\org.junit_4.8.2.v4_8_2_v20110321-1705" includes="*/.jar"/>
+  		</classpath>
+  		<formatter type="plain"/>
+  		<test name="com.calerem.test.t_configuration.java" haltonfailure="no" outfile="result">
+  	  		<formatter type="xml"/>
+  		</test>
+  		<batchtest fork="yes" todir="${main.working}/${test.report.dir}">
+    			<fileset dir="${test.dir}/src">
+      				<include name="**/*Test*.java"/>
+      				<exclude name="**/AllTests.java"/>
+    			</fileset>
+  		</batchtest>
+	</junit>
 </target>
 
     <!-- The local.properties file is created and updated by the 'android' tool.
