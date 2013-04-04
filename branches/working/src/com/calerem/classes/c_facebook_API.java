@@ -1,11 +1,9 @@
 package com.calerem.classes;
 
-import com.calerem.interfaces.i_facebook;
-
 import android.app.Activity;
 
 
-public class c_facebook_API extends Activity implements i_facebook {
+public class c_facebook_API extends Activity {
 	/*
 	private Session.StatusCallback statusCallback = new SessionStatusCallback();
 	private Session session;

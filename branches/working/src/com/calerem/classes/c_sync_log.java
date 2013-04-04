@@ -1,8 +1,6 @@
 package com.calerem.classes;
 
-import com.calerem.interfaces.i_sync_log;
-
-public class c_sync_log implements i_sync_log {
+public class c_sync_log {
 
 	public Integer v_date;
 	public String v_type;

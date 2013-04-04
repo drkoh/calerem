@@ -20,10 +20,9 @@ import android.widget.Spinner;
 import com.calerem.R;
 import com.calerem.classes.c_contact;
 import com.calerem.classes.c_event;
-import com.calerem.interfaces.i_NewEvent;
 import com.google.gson.Gson;
 
-public class NewEvent extends Activity implements i_NewEvent {
+public class NewEvent extends Activity {
 	//Statement of variables
 	private Spinner spinner_type,spinner_contact;
 	private String[] types = {"Birthday", "Nameday"};
@@ -96,7 +95,7 @@ public class NewEvent extends Activity implements i_NewEvent {
 		contacts[0] = "None";
 		for(int i = 0;i<contacts_obj.length;i++)
 		{
-			contacts[i+1] = contacts_obj[i].getV_name() + " " + contacts_obj[i].getV_lastname();
+			contacts[i+1] = contacts_obj[i].v_name + " " + contacts_obj[i].v_lastname;
 		}
 		this.initVars();
 	    Spinner_typeActivity spinner_type_listener = new Spinner_typeActivity();

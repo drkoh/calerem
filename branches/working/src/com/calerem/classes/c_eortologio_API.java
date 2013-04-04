@@ -6,16 +6,11 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import com.calerem.interfaces.i_eortologio;
-
 import android.app.Activity;
 import android.os.Environment;
 
-public class c_eortologio_API extends Activity implements i_eortologio{
+public class c_eortologio_API extends Activity{
 	
-	/* (non-Javadoc)
-	 * @see com.calerem.classes.i_eortologio#f_get_file(java.lang.String)
-	 */
 	public void f_get_file(String v_URL) throws Exception
 	{
 		URL url = new URL(v_URL);
@@ -54,9 +49,6 @@ public class c_eortologio_API extends Activity implements i_eortologio{
 		fileOutput.close();
 	}
 	
-	/* (non-Javadoc)
-	 * @see com.calerem.classes.i_eortologio#f_parse_file()
-	 */
 	public void f_parse_file(){
 		
 	}

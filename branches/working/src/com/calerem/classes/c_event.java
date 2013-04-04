@@ -1,9 +1,7 @@
 package com.calerem.classes;
 
-import com.calerem.interfaces.i_event;
 
-
-public class c_event implements i_event
+public class c_event
 {
 
 	public String v_event_type;
