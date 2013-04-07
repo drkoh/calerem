@@ -1,42 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Calerem" default="all">
+
 <property file="build.properties" />
 <property file="C:/Users/AnastasiaSwthria/Documents/AATEXNOLOGIA LOGISMIKOY/upw.properties"/>
-<typedef resource="C:/ant/lib/svnantlib.xml" classpath="C:/ant/lib/svnant.jar;C:/ant/lib/svnClientAdapter.jar;C:/ant/lib/svnkit.jar;C:/ant/lib/svnjavahl.jar" />
-
-<target name="all" depends="svn-commit,init,jar,javadoc,zip"/>
+<path id="svntask.classpath">
+    <fileset dir="C:\SVN\bin">
+		<include name="javahl.jar"/>
+		<include name="svnkit.jar"/>
+            	<include name="svnant.jar"/>
+            	<include name="svnClientAdapter.jar"/>
+		<include name="ganymed.jar"/>
+        </fileset>
+</path>
+<path id="svnant.classpath">
+ 	<fileset dir="libs">     
+  		<include name="**/*.jar" />
+ 	</fileset>
+</path>
+<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" 
+	classpathref="svnant.classpath" 
+/>
+<svnSetting 
+	svnkit="false" 
+	javahl="false" 
+	id="svn.settings"
+/>
 
 <target name="svn-update">
-    <svn username="${mail.user}" password="${svn.password}">
-        <update revision="HEAD" dir="C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\working\src"/>
-    </svn>
+	<svn refid="svn.settings">
+        	<update dir="."/>
+    	</svn>
 </target>
 
 <target name="svn-info">
-      <C:\ant\lib\svn.exe>
-        <info
-            path="C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\working"
-            committedRevisionProperty="revisionVersion"
-            authorProperty="revisionAuthor"
-            committedDateProperty="revisionDate"/>
-    </svn>
-    <property
-        name="version"
-        value="CaleRem_V${app.version}.${revisionVersion}_${revisionDate}"/>
-</target>
-
-<target name="mailto" description="Sends e-mail to the dev"> 
-  <mail
-    tolist="athaboil90@hotmail.gr"
-    from="pli1885@gmail.com"
-    subject="ant mail test"
-    mailhost="smtp.gmail.com"
-    mailport="465"
-    ssl="true"
-    user="${mail.user}"
-    password="${mail.pass}">
-    <message>Example email sent by Ant Mail task.</message>
-  </mail>
+    	<svn refid="svn.settings">
+		<info target="../trunk"/>
+    	</svn>
+    	<property
+        	name="version"
+        	value="Last Revision = ${svn.info.lastRev} by ${svn.info.author} on ${svn.info.lastDate}"
+    />
+    <echo message="${version}"/>
 </target>
 
 <target name="svn-commit" description="Commit trunk/tags">
@@ -44,21 +48,38 @@
 	<copy todir="${main.tags}\${value}">
     		<fileset dir="src_dir"/>
   	</copy>
-    <svn>
-        <commit
-            path="${main.trunk}"
-            commitMessage="Test commit"
-            force="true"
-            username="${mail.user}" password="${svn.password}"
-        />
-	<commit
-            path="${main.tags}"
-            commitMessage="Test commit"
-            force="true"
-            username="${mail.user}" password="${svn.password}"
-        />
-    </svn>
+   	<svn>
+        	<commit path="${main.trunk}" 
+			commitMessage="Test commit" 
+			force="true" 
+			username="${mail.user}" 
+			password="${svn.password}"
+		/>
+		<commit 
+			path="${main.tags}" 
+			commitMessage="Test commit" 
+			force="true" 
+			username="${mail.user}" 
+			password="${svn.password}"
+		/>
+    	</svn>
 </target>
+
+<target name="mailto" description="Sends e-mail to the dev"> 
+  	<mail	
+		tolist="athaboil90@hotmail.gr"
+    		from="pli1885@gmail.com"
+    		subject="ant mail test"
+    		mailhost="smtp.gmail.com"
+    		mailport="465"
+    		ssl="true"
+    		user="${mail.user}"
+    		password="${mail.pass}">
+    		<message>Example email sent by Ant Mail task.</message>
+  	</mail>
+</target>
+
+
 
 <target name="init">
 	<mkdir dir="${main.working}\${build.dir}"/>
@@ -90,7 +111,11 @@
 </target>
 
 <target name="zip">
-	<zip destfile="CaleRem.zip" basedir="${main.working}\${proj.dir}" includes="${main.working}\${javadoc.dir}/**,jar/**,${main.working}\${test.report.dir}/**,${main.working}\${javadoc.report.dir}/**" />
+	<zip 
+		destfile="CaleRem.zip" 
+		basedir="${main.working}\${proj.dir}" 
+		includes="${main.working}\${javadoc.dir}/**,jar/**,${main.working}\${test.report.dir}/**,${main.working}\${javadoc.report.dir}/**" 
+	/>
 </target>
 
 <target name="test">
