@@ -13,11 +13,11 @@ public class MessageLog {
 	
 	/**
 	 * Base Constructor
-	 * @param date
-	 * @param id
-	 * @param type
-	 * @param message
-	 * @param contact
+	 * @param Integer date
+	 * @param Integer id
+	 * @param String type
+	 * @param String message
+	 * @param Contact contact
 	 */
 	public MessageLog(Integer date,Integer id,String type,String message,Contact contact)
 	{

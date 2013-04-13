@@ -17,7 +17,7 @@ public class EortologioAPI extends Activity{
 	
 	/**
 	 * Retrieves the xml file to /sdcard/Calerem/eortologio/eortologio.xml
-	 * @param v_URL
+	 * @param String v_URL
 	 * @throws Exception
 	 */
 	public void getFile(String v_URL) throws Exception

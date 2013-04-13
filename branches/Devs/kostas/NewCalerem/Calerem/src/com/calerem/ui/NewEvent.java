@@ -62,6 +62,10 @@ public class NewEvent extends Activity implements View.OnClickListener {
 	    buttonSave.setOnClickListener(this);
 	}
 
+	/**
+	 * Initializes the form.
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
@@ -79,6 +83,10 @@ public class NewEvent extends Activity implements View.OnClickListener {
 		this.initVars();
 	}
 
+	/**
+	 * This is the listener for button save.
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 */
 	@Override
 	public void onClick(View v) {
 		try 

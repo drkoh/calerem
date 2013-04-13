@@ -12,8 +12,8 @@ import android.telephony.SmsManager;
 public class SMSAPI {
 	/**
 	 * Sends a silent SMS.
-	 * @param phone Recipient Phone
-	 * @param text SMS Message Text Maximum 160 Characters
+	 * @param String phone Recipient Phone
+	 * @param String text SMS Message Text Maximum 160 Characters
 	 * @return boolean on success
 	 */
 	public boolean sendSMS(String phone,String text)

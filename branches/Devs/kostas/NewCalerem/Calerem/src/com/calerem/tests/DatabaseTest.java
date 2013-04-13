@@ -14,8 +14,8 @@ import com.calerem.classes.SyncLog;
 import com.calerem.controllers.Database;
 
 /**
+ * Database Tests in Junit 3.
  * @author DarkParadise
- *
  */
 public class DatabaseTest extends InstrumentationTestCase {
 
@@ -27,7 +27,8 @@ public class DatabaseTest extends InstrumentationTestCase {
 	private ConfigurationCalerem testconfiguration;
 	private SyncLog testsynclog;
 	
-	/* (non-Javadoc)
+	/**
+	 * Sets up the initial enviroment so tests can be runned.
 	 * @see junit.framework.TestCase#setUp()
 	 */
 	protected void setUp() throws Exception {
@@ -41,7 +42,8 @@ public class DatabaseTest extends InstrumentationTestCase {
 		testsynclog = new SyncLog(1365708011,"Facebook",(Integer) null);
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * Resets the database to initial state to automate the testing.
 	 * @see junit.framework.TestCase#tearDown()
 	 */
 	protected void tearDown() throws Exception {

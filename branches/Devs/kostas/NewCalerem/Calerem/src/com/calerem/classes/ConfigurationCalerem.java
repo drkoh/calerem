@@ -19,12 +19,12 @@ public class ConfigurationCalerem extends Activity{
 
 	/**
 	 * Base Constructor
-	 * @param context
-	 * @param date_format
-	 * @param notification_sound
-	 * @param language
-	 * @param skin
-	 * @param eortologio_xml
+	 * @param Context context
+	 * @param String date_format
+	 * @param String notification_sound
+	 * @param String language
+	 * @param String skin
+	 * @param String eortologio_xml
 	 */
 	public ConfigurationCalerem(Context context,String date_format,String notification_sound,String language,String skin,String eortologio_xml)
 	{

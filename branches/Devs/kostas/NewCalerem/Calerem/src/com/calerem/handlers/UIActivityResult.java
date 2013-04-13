@@ -5,24 +5,23 @@ package com.calerem.handlers;
 
 import java.io.IOException;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import com.calerem.api.EmailAPI;
-import com.calerem.classes.Event;
 import com.calerem.controllers.Database;
-import com.google.gson.Gson;
 
 /**
+ * Handler for all Form results.
  * @author DarkParadise
- *
  */
 public class UIActivityResult {
 	private Database db;
 	private Context basecontext;
-	private Gson gson;
 	
+	/**
+	 * Base Constructor.
+	 * @param Context context
+	 */
 	public UIActivityResult(Context context)
 	{
 		basecontext = context;
@@ -32,8 +31,14 @@ public class UIActivityResult {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		gson = new Gson();
 	}
+	/**
+	 * Uses the request code to decide which form returned the result.
+	 * Check the inner comment block for all acceptable codes.
+	 * @param int requestCode
+	 * @param int resultCode
+	 * @param Intent data
+	 */
 	public void onActivityResult(int requestCode, int resultCode, Intent data)
 	{
 		/* Request Codes
@@ -43,38 +48,11 @@ public class UIActivityResult {
 		switch (requestCode)
 		{
 			case 1:
-				this.NewEventResult(resultCode, data);
+				new NewEventResult(db, resultCode, data);
 				break;
 			case 2:
-				this.NewSendEmail(resultCode, data);
+				new SendEmailResult(basecontext,resultCode, data);
 			break;
 		}
 	}
-	private void NewEventResult(int resultCode, Intent data)
-	{
-		if(resultCode == Activity.RESULT_OK)
-		{      
-			Event v_event = gson.fromJson(data.getStringExtra("result"), Event.class);
-			db.add_event(v_event);
-		}
-		else if (resultCode == Activity.RESULT_CANCELED) 
-		{    
-			//Write your code on no result return 
-		}		
-	}
-	private void NewSendEmail(int resultCode, Intent data)
-	{
-		if(resultCode == Activity.RESULT_OK)
-		{      
-			String v_email = data.getStringExtra("result_email");
-			String v_subject = data.getStringExtra("result_subject");
-			String v_text = data.getStringExtra("result_text");
-			new EmailAPI().sendMail(v_email, v_subject, v_text,basecontext);
-		}
-		else if (resultCode == Activity.RESULT_CANCELED) 
-		{    
-			//Write your code on no result return 
-		}		
-	}
-
 }
