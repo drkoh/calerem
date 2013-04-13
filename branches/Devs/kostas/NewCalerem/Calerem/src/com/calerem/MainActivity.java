@@ -1,11 +1,11 @@
 package com.calerem;
 
-import com.calerem.handlers.UIActivityResult;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
+
+import com.calerem.factories.UIActivityResultsHandlerFactory;
 
 /**
  * Main form of the application.
@@ -32,6 +32,6 @@ public class MainActivity extends Activity {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data)
 	{
-		new UIActivityResult(this).onActivityResult(requestCode, resultCode, data);
+		new UIActivityResultsHandlerFactory(this).onActivityResult(requestCode, resultCode, data);
 	}
 }
