@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.calerem.handlers;
+package com.calerem.factories;
 
 import java.io.IOException;
 
@@ -9,12 +9,14 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.calerem.controllers.Database;
+import com.calerem.handlers.NewEventResult;
+import com.calerem.handlers.SendEmailResult;
 
 /**
  * Handler for all Form results.
  * @author DarkParadise
  */
-public class UIActivityResult {
+public class UIActivityResultsHandlerFactory {
 	private Database db;
 	private Context basecontext;
 	
@@ -22,7 +24,7 @@ public class UIActivityResult {
 	 * Base Constructor.
 	 * @param Context context
 	 */
-	public UIActivityResult(Context context)
+	public UIActivityResultsHandlerFactory(Context context)
 	{
 		basecontext = context;
 		try {
