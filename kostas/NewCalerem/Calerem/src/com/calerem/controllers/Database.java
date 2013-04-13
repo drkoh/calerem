@@ -21,10 +21,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class Database extends SQLiteOpenHelper {
 	private static String db_name = "Calerem.db"; 
-	public SQLiteDatabase myDataBase;
+	private SQLiteDatabase myDataBase;
 	private static Context myContext;
-	public static String sqlite_path;
+	private static String sqlite_path;
 
+	/**
+	 * Base constructor.
+	 * @param Context context
+	 * @throws IOException
+	 */
 	public Database(Context context) throws IOException {
 		super(myContext, "calerem", null, 1);
 		Database.myContext = context;
@@ -39,6 +44,10 @@ public class Database extends SQLiteOpenHelper {
 			this.openDataBase();
 		}
 	}
+	/**
+	 * Creates the database file.
+	 * @throws IOException
+	 */
 	private void createDataBase() throws IOException {
 		myContext.openOrCreateDatabase(db_name, Context.MODE_PRIVATE, null);
 		try {
@@ -74,10 +83,9 @@ public class Database extends SQLiteOpenHelper {
 	}
 
 	/**
-	 * Copies your database from your local assets-folder to the just created
-	 * empty database in the system folder, from where it can be accessed and
-	 * handled. This is done by transfering bytestream.
-	 * */
+	 * Copies the database file from assets to the ../databases folder.
+	 * @throws IOException
+	 */
 	private void copyDataBase() throws IOException {
 
 		// Open your local db as the input stream
@@ -102,12 +110,20 @@ public class Database extends SQLiteOpenHelper {
 		myInput.close();
 	}
 
+	/**
+	 * Opens the database file.
+	 * @throws SQLException
+	 */
 	public void openDataBase() throws SQLException {
 		// Open the database
 		myDataBase = SQLiteDatabase.openDatabase(sqlite_path, null,
 				SQLiteDatabase.OPEN_READWRITE);
 	}
 	
+	/**
+	 * Closes the database connection.
+	 * @see android.database.sqlite.SQLiteOpenHelper#close()
+	 */
 	@Override
 	public synchronized void close() {
 		if (myDataBase != null)
@@ -115,7 +131,11 @@ public class Database extends SQLiteOpenHelper {
 		super.close();
 	}
 	
-	// insert values in events by using ContentValues API
+	/**
+	 * Adds an event to the database.
+	 * @param Event newevent
+	 * @return long how many rows were affected.
+	 */
 	public long add_event(Event newevent) {
 		String name,type,date,contact_id,description;
 		name="name";
@@ -141,13 +161,21 @@ public class Database extends SQLiteOpenHelper {
 		return resultCode;
 	}
 	
-	// delete events by id
+	/**
+	 * Deletes an event from the database based on the id.
+	 * @param Integer event_id
+	 * @return long how many rows were affected.
+	 */
 	public long delete_event(Integer event_id) {
 		String id="_id";
 		return myDataBase.delete("events",id + "=" + event_id, null);
 	}
 	
-	// update events table with query
+	/**
+	 * Updates an event to the database.
+	 * @param Event newevent
+	 * @return long how many rows were affected.
+	 */
 	public long update_event(Event newevent) {
 		String name,type,date,contact_id,description;
 		name="name";
@@ -173,6 +201,11 @@ public class Database extends SQLiteOpenHelper {
 		cv.clear();
 		return resultCode;
 	}
+	/**
+	 * Returns an event from the database based on its id.
+	 * @param int event_id
+	 * @return Event
+	 */
 	public Event get_event(int event_id)
 	{
 		String name,type,date,contact_id,description;
@@ -209,7 +242,9 @@ public class Database extends SQLiteOpenHelper {
 		return "";
 	}
 
-	// Restore Original .db File.
+	/**
+	 * Restores the original .db file.
+	 */
 	public void factory_reset() {
 		this.close();
 		try {
@@ -221,7 +256,12 @@ public class Database extends SQLiteOpenHelper {
 		}
 	}
 	
-	//Return applications events based on a period.
+	/**
+	 * Returns all events between the start and end time.
+	 * @param Integer start_time Epoch start.
+	 * @param Integer end_time Epoch end.
+	 * @return Event array.
+	 */
 	public Event[] return_events(Integer start_time, Integer end_time) {
 		String name,type,date,contact_id,description;
 		name="name";
@@ -254,7 +294,10 @@ public class Database extends SQLiteOpenHelper {
 		return events;
 	}
 	
-	//Return applications configuration object.
+	/**
+	 * Reads the configuration from the database.
+	 * @return ConfigurationCalerem
+	 */
 	public ConfigurationCalerem read_configuration() {
 		String date_format,sound_path,language,skin_path,eortologio_url;
 		date_format="date_format";
@@ -276,7 +319,11 @@ public class Database extends SQLiteOpenHelper {
 		return configuration;
 	}
 	
-	//Update the configuration table with new entries.
+	/**
+	 * Updates the apps configuration in the database.
+	 * @param ConfigurationCalerem new_configuration
+	 * @return long how many rows were affected.
+	 */
 	public long update_configuration(ConfigurationCalerem new_configuration) {
 		String date_format,sound_path,language,skin_path,eortologio_url;
 		date_format="date_format";
@@ -295,8 +342,11 @@ public class Database extends SQLiteOpenHelper {
 		return resultCode;
 	}
 	
-	//Insert new celebration, its actually an event without contact
-	//Example: 28-Oct
+	/**
+	 * Adds a celebration to the database.
+	 * @param Event new_cele
+	 * @return long how many rows were affected.
+	 */
 	public long add_celebration(Event new_cele) {
 		String name,type,date,description;
 		name="name";
@@ -314,7 +364,11 @@ public class Database extends SQLiteOpenHelper {
 		return resultCode;
 	}
 
-	//Update a celebration
+	/**
+	 * Updates a celebration in the database.
+	 * @param Event new_cele
+	 * @return long how many rows were affected.
+	 */
 	public long update_celebration(Event new_cele) {
 		String name,type,date,description,id;
 		name="name";
@@ -333,19 +387,30 @@ public class Database extends SQLiteOpenHelper {
 		return resultCode;
 	}
 
-	//Delete Celebration
+	/**
+	 * Deletes an event from the database.
+	 * @param Event new_cele
+	 * @return long how many rows were affected.
+	 */
 	public long delete_celebration(Event new_cele) {
 		String id = "_id";
 		return myDataBase.delete("celebrations", id + "=" + new_cele.getEvent_id(), null);
 	}
 	
-	// Delete all Celebrations.
+	/**
+	 * Deletes all celebrations from the database.
+	 * @return long how many rows were affected.
+	 */
 	public long truncate_celebrations() {
 		return myDataBase.delete("celebrations", null, null);
 
 	}
 	
-	//Insert sync date in the table.
+	/**
+	 * Adds a synchronization log to the database. 
+	 * @param SyncLog log
+	 * @return long how many rows were affected.
+	 */
 	public long log_sync(SyncLog log) {
 		String type,date;
 		type="type";
@@ -358,7 +423,11 @@ public class Database extends SQLiteOpenHelper {
 		return resultCode;
 	}
 	
-	//Return the sync log based on how many entries the developer asked for.
+	/**
+	 * Returns synchronization log.
+	 * @param int limit How many rows to return.
+	 * @return SyncLog array
+	 */
 	public SyncLog[] read_sync_log(int limit) {
 		String type,date,id;
 		type="type";
@@ -380,7 +449,11 @@ public class Database extends SQLiteOpenHelper {
 		return log;
 	}
 
-	//insert a message sent to the log, so we can keep history.
+	/**
+	 * Adds a MessageLog to the database.
+	 * @param MessageLog log
+	 * @return long how many rows were affected.
+	 */
 	public long log_messages(MessageLog log) {
 		String type,date,contact_id,message;
 		type="type";
@@ -397,7 +470,11 @@ public class Database extends SQLiteOpenHelper {
 		return resultCode;
 	}
 
-
+	/**
+	 * Returns the logs from all messages sent. Based on limit.
+	 * @param int limit How many rows to return.
+	 * @return MessageLog array.
+	 */
 	public MessageLog[] read_message_log(int limit) {
 		String type,date,contact_id,message,id;
 		type="type";
@@ -428,7 +505,11 @@ public class Database extends SQLiteOpenHelper {
 		return log;
 	}
 
-	//Add a contact to the database.
+	/**
+	 * Adds a new contact.
+	 * @param Contact contact
+	 * @return long how many rows were affected.
+	 */
 	public long add_contact(Contact contact) {
 		String name,lastname,phone,email;
 		name="name";
@@ -444,7 +525,11 @@ public class Database extends SQLiteOpenHelper {
 		cv.clear();
 		return resultCode;
 	}
-	// update a contact.
+	/**
+	 * Updates a contact to the new contact provided.
+	 * @param Contact contact
+	 * @return long how many rows were affected.
+	 */
 	public long update_contact(Contact contact) {
 		String name,lastname,phone,email,id;
 		name="name";
@@ -461,7 +546,12 @@ public class Database extends SQLiteOpenHelper {
 		cv.clear();
 		return resultCode;
 	}
-	//Get a contact from the database.
+	
+	/**
+	 * Returns a contact based on the contact_id provided.
+	 * @param int contact_id
+	 * @return Contact
+	 */
 	public Contact get_contact(int contact_id)
 	{
 		String name,lastname,phone,email,id;
@@ -483,6 +573,10 @@ public class Database extends SQLiteOpenHelper {
 		dbCursor.close();
 		return contact;
 	}
+	/**
+	 * Requests all contacts from the database.
+	 * @return array of Contacts
+	 */
 	public Contact[] get_contacts()
 	{
 		String name,lastname,phone,email,id;
@@ -509,12 +603,15 @@ public class Database extends SQLiteOpenHelper {
 		return contact;
 	}
 	
-	// Destructor function
+	/**
+	 * Called when the object is destroyed.
+	 * Closes the database.
+	 * @see java.lang.Object#finalize()
+	 */
 	@Override
 	protected void finalize() { 
 		myDataBase.close();
 	}
-
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {

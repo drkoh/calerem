@@ -11,10 +11,10 @@ public class EmailAPI
 {
 	/**
 	 * Sends an email.
-	 * @param mail_address
-	 * @param mail_subject
-	 * @param mail_text
-	 * @param basecontext
+	 * @param String mail_address
+	 * @param String mail_subject
+	 * @param String mail_text
+	 * @param Context basecontext
 	 */
 	public void sendMail(String mail_address, String mail_subject, String mail_text,Context basecontext)
 	{

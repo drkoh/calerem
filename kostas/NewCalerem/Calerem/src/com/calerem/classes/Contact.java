@@ -14,11 +14,11 @@ public class Contact
 	
 	/**
 	 * Base Constructor
-	 * @param name
-	 * @param lastname
-	 * @param phone
-	 * @param email
-	 * @param id
+	 * @param String name
+	 * @param String lastname
+	 * @param String phone
+	 * @param String email
+	 * @param Integer id
 	 */
 	public Contact(String name,String lastname,String phone,String email,Integer id)
 	{

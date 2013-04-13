@@ -21,7 +21,7 @@ public class ContactsAPI{
 	/**
 	 * Base constructor that initializes some basic value.
 	 * Also queries all contacts from contact API.
-	 * @param context
+	 * @param Context context
 	 */
 	public ContactsAPI(Context context) {
 		basecontext = context;
@@ -32,7 +32,7 @@ public class ContactsAPI{
 	/**
 	 * Fetches the query from contacts API
 	 * Requests additional data from other functions.
-	 * @return Contact[]
+	 * @return Contact array.
 	 * @see com.calerem.classes.Contact
 	 */
 	private Contact[] readDatabase()
@@ -57,7 +57,7 @@ public class ContactsAPI{
 	
 	/**
 	 * Requests first name for a specific Contact.
-	 * @param id Contact ID in android database.
+	 * @param String id Contact ID in android database.
 	 * @return String first_name
 	 */
 	private String getFirstName(String id)
@@ -73,7 +73,7 @@ public class ContactsAPI{
 	
 	/**
 	 * Requests last name for a specific Contact.
-	 * @param id Contact ID in android database.
+	 * @param String id Contact ID in android database.
 	 * @return String last_name
 	 */
 	private String getLastName(String id)
@@ -89,7 +89,7 @@ public class ContactsAPI{
 
 	/**
 	 * Requests all phone numbers for a specific Contact.
-	 * @param id Contact ID in android database.
+	 * @param String id Contact ID in android database.
 	 * @return Long phone
 	 */
 	private String[] getPhoneNumbers(String id)
@@ -111,7 +111,7 @@ public class ContactsAPI{
 	
 	/**
 	 * Requests all email addresses for a specific Contact.
-	 * @param id Contact ID in android database.
+	 * @param String id Contact ID in android database.
 	 * @return String email
 	 */
 	private String[] getEmailAddress(String id)
@@ -130,7 +130,7 @@ public class ContactsAPI{
 	
 	/**
 	 * Returns all contact from the API
-	 * @return Contact[]
+	 * @return Contact array
 	 * @see com.calerem.classes.Contact
 	 */
 	public Contact[] getContacts()

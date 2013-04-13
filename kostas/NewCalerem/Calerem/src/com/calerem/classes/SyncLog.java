@@ -12,9 +12,9 @@ public class SyncLog {
 	
 	/**
 	 * Base Constructor
-	 * @param date
-	 * @param type
-	 * @param id
+	 * @param Integer date
+	 * @param String type
+	 * @param Integer id
 	 */
 	public SyncLog(Integer date, String type,Integer id)
 	{

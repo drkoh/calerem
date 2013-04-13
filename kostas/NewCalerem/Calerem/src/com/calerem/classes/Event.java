@@ -15,12 +15,12 @@ public class Event
 
 	/**
 	 * Base Constructor
-	 * @param event_type
-	 * @param event_name
-	 * @param event_date
-	 * @param event_contact
-	 * @param event_id
-	 * @param event_description
+	 * @param String event_type
+	 * @param String event_name
+	 * @param Integer event_date
+	 * @param Contact event_contact
+	 * @param Integer event_id
+	 * @param String event_description
 	 */
 	public Event(String event_type,String event_name,Integer event_date,Contact event_contact,Integer event_id,String event_description)
 	{
