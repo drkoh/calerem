@@ -24,7 +24,6 @@ public class NotificationController extends Activity {
 		ids = new ArrayList<Integer>();
 		eortologioArrayList = eort.returnVal();
 		contacts = contApi.getContacts();
-				//contApi.getContacts();
 		ids=fc.searchNames(contacts,eortologioArrayList);
 	}
 	
