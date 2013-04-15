@@ -1,13 +1,17 @@
 package com.calerem.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import com.calerem.api.ContactsAPI;
+import com.calerem.api.EortologioApi;
 import com.calerem.classes.Contact;
 import com.calerem.classes.Event;
+import com.calerem.classes.FindContacts;
 import com.calerem.ui.NewEvent;
 import com.calerem.ui.SendEmail;
 import com.calerem.ui.ShowContactsHavingNameday;
@@ -81,6 +85,12 @@ public class UIController{
 
 	public void newShowContacts () {
 		Intent intent = new Intent(basecontext,ShowContactsHavingNameday.class);
+		ContactsAPI contApi = new ContactsAPI(basecontext);
+		Contact v_contact[];
+		EortologioApi eort = new EortologioApi ();
+		ArrayList<Integer> ids=FindContacts.searchNames(contApi.getContacts(),eort.returnVal());
+		v_contact = FindContacts.parseNames(ids);
+		intent.putExtra("Data", gson.toJson(v_contact));
 		basecontext.startActivity(intent);
 	}
 	
