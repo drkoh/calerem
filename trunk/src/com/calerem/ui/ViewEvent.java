@@ -1,21 +1,28 @@
 package com.calerem.ui;
 
 import com.calerem.R;
-import com.calerem.classes.c_event;
+import com.calerem.classes.Event;
 import com.google.gson.Gson;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * Form that shows all information about an event.
+ * @author DarkParadise
+ */
 public class ViewEvent extends Activity {
 	//Statement of variables
-	TextView title,name,last,phone,mail;
-	EditText edName, edType, edDate, edDescription, edNameC, edLastC, edPhone, edMail;
-	c_event event1;
+	private TextView title,name,last,phone,mail;
+	private EditText edName, edType, edDate, edDescription, edNameC, edLastC, edPhone, edMail;
+	private Event event;
 	
+	/**
+	 * Prepares the form. Reads input values.
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -24,17 +31,20 @@ public class ViewEvent extends Activity {
 		initVars();
 		Bundle extras = getIntent().getExtras();
 		String data = extras.getString("Data");
-		event1 = new Gson().fromJson(data,c_event.class);
+		event = new Gson().fromJson(data,Event.class);
 		checkContact();
 		//print event's info in proper visual objects
-		edName.setText(event1.v_event_name);
-		edType.setText(event1.v_event_type);
-		edDate.setText(""+event1.v_event_date);
-		edDescription.setText(event1.v_event_description);
+		edName.setText(event.getEvent_name());
+		edType.setText(event.getEvent_type());
+		edDate.setText(""+event.getEvent_date());
+		edDescription.setText(event.getEvent_description());
 	}
 
-	public void initVars(){
-		//link vars to visual objects via id method
+	/**
+	 * Links variables to visual objects.
+	 */
+	public void initVars()
+	{
 		edName= (EditText) findViewById (R.id.etName);
 		edType= (EditText) findViewById (R.id.etType);
 		edDate= (EditText) findViewById (R.id.etDt);
@@ -49,9 +59,13 @@ public class ViewEvent extends Activity {
 		phone= (TextView) findViewById (R.id.tvPhone);
 		mail= (TextView) findViewById (R.id.tvMail);
 	}
-	public void checkContact(){
-		//if the event isn't connected to a contract make the visual objects, that exist for printing contact's info, invisible
-		if(event1.v_event_contact == null){
+	/**
+	 * Checks if contact exists, and enables contact View.
+	 */
+	public void checkContact()
+	{
+		if(event.getEvent_contact() == null)
+		{
 			edNameC.setVisibility(View.INVISIBLE);
 			edLastC.setVisibility(View.INVISIBLE);
 			edPhone.setVisibility(View.INVISIBLE);
@@ -62,14 +76,13 @@ public class ViewEvent extends Activity {
 			phone.setVisibility(View.INVISIBLE);
 			mail.setVisibility(View.INVISIBLE);
 		}
-		else{
+		else
+		{
 			//else print info in these objects
-			edNameC.setText(event1.v_event_contact.v_name);
-			edLastC.setText(event1.v_event_contact.v_lastname);
-			edPhone.setText(""+event1.v_event_contact.v_phone);
-			edMail.setText(event1.v_event_contact.v_email);
+			edNameC.setText(event.getEvent_contact().getName());
+			edLastC.setText(event.getEvent_contact().getLastname());
+			edPhone.setText(event.getEvent_contact().getPhone());
+			edMail.setText(event.getEvent_contact().getEmail());
 		}
-		
 	}
-	
 }
