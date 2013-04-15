@@ -26,7 +26,9 @@ public class notification_controler
 	public void contactsController(EortologioApi eortologio,c_contacts mycontacts)
 	{
 		generalCelebrations = eortologio.returnVal() ; 
-		c_contacts = mycontacts.getContacts; //to get arraylist pou 8a mas dinetai apo c_contacts
+		c_contacts = mycontacts.getContacts(); //to get arraylist pou 8a mas dinetai apo c_contacts (h klash tou swsta pou th m epistrefei ena arraylist, 
+											   //tha mporousa na ta parw etsi mycontacts.v_name = mycontacts.getV_name(); ena ena kai ta 5 ala etsi tha
+											   //kataferna na parw mono gia Mia epafi, k oxi olles.)
 		
 		
 		
