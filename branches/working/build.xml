@@ -4,7 +4,7 @@
 <property file="build.properties" />
 <property file="C:/Users/AnastasiaSwthria/Documents/AATEXNOLOGIA LOGISMIKOY/upw.properties"/>
 <path id="svntask.classpath">
-    <fileset dir="C:\SVN\bin">
+    <fileset dir="${svnant}">
 		<include name="javahl.jar"/>
 		<include name="svnkit.jar"/>
             	<include name="svnant.jar"/>
@@ -13,7 +13,7 @@
         </fileset>
 </path>
 <path id="svnant.classpath">
- 	<fileset dir="libs">     
+ 	<fileset dir="${lib.dir}">     
   		<include name="**/*.jar" />
  	</fileset>
 </path>
@@ -26,6 +26,7 @@
 	id="svn.settings"
 />
 
+<target name="all" depends="clean,init,svn-update,debug,svn-info,test,javadoc,jar,zip,mailto,svn-commit"/>
 <target name="svn-update">
 	<svn refid="svn.settings">
         	<update dir="."/>
@@ -34,19 +35,20 @@
 
 <target name="svn-info">
     	<svn refid="svn.settings">
-		<info target="../trunk"/>
+		<info target="."/>
     	</svn>
     	<property
         	name="version"
         	value="Last Revision = ${svn.info.lastRev} by ${svn.info.author} on ${svn.info.lastDate}"
-    />
-    <echo message="${version}"/>
+    	/>
+	<move file="bin\Calerem.apk" tofile="bin\${app.name}-v${app.version}.${svn.info.lastRev}.apk"/>
+    	<echo message="${version}"/>
 </target>
 
 <target name="svn-commit" description="Commit trunk/tags">
-	<mkdir dir="${main.tags}\${value}"/>
-	<copy todir="${main.tags}\${value}">
-    		<fileset dir="src_dir"/>
+	<mkdir dir="${main.tags}\${svn.info.lastRev}"/>
+	<copy todir="${main.tags}\${svn.info.lastRev}">
+    		<fileset dir="."/>
   	</copy>
    	<svn>
         	<commit path="${main.trunk}" 
@@ -65,56 +67,61 @@
     	</svn>
 </target>
 
-<target name="mailto" description="Sends e-mail to the dev"> 
+<target name="mailto" description="Sends e-mail to team leader"> 
   	<mail	
-		tolist="athaboil90@hotmail.gr"
-    		from="pli1885@gmail.com"
-    		subject="ant mail test"
+		tolist="${tl.mail}"
+    		from="${sen.mail}"
+    		subject="${sub.mail}"
     		mailhost="smtp.gmail.com"
     		mailport="465"
     		ssl="true"
     		user="${mail.user}"
     		password="${mail.pass}">
-    		<message>Example email sent by Ant Mail task.</message>
+    		<message>${mess.mail}</message>
+		<attachments>
+    			<fileset dir="dist">
+      				<include name="CaleRem.zip"/>
+    			</fileset>
+  		</attachments>
   	</mail>
 </target>
 
-
-
-<target name="init">
-	<mkdir dir="${main.working}\${build.dir}"/>
-	<mkdir dir="${main.working}\${dist.dir}"/>
-	<mkdir dir="${main.working}\${jar.dir}"/>
-	<mkdir dir="${main.working}\${test.dir}"/>
-	<mkdir dir="${main.working}\${test.report.dir}"/>
-	<mkdir dir="${main.working}\${javadoc.dir}"/>
+<target name="clean">
+	<delete dir="${build.dir}"/>
+	<delete dir="${dist.dir}"/>
+	<delete dir="${jar.dir}"/>
+	<delete dir="${test.dir}"/>
+	<delete dir="${test.report.dir}"/>
+	<delete dir="${javadoc.dir}"/>
 </target>
 
-<target name="jar" depends="debug" description="Generates CeleRem.jar file in to the 'jar' directory.">
-	<jar jarfile="${main.working}/${jar.dir}\${app.name}-v${app.version}.${revisionVersion}.jar" basedir="${classes.dir}">
+<target name="init">
+	<mkdir dir="${build.dir}"/>
+	<mkdir dir="${dist.dir}"/>
+	<mkdir dir="${jar.dir}"/>
+	<mkdir dir="${test.dir}"/>
+	<mkdir dir="${test.report.dir}"/>
+	<mkdir dir="${javadoc.dir}"/>
+</target>
+
+<target name="jar" depends="debug" description="Generates CeleRem.jar file.">
+	<jar jarfile="${jar.dir}\${app.name}.jar" basedir="${classes.dir}">
 	<manifest>
-		<attribute name="Class-Path" value="${main.working}\${lib.dir}"/>
-		<attribute name="Main-Class" value="${main.working}\${main.class}"/>
+		<attribute name="Class-Path" value="${lib.dir}"/>
+		<attribute name="Main-Class" value="${classes.dir}"/>
 	</manifest>
 	</jar>
 </target>
 
-<target name = "rnApk" description="Renames the final apk">
-	<move file="${main.working}\bin\Calerem.apk" tofile="${main.working}\bin\${app.name}-v${app.version}.${revisionVersion}jar"/>
-</target>
-
 <target name="javadoc" description="generate documentation">
-    	<mkdir dir="${main.working}\JavaDReports"/>
-    	<javadoc sourcepath="${main.working}\${src.dir}" destdir="${main.working}\JavaDReports"/>
-    	<formatter type="plain"/>
-    	<formatter type="xml"/>
+    	<javadoc sourcepath="${src.dir}" destdir="${javadoc.report.dir}"/>
 </target>
 
-<target name="zip">
+<target name="zip" depends="debug,jar,javadoc">
 	<zip 
 		destfile="CaleRem.zip" 
 		basedir="${main.working}\${proj.dir}" 
-		includes="${main.working}\${javadoc.dir}/**,jar/**,${main.working}\${test.report.dir}/**,${main.working}\${javadoc.report.dir}/**" 
+		includes="${main.working}\${javadoc.report.dir}/**.jar/**,${main.working}\${test.report.dir}/**" 
 	/>
 </target>
 
