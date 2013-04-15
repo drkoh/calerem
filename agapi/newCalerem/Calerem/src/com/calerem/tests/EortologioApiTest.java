@@ -1,4 +1,4 @@
-package com.example.calerem;
+package com.calerem.tests;
 
 import static org.junit.Assert.*;
 
@@ -10,6 +10,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.junit.Before;
 import org.junit.Test;
 import org.w3c.dom.Document;
+
+import com.calerem.api.EortologioApi;
 
 /**
  * Database Tests in Junit 4.
