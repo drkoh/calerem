@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.calerem.R;
 import com.calerem.classes.Contact;
-import com.calerem.controllers.NotificationController;
+import com.google.gson.Gson;
 
 import android.app.Activity;
 import android.app.Notification;
@@ -19,18 +19,17 @@ import android.widget.EditText;
 
 public class ShowContactsHavingNameday extends Activity implements View.OnClickListener{
 
-	static ArrayList<String> contactArray;
-	static Intent intent;
-	static NotificationManager nm;
-	static PendingIntent pi;
-	static CharSequence names;
-	static Button bt1;
-	static EditText text1;
+	private static ArrayList<String> contactArray;
+	private static Intent intent;
+	private static NotificationManager nm;
+	private static PendingIntent pi;
+	private static Button bt1;
+	private static EditText text1;
+	private Contact contacts[];
 	
 	private void initVars() {
 		contactArray = new ArrayList<String>();
 		intent = new Intent();
-		names = "";
 		bt1 = (Button) findViewById(R.id.button1);
 		text1 = (EditText) findViewById(R.id.editText1);
 	}
@@ -41,6 +40,9 @@ public class ShowContactsHavingNameday extends Activity implements View.OnClickL
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.notification);
+		Bundle extras = getIntent().getExtras();
+		String data = extras.getString("Data");
+		contacts = new Gson().fromJson(data,Contact[].class);
 		initVars();
 		
 		bt1.setOnClickListener(this);
@@ -96,17 +98,17 @@ public class ShowContactsHavingNameday extends Activity implements View.OnClickL
 	}
 	
 	public void getContactsHavingNameday () {
-		NotificationController nc = new NotificationController ();
-		Contact contacts[];
-		contacts = nc.parseIds();
 		for (int contactCursor=0; contactCursor<contacts.length; contactCursor++) {
 			contactArray.add(contacts[contactCursor].getName()+" "+contacts[contactCursor].getLastname()+" ");
 		}
 	}
+	/*
+	 * 
 	
-	public void f_throw_notification(ArrayList<String> abc)
-	{
-		finish();
-	}
+		public void f_throw_notification(ArrayList<String> abc)
+		{
+			finish();
+		}
+	*/
 
 }
