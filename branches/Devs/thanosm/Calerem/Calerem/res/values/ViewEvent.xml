@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ViewEvent_Contact">Contacts Info</string>
+    <string name="ViewEvent_Name">Name</string>
+    <string name="ViewEvent_Last">LastName</string>
+    <string name="ViewEvent_Phone">Phone</string>
+    <string name="ViewEvent_Date">Date</string>
+    <string name="ViewEvent_Email">Email</string>
+    <string name="ViewEvent_Desc">Description</string>
+    <string name="ViewEvent_Type">Type</string>
+    <string name="ViewEvent_TitleV">View Event</string>    
+</resources>
