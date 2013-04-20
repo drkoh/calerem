@@ -11,23 +11,20 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import android.app.Activity;
-
-public class EortologioApi extends Activity{
+public class EortologioApi {
 
 			//final static File eortologio = new File ("eortologio.xml");
 			//final static File eortologioEn = new File ("eortologioEn.xml");
 			
 			final static String XmlStrEn = "http://www.eortologio.gr/rss/si_en.xml";
-			final static String XmlStrEl = "http://www.eortologio.gr/rss/si_el.xml";
-		
-		
-			public static void main(String[] args){
+			final static String XmlStrEl = "http://www.eortologio.gr/rss/si_el.xml";	
+			
+			
+			public static ArrayList<String> parseVals(){
 				EortologioApi ea = new EortologioApi();
-				ArrayList<String> values = null;
+				ArrayList<String> values =new ArrayList<String> ();
 				values = ea.returnVal();
-				for(int d =0; d < values.size(); d++)
-				System.out.println(values.get(d));
+				return values;
 			}
 		
 			public ArrayList<String> returnVal() {
@@ -46,7 +43,7 @@ public class EortologioApi extends Activity{
 					return result;	
 					
 				} catch (Exception ex) {
-					ArrayList<String> result = null ;
+					ArrayList<String> result = new ArrayList<String> () ;
 					ex.printStackTrace();
 					return result;
 				}
@@ -63,7 +60,6 @@ public class EortologioApi extends Activity{
 				String eortologioStr;
 				ArrayList<String> result = new ArrayList<String> () ;
 				String [] resultstr = null;
-				int resCount;
 				
 				doc.getDocumentElement().normalize();
 				NodeList nodeList = doc.getElementsByTagName("item");
@@ -77,9 +73,7 @@ public class EortologioApi extends Activity{
 											
 						resultstr = createStringArray (eortologioStr);
 											
-						resCount = resultstr.length-1;
 						resultstr[0]=resultstr[0].toString().substring(resultstr[0].indexOf(":")+1,resultstr[0].length());
-						resultstr[resCount]=resultstr[resCount].toString().substring(0,resultstr[resCount].indexOf("("));
 						
 						result = convertStringToArraylist(resultstr);
 					}
