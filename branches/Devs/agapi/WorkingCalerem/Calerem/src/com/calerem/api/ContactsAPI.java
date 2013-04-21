@@ -46,8 +46,16 @@ public class ContactsAPI{
 				String id = ContactsCur.getString(ContactsCur.getColumnIndex(ContactsContract.Contacts._ID));
 				String first_name = this.getFirstName(id);
 				String last_name = this.getLastName(id);
-				String phone = this.getPhoneNumbers(id)[0];
-				String email = this.getEmailAddress(id)[0];
+				String phone = "";
+				String email = "";
+				if(this.getPhoneNumbers(id).length>0)
+				{
+					phone = this.getPhoneNumbers(id)[0];	
+				}
+				if(this.getEmailAddress(id).length>0)
+				{
+					email = this.getEmailAddress(id)[0];	
+				}
 				v_contact[i] = new Contact(first_name,last_name,phone,email,(Integer) null);
 				i++;
 			}
