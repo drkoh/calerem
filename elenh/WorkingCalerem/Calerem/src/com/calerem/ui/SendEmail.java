@@ -12,21 +12,21 @@ import com.google.gson.Gson;
 
 /**
  * Form that enables the user to write an email.
+ * 
  * @author DarkParadise
  */
-public class SendEmail extends Activity implements View.OnClickListener  
-{
-	private EditText person_email,person_message, person_subject;
+public class SendEmail extends Activity implements View.OnClickListener {
+	private EditText person_email, person_message, person_subject;
 	private Button send_email;
 	private Contact contact;
-	
+
 	/**
 	 * Prepares the form. Reads input values.
+	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.sendemail);
@@ -34,26 +34,22 @@ public class SendEmail extends Activity implements View.OnClickListener
 		String data = extras.getString("Data");
 		String data_subject = extras.getString("Data_subject");
 		String data_text = extras.getString("Data_text");
-		contact = new Gson().fromJson(data,Contact.class);
+		contact = new Gson().fromJson(data, Contact.class);
 		initializeVars();
-		if(contact != null)
-		{
-			if(contact.getEmail().isEmpty())
-			{
+		if (contact != null) {
+			if (contact.getEmail().isEmpty()) {
 				person_email.setText(contact.getEmail());
 			}
-		}		
-		if(!data_subject.isEmpty())
-		{
+		}
+		if (!data_subject.isEmpty()) {
 			person_subject.setText(data_subject);
 		}
-		if(!data_text.isEmpty())
-		{
+		if (!data_text.isEmpty()) {
 			person_message.setText(data_text);
 		}
 		send_email.setOnClickListener(this);
 	}
-	
+
 	/**
 	 * Link variables to visual objects.
 	 */
@@ -63,18 +59,18 @@ public class SendEmail extends Activity implements View.OnClickListener
 		person_message = (EditText) findViewById(R.id.etMessage);
 		send_email = (Button) findViewById(R.id.bSendEmail);
 	}
-	
+
 	/**
 	 * When called returns variables to the controller.
+	 * 
 	 * @see android.view.View.OnClickListener#onClick(android.view.View)
 	 */
-	public void onClick(View v)
-	{
+	public void onClick(View v) {
 		Intent intent_ret = new Intent();
-		intent_ret.putExtra("result_email",person_email.getText().toString());
-		intent_ret.putExtra("result_subject",person_subject.getText().toString());
-		intent_ret.putExtra("result_text",person_message.getText().toString());
-		setResult(RESULT_OK,intent_ret);
+		intent_ret.putExtra("result_email", person_email.getText().toString());
+		intent_ret.putExtra("result_subject", person_subject.getText().toString());
+		intent_ret.putExtra("result_text", person_message.getText().toString());
+		setResult(RESULT_OK, intent_ret);
 		finish();
 	}
 }

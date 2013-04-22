@@ -5,20 +5,24 @@ import android.content.Intent;
 
 /**
  * Enables the application to send emails.
+ * 
  * @author DarkParadise
  */
-public class EmailAPI
-{
+public class EmailAPI {
 	/**
 	 * Sends an email.
-	 * @param String mail_address
-	 * @param String mail_subject
-	 * @param String mail_text
-	 * @param Context basecontext
+	 * 
+	 * @param String
+	 *            mail_address
+	 * @param String
+	 *            mail_subject
+	 * @param String
+	 *            mail_text
+	 * @param Context
+	 *            basecontext
 	 */
-	public void sendMail(String mail_address, String mail_subject, String mail_text,Context basecontext)
-	{
-		Intent email_intent = new Intent (android.content.Intent.ACTION_SEND);
+	public void sendMail(String mail_address, String mail_subject, String mail_text, Context basecontext) {
+		Intent email_intent = new Intent(android.content.Intent.ACTION_SEND);
 		email_intent.setType("text/plain");
 		String[] Emails = { mail_address };
 		email_intent.putExtra(android.content.Intent.EXTRA_EMAIL, Emails);

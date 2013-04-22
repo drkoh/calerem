@@ -6,6 +6,8 @@ import com.calerem.classes.Contact;
 /**
  * The Class FindContacts. Responsible for returning the Contacts with nameday
  * on current date.
+ * 
+ * @author Aidonidou Eleni
  */
 public class FindContacts {
 
@@ -22,7 +24,8 @@ public class FindContacts {
 	}
 
 	/**
-	 * Search names.
+	 * Checks if eortologio ArrayList contains the first name of each of the
+	 * contacts in the Contact Array
 	 * 
 	 * @param contacts
 	 *            the array of Contacts from Android
@@ -32,7 +35,7 @@ public class FindContacts {
 	 */
 	public static Contact[] searchNames(final Contact[] contacts, final ArrayList<String> eortologioNames) {
 		final ArrayList<Contact> finalContacts = new ArrayList<Contact>();
-		Contact nameDayContacts[];
+		Contact[] namedayContacts;
 
 		int contactIndex, eortologioIndex;
 		try {
@@ -45,16 +48,16 @@ public class FindContacts {
 					}
 				}
 			}
-			nameDayContacts = new Contact[finalContacts.size()];
+			namedayContacts = new Contact[finalContacts.size()];
 			for (int namesIndex = 0; namesIndex < finalContacts.size(); namesIndex++) {
-				nameDayContacts[namesIndex] = finalContacts.get(namesIndex);
+				namedayContacts[namesIndex] = finalContacts.get(namesIndex);
 			}
 
-			return nameDayContacts;
+			return namedayContacts;
 		} catch (Exception e) {
 			e.printStackTrace();
-			Contact NamedayContacts[] = new Contact[finalContacts.size()];
-			return NamedayContacts;
+			namedayContacts = new Contact[finalContacts.size()];
+			return namedayContacts;
 		}
 
 	}

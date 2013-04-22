@@ -14,18 +14,20 @@ import com.calerem.handlers.SendEmailResult;
 
 /**
  * Handler for all Form results.
+ * 
  * @author DarkParadise
  */
 public class UIActivityResultsHandlerFactory {
 	private Database db;
 	private Context basecontext;
-	
+
 	/**
 	 * Base Constructor.
-	 * @param Context context
+	 * 
+	 * @param Context
+	 *            context
 	 */
-	public UIActivityResultsHandlerFactory(Context context)
-	{
+	public UIActivityResultsHandlerFactory(Context context) {
 		basecontext = context;
 		try {
 			db = new Database(basecontext);
@@ -34,26 +36,26 @@ public class UIActivityResultsHandlerFactory {
 			e.printStackTrace();
 		}
 	}
+
 	/**
-	 * Uses the request code to decide which form returned the result.
-	 * Check the inner comment block for all acceptable codes.
+	 * Uses the request code to decide which form returned the result. Check the
+	 * inner comment block for all acceptable codes.
+	 * 
 	 * @param int requestCode
 	 * @param int resultCode
-	 * @param Intent data
+	 * @param Intent
+	 *            data
 	 */
-	public void onActivityResult(int requestCode, int resultCode, Intent data)
-	{
-		/* Request Codes
-		 * 1 = New Event
-		 * 2 = Send Email
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		/*
+		 * Request Codes 1 = New Event 2 = Send Email
 		 */
-		switch (requestCode)
-		{
-			case 1:
-				new NewEventResult(db, resultCode, data);
-				break;
-			case 2:
-				new SendEmailResult(basecontext,resultCode, data);
+		switch (requestCode) {
+		case 1:
+			new NewEventResult(db, resultCode, data);
+			break;
+		case 2:
+			new SendEmailResult(basecontext, resultCode, data);
 			break;
 		}
 	}

@@ -2,10 +2,10 @@ package com.calerem.classes;
 
 /**
  * Class to hold event's data.
+ * 
  * @author DarkParadise
  */
-public class Event
-{
+public class Event {
 	private String event_type;
 	private String event_name;
 	private Integer event_date;
@@ -15,15 +15,21 @@ public class Event
 
 	/**
 	 * Base Constructor
-	 * @param String event_type
-	 * @param String event_name
-	 * @param Integer event_date
-	 * @param Contact event_contact
-	 * @param Integer event_id
-	 * @param String event_description
+	 * 
+	 * @param String
+	 *            event_type
+	 * @param String
+	 *            event_name
+	 * @param Integer
+	 *            event_date
+	 * @param Contact
+	 *            event_contact
+	 * @param Integer
+	 *            event_id
+	 * @param String
+	 *            event_description
 	 */
-	public Event(String event_type,String event_name,Integer event_date,Contact event_contact,Integer event_id,String event_description)
-	{
+	public Event(String event_type, String event_name, Integer event_date, Contact event_contact, Integer event_id, String event_description) {
 		setEvent_type(event_type);
 		setEvent_name(event_name);
 		setEvent_date(event_date);
@@ -31,7 +37,7 @@ public class Event
 		setEvent_id(event_id);
 		setEvent_description(event_description);
 	}
-	
+
 	/**
 	 * @return the event_type
 	 */
@@ -40,7 +46,8 @@ public class Event
 	}
 
 	/**
-	 * @param event_type the event_type to set
+	 * @param event_type
+	 *            the event_type to set
 	 */
 	public void setEvent_type(String event_type) {
 		this.event_type = event_type;
@@ -54,7 +61,8 @@ public class Event
 	}
 
 	/**
-	 * @param event_name the event_name to set
+	 * @param event_name
+	 *            the event_name to set
 	 */
 	public void setEvent_name(String event_name) {
 		this.event_name = event_name;
@@ -68,11 +76,11 @@ public class Event
 	}
 
 	/**
-	 * @param event_date the event_date to set
+	 * @param event_date
+	 *            the event_date to set
 	 */
 	public void setEvent_date(Integer event_date) {
-		if (event_date > 0)
-		{
+		if (event_date > 0) {
 			this.event_date = event_date;
 		}
 	}
@@ -85,7 +93,8 @@ public class Event
 	}
 
 	/**
-	 * @param event_contact the event_contact to set
+	 * @param event_contact
+	 *            the event_contact to set
 	 */
 	public void setEvent_contact(Contact event_contact) {
 		this.event_contact = event_contact;
@@ -99,7 +108,8 @@ public class Event
 	}
 
 	/**
-	 * @param event_id the event_id to set
+	 * @param event_id
+	 *            the event_id to set
 	 */
 	public void setEvent_id(Integer event_id) {
 		this.event_id = event_id;
@@ -113,7 +123,8 @@ public class Event
 	}
 
 	/**
-	 * @param event_description the event_description to set
+	 * @param event_description
+	 *            the event_description to set
 	 */
 	public void setEvent_description(String event_description) {
 		this.event_description = event_description;

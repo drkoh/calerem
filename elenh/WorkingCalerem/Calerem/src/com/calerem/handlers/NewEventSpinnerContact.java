@@ -10,24 +10,25 @@ import android.widget.AdapterView.OnItemSelectedListener;
 
 /**
  * Contact Spinner handle.
+ * 
  * @author DarkParadise
  */
 public class NewEventSpinnerContact extends Activity implements OnItemSelectedListener {
 	private int ContactPosition;
-	
+
 	/**
 	 * Sets contact position based on item selected.
-	 * @see android.widget.AdapterView.OnItemSelectedListener#onItemSelected(android.widget.AdapterView, android.view.View, int, long)
+	 * 
+	 * @see android.widget.AdapterView.OnItemSelectedListener#onItemSelected(android.widget.AdapterView,
+	 *      android.view.View, int, long)
 	 */
 	@Override
-	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3)
-	{
+	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		setContactPosition(arg0.getSelectedItemPosition());
 	}
 
 	@Override
-	public void onNothingSelected(AdapterView<?> arg0)
-	{
+	public void onNothingSelected(AdapterView<?> arg0) {
 		// TODO Auto-generated method stub
 	}
 
@@ -39,7 +40,8 @@ public class NewEventSpinnerContact extends Activity implements OnItemSelectedLi
 	}
 
 	/**
-	 * @param contactPosition the contactPosition to set
+	 * @param contactPosition
+	 *            the contactPosition to set
 	 */
 	private void setContactPosition(int contactPosition) {
 		ContactPosition = contactPosition;

@@ -2,6 +2,7 @@ package com.calerem.classes;
 
 /**
  * Class to hold message logs.
+ * 
  * @author DarkParadise
  */
 public class MessageLog {
@@ -10,17 +11,22 @@ public class MessageLog {
 	private String type;
 	private String message;
 	private Contact contact;
-	
+
 	/**
 	 * Base Constructor
-	 * @param Integer date
-	 * @param Integer id
-	 * @param String type
-	 * @param String message
-	 * @param Contact contact
+	 * 
+	 * @param Integer
+	 *            date
+	 * @param Integer
+	 *            id
+	 * @param String
+	 *            type
+	 * @param String
+	 *            message
+	 * @param Contact
+	 *            contact
 	 */
-	public MessageLog(Integer date,Integer id,String type,String message,Contact contact)
-	{
+	public MessageLog(Integer date, Integer id, String type, String message, Contact contact) {
 		setDate(date);
 		setId(id);
 		setType(type);
@@ -36,7 +42,8 @@ public class MessageLog {
 	}
 
 	/**
-	 * @param date the date to set
+	 * @param date
+	 *            the date to set
 	 */
 	public void setDate(Integer date) {
 		this.date = date;
@@ -50,7 +57,8 @@ public class MessageLog {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Integer id) {
 		this.id = id;
@@ -64,7 +72,8 @@ public class MessageLog {
 	}
 
 	/**
-	 * @param type the type to set
+	 * @param type
+	 *            the type to set
 	 */
 	public void setType(String type) {
 		this.type = type;
@@ -78,7 +87,8 @@ public class MessageLog {
 	}
 
 	/**
-	 * @param message the message to set
+	 * @param message
+	 *            the message to set
 	 */
 	public void setMessage(String message) {
 		this.message = message;
@@ -92,7 +102,8 @@ public class MessageLog {
 	}
 
 	/**
-	 * @param contact the contact to set
+	 * @param contact
+	 *            the contact to set
 	 */
 	public void setContact(Contact contact) {
 		this.contact = contact;

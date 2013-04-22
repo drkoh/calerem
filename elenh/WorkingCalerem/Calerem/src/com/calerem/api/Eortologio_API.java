@@ -10,52 +10,50 @@ import android.os.Environment;
 
 /**
  * Enables the application to read eortologio.gr
+ * 
  * @author DarkParadise
  */
 public class Eortologio_API {
-	
-	Eortologio_API () {
-		
+
+	Eortologio_API() {
+
 	}
-	
+
 	/**
 	 * Retrieves the xml file to /sdcard/Calerem/eortologio/eortologio.xml
-	 * @param String v_URL
-	 * @return 
+	 * 
+	 * @param String
+	 *            v_URL
+	 * @return
 	 * @throws Exception
 	 */
-	public void getFile(String v_URL) throws Exception
-	{
+	public void getFile(String v_URL) throws Exception {
 		URL url = new URL(v_URL);
 
-		//dimiourgia neas sindesis
+		// dimiourgia neas sindesis
 		HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 		urlConnection.setRequestMethod("GET");
 		urlConnection.connect();
-		
-		//dimiourgia fakelou calerem/eortologio
-		File SDCardCalerem = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/Calerem/eortologio/");
-		if(!SDCardCalerem.exists())
-		{
+
+		// dimiourgia fakelou calerem/eortologio
+		File SDCardCalerem = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Calerem/eortologio/");
+		if (!SDCardCalerem.exists()) {
 			SDCardCalerem.mkdirs();
 		}
-		
-		//dimiourgia neou arxiou kai dieukrinisi tou onomatos tou
+
+		// dimiourgia neou arxiou kai dieukrinisi tou onomatos tou
 		File file = new File(SDCardCalerem + "/eortologio.xml");
-		if(!file.exists())
-		{
+		if (!file.exists()) {
 			file.createNewFile();
 		}
 		FileOutputStream fileOutput = new FileOutputStream(file);
 		InputStream inputStream = urlConnection.getInputStream();
 
 		byte[] buffer = new byte[1024];
-		int bufferLength = 0; //apothikeusi prosirinou megethous tou buffer
+		int bufferLength = 0; // apothikeusi prosirinou megethous tou buffer
 
-		//diavazei apo to internet kai apothikeuei sto arxeio mas.
-		while ( (bufferLength = inputStream.read(buffer)) > 0 ) 
-
-		{
+		// diavazei apo to internet kai apothikeuei sto arxeio mas.
+		while ((bufferLength = inputStream.read(buffer)) > 0) {
 			fileOutput.write(buffer, 0, bufferLength);
 		}
 

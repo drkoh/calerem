@@ -2,6 +2,7 @@ package com.calerem.classes;
 
 /**
  * Class to hold synchronization logs.
+ * 
  * @author DarkParadise
  */
 public class SyncLog {
@@ -9,15 +10,18 @@ public class SyncLog {
 	private Integer date;
 	private String type;
 	private Integer id;
-	
+
 	/**
 	 * Base Constructor
-	 * @param Integer date
-	 * @param String type
-	 * @param Integer id
+	 * 
+	 * @param Integer
+	 *            date
+	 * @param String
+	 *            type
+	 * @param Integer
+	 *            id
 	 */
-	public SyncLog(Integer date, String type,Integer id)
-	{
+	public SyncLog(Integer date, String type, Integer id) {
 		setDate(date);
 		setType(type);
 		setId(id);
@@ -31,7 +35,8 @@ public class SyncLog {
 	}
 
 	/**
-	 * @param date the date to set
+	 * @param date
+	 *            the date to set
 	 */
 	public void setDate(Integer date) {
 		this.date = date;
@@ -45,7 +50,8 @@ public class SyncLog {
 	}
 
 	/**
-	 * @param type the type to set
+	 * @param type
+	 *            the type to set
 	 */
 	public void setType(String type) {
 		this.type = type;
@@ -59,10 +65,11 @@ public class SyncLog {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 }
