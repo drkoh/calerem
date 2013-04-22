@@ -69,8 +69,8 @@
 
 <target name="svn-copy">  
   <fail message="Error: app.version has not been set" unless="app.version"/>  
-  <property name="svn.url-rel" value="http://calerem.googlecode.com/svn/tags/${app.version}.${svn.info.lastRev}"/>  
-  <svn username="${svn.username}" password="${svn.password}">  
+  <property name="svn.url-rel" value="https://calerem.googlecode.com/svn/tags/${app.version}.0"/>  
+  <svn refid="svn.settings">  
     <copy srcurl="${svn.url}" desturl="${svn.url-rel}"  
         message="${svn.message}"/>  
   </svn>  
