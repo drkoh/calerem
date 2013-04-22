@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="ActivityMain_NewEvent">Create new event</string>
-    <string name="ActivityMain_ViewEvent">View existing event</string>
-    <string name="ActivityMain_SendEmail">Send Email </string>
-    <string name="ActivityMain_ShowContacts">Show contacts having nameday</string>
-    
-</resources>
