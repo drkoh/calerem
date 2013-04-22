@@ -1,7 +1,8 @@
 /**
  * To run the suite from command line:
  * adb shell am instrument -w -e class com.calerem.test.AllTestsTest  
- *              com.calerem.test/android.test.InstrumentationTestRunne
+ *              com.calerem.test/android.test.InstrumentationTestRunner
+ *  Make sure emulator is running
  */
 
 //XXX Still cant figure out how to pass extras.Works without
