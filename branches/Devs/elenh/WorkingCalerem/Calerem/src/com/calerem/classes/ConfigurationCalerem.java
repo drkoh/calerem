@@ -7,9 +7,10 @@ import android.content.Context;
 
 /**
  * Class to hold configuration data.
+ * 
  * @author DarkParadise
  */
-public class ConfigurationCalerem extends Activity{
+public class ConfigurationCalerem extends Activity {
 	private String date_format;
 	private String notification_sound;
 	private String language;
@@ -19,15 +20,21 @@ public class ConfigurationCalerem extends Activity{
 
 	/**
 	 * Base Constructor
-	 * @param Context context
-	 * @param String date_format
-	 * @param String notification_sound
-	 * @param String language
-	 * @param String skin
-	 * @param String eortologio_xml
+	 * 
+	 * @param Context
+	 *            context
+	 * @param String
+	 *            date_format
+	 * @param String
+	 *            notification_sound
+	 * @param String
+	 *            language
+	 * @param String
+	 *            skin
+	 * @param String
+	 *            eortologio_xml
 	 */
-	public ConfigurationCalerem(Context context,String date_format,String notification_sound,String language,String skin,String eortologio_xml)
-	{
+	public ConfigurationCalerem(Context context, String date_format, String notification_sound, String language, String skin, String eortologio_xml) {
 		setBasecontext(context);
 		setDate_format(date_format);
 		setNotification_sound(notification_sound);
@@ -35,7 +42,7 @@ public class ConfigurationCalerem extends Activity{
 		setSkin(skin);
 		setEortologio_xml(eortologio_xml);
 	}
-	
+
 	/**
 	 * @return the date_format
 	 */
@@ -44,11 +51,11 @@ public class ConfigurationCalerem extends Activity{
 	}
 
 	/**
-	 * @param date_format the date_format to set
+	 * @param date_format
+	 *            the date_format to set
 	 */
 	public void setDate_format(String date_format) {
-		if (date_format.equals("DD-MM-YYYY") || date_format.equals("MM-DD-YYYY"))
-		{
+		if (date_format.equals("DD-MM-YYYY") || date_format.equals("MM-DD-YYYY")) {
 			this.date_format = date_format;
 		}
 	}
@@ -61,18 +68,17 @@ public class ConfigurationCalerem extends Activity{
 	}
 
 	/**
-	 * @param notification_sound the notification_sound to set
+	 * @param notification_sound
+	 *            the notification_sound to set
 	 */
 	public void setNotification_sound(String notification_sound) {
 		File file = this.getBasecontext().getFileStreamPath(notification_sound);
-		if(file.exists())
-		{
+		if (file.exists()) {
 			String fType = notification_sound.substring((notification_sound.lastIndexOf(".") + 1), notification_sound.length());
-			if(fType == "mp3" || fType == "ogg")
-			{
+			if (fType.equals("mp3") || fType.equals("ogg")) {
 				this.notification_sound = notification_sound;
 			}
-		}	
+		}
 	}
 
 	/**
@@ -83,12 +89,12 @@ public class ConfigurationCalerem extends Activity{
 	}
 
 	/**
-	 * @param language the language to set
+	 * @param language
+	 *            the language to set
 	 */
 	public void setLanguage(String language) {
 		File file = this.getBasecontext().getFileStreamPath(language);
-		if(file.exists())
-		{
+		if (file.exists()) {
 			this.language = language;
 		}
 	}
@@ -101,12 +107,12 @@ public class ConfigurationCalerem extends Activity{
 	}
 
 	/**
-	 * @param skin the skin to set
+	 * @param skin
+	 *            the skin to set
 	 */
 	public void setSkin(String skin) {
 		File file = this.getBasecontext().getFileStreamPath(skin);
-		if(file.exists())
-		{
+		if (file.exists()) {
 			this.skin = skin;
 		}
 	}
@@ -119,7 +125,8 @@ public class ConfigurationCalerem extends Activity{
 	}
 
 	/**
-	 * @param eortologio_xml the eortologio_xml to set
+	 * @param eortologio_xml
+	 *            the eortologio_xml to set
 	 */
 	public void setEortologio_xml(String eortologio_xml) {
 		this.eortologio_xml = eortologio_xml;
@@ -133,11 +140,10 @@ public class ConfigurationCalerem extends Activity{
 	}
 
 	/**
-	 * @param basecontext the basecontext to set
+	 * @param basecontext
+	 *            the basecontext to set
 	 */
 	private void setBasecontext(Context basecontext) {
 		this.basecontext = basecontext;
 	};
 }
-
-

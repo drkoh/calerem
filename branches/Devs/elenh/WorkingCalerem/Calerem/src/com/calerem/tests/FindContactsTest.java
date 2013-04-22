@@ -12,6 +12,7 @@ import junit.framework.TestCase;
  * eortologioNames) are the expected, depending on the input.
  * 
  * Also tests if the proper exceptions are thrown
+ * @author Aidonidou Eleni
  */
 public class FindContactsTest extends TestCase {
 	/** Test Values */

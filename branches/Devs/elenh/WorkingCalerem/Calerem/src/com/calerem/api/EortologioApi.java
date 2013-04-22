@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.*;
+
 /*import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;*/
+ import org.w3c.dom.Element;
+ import org.w3c.dom.Node;
+ import org.w3c.dom.NodeList;
+ import org.xml.sax.InputSource;*/
 
 /**
  * 
@@ -27,9 +28,9 @@ public class EortologioApi {
 	final private String XmlStrEn = "http://www.eortologio.gr/rss/si_en.xml";
 	final private String XmlStrGr = "http://www.eortologio.gr/rss/si_el.xml";
 
-	static Document docGr;
-	static Document docEn;
-	static ArrayList<String> eortologioArrayList;
+	private static Document docGr;
+	private static Document docEn;
+	private static ArrayList<String> eortologioArrayList;
 
 	public ArrayList<String> returnGreekVal() {
 		ArrayList<String> result = new ArrayList<String>();
@@ -38,7 +39,7 @@ public class EortologioApi {
 		result = validateResult(result);
 		return result;
 	}
-	
+
 	public ArrayList<String> returnVal() {
 		try {
 			ArrayList<String> result = new ArrayList<String>();
@@ -90,7 +91,7 @@ public class EortologioApi {
 		Node node = (Node) nodes.item(0);
 		return node.getNodeValue();
 	}
-	
+
 	public static String[] createStringArray(String str) {
 		String[] string = null;
 		String splitter = ",";
@@ -129,8 +130,9 @@ public class EortologioApi {
 
 	public static ArrayList<String> validateResult(ArrayList<String> arrayList) {
 		String noNames = "no widely known nameday ";
-		if (arrayList.toString().matches(".*" + noNames + ".*"))
+		if (arrayList.toString().matches(".*" + noNames + ".*")) {
 			arrayList.clear();
+		}
 		return arrayList;
 	}
 
@@ -144,8 +146,7 @@ public class EortologioApi {
 	public static Document getXml(final String str) {
 		try {
 			URL url = new URL(str);
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory
-					.newInstance();
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(url.openStream());
 			return doc;

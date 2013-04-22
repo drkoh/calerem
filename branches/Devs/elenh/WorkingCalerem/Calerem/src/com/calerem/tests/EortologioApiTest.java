@@ -15,17 +15,17 @@ import com.calerem.api.EortologioApi;
 
 /**
  * Database Tests in Junit 4.
+ * 
  * @author agapi
  */
 
 public class EortologioApiTest {
 
-
 	private String xmlStrEn;
 	private String xmlStrEl;
 	private Document documentEn;
 	private Document documentEl;
-	
+
 	@Before
 	public void initVars() {
 		xmlStrEn = "http://www.eortologio.gr/rss/si_en.xml";
@@ -33,8 +33,8 @@ public class EortologioApiTest {
 		documentEn = generateXml(xmlStrEn);
 		documentEl = generateXml(xmlStrEl);
 	}
-	
-	private static Document generateXml (String str) {
+
+	private static Document generateXml(String str) {
 		try {
 			URL url = new URL(str);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -55,9 +55,9 @@ public class EortologioApiTest {
 		 */
 		EortologioApi ea = new EortologioApi();
 		Document doc = ea.getXml(xmlStrEn);
-		assertEquals(doc.toString(),documentEn.toString());
+		assertEquals(doc.toString(), documentEn.toString());
 	}
-	
+
 	@Test
 	public void getXmlElTest() {
 		/*
@@ -65,8 +65,7 @@ public class EortologioApiTest {
 		 */
 		EortologioApi ea = new EortologioApi();
 		Document doc = ea.getXml(xmlStrEl);
-		assertEquals(doc.toString(),documentEl.toString());
+		assertEquals(doc.toString(), documentEl.toString());
 	}
-
 
 }

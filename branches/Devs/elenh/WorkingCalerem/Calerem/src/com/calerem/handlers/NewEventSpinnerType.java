@@ -10,18 +10,20 @@ import android.widget.AdapterView.OnItemSelectedListener;
 
 /**
  * Type Spinner handle.
+ * 
  * @author DarkParadise
  */
-public class NewEventSpinnerType  extends Activity implements OnItemSelectedListener {
+public class NewEventSpinnerType extends Activity implements OnItemSelectedListener {
 	private String EventType;
-	
+
 	/**
 	 * Sets event type based on selected item.
-	 * @see android.widget.AdapterView.OnItemSelectedListener#onItemSelected(android.widget.AdapterView, android.view.View, int, long)
+	 * 
+	 * @see android.widget.AdapterView.OnItemSelectedListener#onItemSelected(android.widget.AdapterView,
+	 *      android.view.View, int, long)
 	 */
 	@Override
-	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,long arg3) 
-	{
+	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		setEventType((String) arg0.getSelectedItem());
 	}
 
@@ -38,9 +40,10 @@ public class NewEventSpinnerType  extends Activity implements OnItemSelectedList
 	}
 
 	/**
-	 * @param eventType the eventType to set
+	 * @param eventType
+	 *            the eventType to set
 	 */
 	private void setEventType(String eventType) {
 		EventType = eventType;
-	}	
+	}
 }

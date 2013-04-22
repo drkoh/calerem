@@ -2,29 +2,32 @@ package com.calerem.classes;
 
 /**
  * Class to hold contact's data.
+ * 
  * @author DarkParadise
  */
-public class Contact
-{
+public class Contact {
 	private String name;
-	
 
 	private String lastname;
 	private String phone;
 	private String email;
 	private Integer id;
-	
-	
+
 	/**
 	 * Base Constructor
-	 * @param String name
-	 * @param String lastname
-	 * @param String phone
-	 * @param String email
-	 * @param Integer id
+	 * 
+	 * @param String
+	 *            name
+	 * @param String
+	 *            lastname
+	 * @param String
+	 *            phone
+	 * @param String
+	 *            email
+	 * @param Integer
+	 *            id
 	 */
-	public Contact(String name,String lastname,String phone,String email,Integer id)
-	{
+	public Contact(String name, String lastname, String phone, String email, Integer id) {
 		setName(name);
 		setLastname(lastname);
 		setPhone(phone);
@@ -49,7 +52,8 @@ public class Contact
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -63,7 +67,8 @@ public class Contact
 	}
 
 	/**
-	 * @param lastname the lastname to set
+	 * @param lastname
+	 *            the lastname to set
 	 */
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
@@ -77,7 +82,8 @@ public class Contact
 	}
 
 	/**
-	 * @param phone the phone to set
+	 * @param phone
+	 *            the phone to set
 	 */
 	public void setPhone(String phone) {
 		this.phone = phone;
@@ -91,7 +97,8 @@ public class Contact
 	}
 
 	/**
-	 * @param email the email to set
+	 * @param email
+	 *            the email to set
 	 */
 	public void setEmail(String email) {
 		this.email = email;
@@ -105,7 +112,8 @@ public class Contact
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Integer id) {
 		this.id = id;
