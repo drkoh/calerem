@@ -16,6 +16,7 @@ public class Celebration {
 	 * @param String type
 	 * @param String name
 	 * @param String date
+	 * @param Integer id
 	 */
 	public Celebration(String type, String name, String date,Integer id)
 	{

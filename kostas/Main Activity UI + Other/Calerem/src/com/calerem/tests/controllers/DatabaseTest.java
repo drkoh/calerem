@@ -40,9 +40,9 @@ public class DatabaseTest extends InstrumentationTestCase {
 		testcontact = new Contact("Kostas", "Papadopoulos", "1234567890", "destiny_gs@yahoo.gr", (Integer) null);
 		testevent = new Event("Birthday","My Birthday",1365706160,testcontact,1,"Epic Fail Date");
 		testmessagelog = new MessageLog(1365708011,(Integer) null,"Email","Kati Egrapsa",testcontact);
-		testconfiguration = new ConfigurationCalerem(basecontext,"DD-MM-YYYY","","","","http://www.eortologio.gr/rss/si_el.xml");
+		testconfiguration = new ConfigurationCalerem("dd-MM-yyyy","","","","http://www.eortologio.gr/rss/si_av_me_el.xml","http://www.eortologio.gr/rss/si_av_me_en.xml");
 		testsynclog = new SyncLog(1365708011,"Facebook",(Integer) null);
-		testcelebration = new Celebration("Nameday", "Giannis", "23-2", 1);
+		testcelebration = new Celebration("Nameday", "Giannis", "23-02", 1);
 	}
 
 	/**
@@ -52,6 +52,7 @@ public class DatabaseTest extends InstrumentationTestCase {
 	protected void tearDown() throws Exception {
 		super.tearDown();
 		db.factory_reset();
+		db.close();
 	}
 
 	/**
@@ -132,7 +133,56 @@ public class DatabaseTest extends InstrumentationTestCase {
 		//if this doesnt run, everything will fail.
 		assertTrue(true);
 	}
-
+	
+	/**
+	 * Test method for {@link com.calerem.controllers.Database#get_celebrations(String)}.
+	 */
+	public void testGet_celebrations()
+	{
+		long resultCode = db.add_celebration(testcelebration);
+		if(resultCode == 1)
+		{
+			Celebration[] Celebrations = db.get_celebrations("23-02");
+			if(Celebrations.length > 0)
+			{
+				if(Celebrations[0].getName() == testcelebration.getName())
+				{
+					assertTrue(true);
+				}
+			}
+			else
+			{
+				fail("Coudlnt find celebration");
+			}
+		}
+		else
+		{
+			fail("Couldnt add celebration");
+		}
+	}
+	
+	/**
+	 * Test method for {@link com.calerem.controllers.Database#celebration_exists(java.lang.String, java.lang.String)}.
+	 */
+	public void testCelebration_exists() {
+		long resultCode = db.add_celebration(testcelebration);
+		if(resultCode == 1)
+		{
+			if(db.celebration_exists(testcelebration.getDate(), testcelebration.getName()) > 0)
+			{
+				assertTrue(true);
+			}
+			else
+			{
+				fail("Celebration doesnt exist?");
+			}
+		}
+		else
+		{
+			fail("Couldnt add celebration");
+		}
+	}
+	
 	/**
 	 * Test method for {@link com.calerem.controllers.Database#return_events(java.lang.Integer, java.lang.Integer)}.
 	 */

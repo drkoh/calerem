@@ -6,8 +6,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import com.calerem.classes.ConfigurationCalerem;
 import com.calerem.classes.Contact;
 import com.calerem.classes.Event;
+import com.calerem.ui.Configuration;
 import com.calerem.ui.NewEvent;
 import com.calerem.ui.SendEmail;
 import com.calerem.ui.ViewEvent;
@@ -65,6 +67,7 @@ public class UIController{
 		Intent intent = new Intent(basecontext, ViewEvent.class);
 		Event v_event = db.get_event(v_event_id);
 		intent.putExtra("Data", gson.toJson(v_event));
+		intent.putExtra("DateFormat", db.read_configuration().getDate_format());
 		basecontext.startActivity(intent);
 	}
 	
@@ -79,5 +82,15 @@ public class UIController{
 		intent.putExtra("Data", gson.toJson(v_contact));
 		intent.putExtra("Date", epoch);
 		((Activity) basecontext).startActivityForResult(intent, 1);
-	}	
+	}
+	/**
+	 * Creates a Configuration Form Activity.
+	 */
+	public void newConfiguration()
+	{
+		Intent intent = new Intent(basecontext, Configuration.class);
+		ConfigurationCalerem config = db.read_configuration();
+		intent.putExtra("Data", gson.toJson(config));
+		((Activity) basecontext).startActivityForResult(intent, 3);
+	}
 }

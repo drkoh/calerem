@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Configuration_Title">Configuration</string>
+	<string name="Configuration_DateFormat">Date Format:</string>
+	<string name="Configuration_Skin_Path">Skin:</string>
+	<string name="Configuration_Language">Language:</string>
+	<string name="Configuration_Button_Save">Save</string>
+	<string name="Configuration_NotificationSound">Notification Sound:</string>
+</resources>

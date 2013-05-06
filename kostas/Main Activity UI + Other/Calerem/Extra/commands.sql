@@ -21,7 +21,9 @@ CREATE TABLE configuration
  sound_path TEXT,
  language TEXT,
  skin_path TEXT,
- eortologio_url TEXT);
+ eortologiourlgr TEXT,
+ eortologiourlen TEXT);
+ INSERT INTO configuration values('dd-MM-yyyy','','','','http://www.eortologio.gr/rss/si_av_me_el.xml','http://www.eortologio.gr/rss/si_av_me_en.xml');
 CREATE TABLE celebrations 
 (name TEXT,
  _id INTEGER PRIMARY KEY,

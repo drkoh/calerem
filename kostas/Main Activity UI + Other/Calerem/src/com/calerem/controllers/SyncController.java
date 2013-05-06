@@ -12,6 +12,7 @@ import android.os.StrictMode;
 
 import com.calerem.api.EortologioAPI;
 import com.calerem.classes.Celebration;
+import com.calerem.classes.ConfigurationCalerem;
 import com.calerem.classes.SyncLog;
 
 /**
@@ -20,8 +21,8 @@ import com.calerem.classes.SyncLog;
  */
 public class SyncController {
 
-	private String grURL = "http://www.eortologio.gr/rss/si_av_me_el.xml";
-	private String enURL = "http://www.eortologio.gr/rss/si_av_me_en.xml";
+	private String grURL;
+	private String enURL;
 	private Celebration celebrations[];
 	private Context basecontext;
 	private Database db;
@@ -38,6 +39,9 @@ public class SyncController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		ConfigurationCalerem config = db.read_configuration();
+		this.grURL = config.getEortologioURLGR();
+		this.enURL = config.getEortologioURLEN();
 	}
 	/**
 	 * Syncs with EortologioAPI.

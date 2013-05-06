@@ -12,6 +12,7 @@ import com.calerem.classes.Contact;
 import com.calerem.classes.Event;
 import com.calerem.controllers.Database;
 import com.calerem.controllers.UIController;
+import com.calerem.ui.Configuration;
 import com.calerem.ui.NewEvent;
 import com.calerem.ui.SendEmail;
 import com.calerem.ui.ViewEvent;
@@ -72,5 +73,16 @@ public class UIControllerTest extends ActivityInstrumentationTestCase2<MainActiv
 		assertNotNull(nextActivity);
 		nextActivity.finish();
 	}
-
+	
+	/**
+	 * Test method for {@link com.calerem.controllers.UIController#newConfiguration()}.
+	 */
+	public void testNewConfiguration()
+	{
+		activityMonitor = getInstrumentation().addMonitor(Configuration.class.getName(), null, false);
+		new UIController(this.getActivity()).newConfiguration();
+		Activity nextActivity = getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 2000);
+		assertNotNull(nextActivity);
+		nextActivity.finish();
+	}
 }
