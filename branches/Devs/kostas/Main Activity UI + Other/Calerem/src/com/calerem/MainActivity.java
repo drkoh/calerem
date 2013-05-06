@@ -8,6 +8,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -16,6 +19,7 @@ import com.calerem.classes.Event;
 import com.calerem.controllers.Database;
 import com.calerem.factories.UIActivityResultsHandlerFactory;
 import com.calerem.handlers.MainActivityGridCellAdapter;
+import com.calerem.handlers.MainActivityMenuItemSelectedHadler;
 import com.calerem.handlers.MainActivityOnClickHandler;
 
 /**
@@ -120,4 +124,26 @@ public class MainActivity extends Activity
 			eventsButton.setText("There is no event registered today.");
 		}
 	}
+	
+    /**
+     * Initialize menu based on the layour created.
+     * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.mainactivity_menu, menu);
+        return true;
+    }
+     
+    /**
+     * Calls the menu handler.
+     * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+    	return new MainActivityMenuItemSelectedHadler(this).onOptionsItemSelected(item);
+    } 
 }

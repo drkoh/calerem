@@ -6,6 +6,7 @@ package com.calerem.factories;
 import android.content.Context;
 import android.content.Intent;
 
+import com.calerem.handlers.ConfigurationResult;
 import com.calerem.handlers.NewEventResult;
 import com.calerem.handlers.SendEmailResult;
 
@@ -36,6 +37,7 @@ public class UIActivityResultsHandlerFactory {
 		/* Request Codes
 		 * 1 = New Event
 		 * 2 = Send Email
+		 * 3 = Configuration
 		 */
 		switch (requestCode)
 		{
@@ -44,6 +46,9 @@ public class UIActivityResultsHandlerFactory {
 			break;
 		case 2:
 			new SendEmailResult(basecontext,resultCode, data);
+			break;
+		case 3:
+			new ConfigurationResult(basecontext,resultCode,data);
 			break;
 		}
 	}

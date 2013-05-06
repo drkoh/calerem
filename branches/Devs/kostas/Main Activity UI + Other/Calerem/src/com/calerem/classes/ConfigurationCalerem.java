@@ -1,9 +1,5 @@
 package com.calerem.classes;
 
-import java.io.File;
-
-import android.content.Context;
-
 /**
  * Class to hold configuration data.
  * @author DarkParadise
@@ -13,8 +9,8 @@ public class ConfigurationCalerem {
 	private String notification_sound;
 	private String language;
 	private String skin;
-	private String eortologio_xml;
-	private Context basecontext;
+	private String eortologioURLGR;
+	private String eortologioURLEN;
 
 	/**
 	 * Base Constructor
@@ -25,16 +21,16 @@ public class ConfigurationCalerem {
 	 * @param String skin
 	 * @param String eortologio_xml
 	 */
-	public ConfigurationCalerem(Context context,String date_format,String notification_sound,String language,String skin,String eortologio_xml)
+	public ConfigurationCalerem(String date_format,String notification_sound,String language,String skin,String eortologioURLGR,String eortologioURLEN)
 	{
-		setBasecontext(context);
 		setDate_format(date_format);
 		setNotification_sound(notification_sound);
 		setLanguage(language);
 		setSkin(skin);
-		setEortologio_xml(eortologio_xml);
+		setEortologioURLGR(eortologioURLGR);
+		setEortologioURLEN(eortologioURLEN);
 	}
-	
+
 	/**
 	 * @return the date_format
 	 */
@@ -46,10 +42,7 @@ public class ConfigurationCalerem {
 	 * @param date_format the date_format to set
 	 */
 	public void setDate_format(String date_format) {
-		if (date_format.equals("DD-MM-YYYY") || date_format.equals("MM-DD-YYYY"))
-		{
-			this.date_format = date_format;
-		}
+		this.date_format = date_format;
 	}
 
 	/**
@@ -63,15 +56,7 @@ public class ConfigurationCalerem {
 	 * @param notification_sound the notification_sound to set
 	 */
 	public void setNotification_sound(String notification_sound) {
-		File file = this.getBasecontext().getFileStreamPath(notification_sound);
-		if(file.exists())
-		{
-			String fType = notification_sound.substring((notification_sound.lastIndexOf(".") + 1), notification_sound.length());
-			if(fType == "mp3" || fType == "ogg")
-			{
-				this.notification_sound = notification_sound;
-			}
-		}	
+		this.notification_sound = notification_sound;
 	}
 
 	/**
@@ -85,11 +70,7 @@ public class ConfigurationCalerem {
 	 * @param language the language to set
 	 */
 	public void setLanguage(String language) {
-		File file = this.getBasecontext().getFileStreamPath(language);
-		if(file.exists())
-		{
-			this.language = language;
-		}
+		this.language = language;		
 	}
 
 	/**
@@ -103,40 +84,37 @@ public class ConfigurationCalerem {
 	 * @param skin the skin to set
 	 */
 	public void setSkin(String skin) {
-		File file = this.getBasecontext().getFileStreamPath(skin);
-		if(file.exists())
-		{
-			this.skin = skin;
-		}
+		this.skin = skin;
 	}
 
 	/**
-	 * @return the eortologio_xml
+	 * @return the eortologioURLGR
 	 */
-	public String getEortologio_xml() {
-		return eortologio_xml;
+	public String getEortologioURLGR() {
+		return eortologioURLGR;
 	}
 
 	/**
-	 * @param eortologio_xml the eortologio_xml to set
+	 * @param eortologioURLGR the eortologioURLGR to set
 	 */
-	public void setEortologio_xml(String eortologio_xml) {
-		this.eortologio_xml = eortologio_xml;
+	public void setEortologioURLGR(String eortologioURLGR) {
+		this.eortologioURLGR = eortologioURLGR;
 	}
 
 	/**
-	 * @return the basecontext
+	 * @return the eortologioURLEN
 	 */
-	private Context getBasecontext() {
-		return basecontext;
+	public String getEortologioURLEN() {
+		return eortologioURLEN;
 	}
 
 	/**
-	 * @param basecontext the basecontext to set
+	 * @param eortologioURLEN the eortologioURLEN to set
 	 */
-	private void setBasecontext(Context basecontext) {
-		this.basecontext = basecontext;
-	};
+	public void setEortologioURLEN(String eortologioURLEN) {
+		this.eortologioURLEN = eortologioURLEN;
+	}
+
 }
 
 

@@ -1,20 +1,25 @@
 package com.calerem.ui;
 
-import com.calerem.R;
-import com.calerem.classes.Event;
-import com.google.gson.Gson;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.calerem.R;
+import com.calerem.classes.Event;
+import com.google.gson.Gson;
+
 /**
  * Form that shows all information about an event.
  * @author DarkParadise
  */
 public class ViewEvent extends Activity {
-	//Statement of variables
+	
 	private TextView title,name,last,phone,mail;
 	private EditText edName, edType, edDate, edDescription, edNameC, edLastC, edPhone, edMail;
 	private Event event;
@@ -31,19 +36,21 @@ public class ViewEvent extends Activity {
 		initVars();
 		Bundle extras = getIntent().getExtras();
 		String data = extras.getString("Data");
+		String date_format = extras.getString("DateFormat");
 		event = new Gson().fromJson(data,Event.class);
 		checkContact();
 		//print event's info in proper visual objects
 		edName.setText(event.getEvent_name());
 		edType.setText(event.getEvent_type());
-		edDate.setText(""+event.getEvent_date());
+		edDate.setText(new SimpleDateFormat(date_format,Locale.ENGLISH).format(new Date(event.getEvent_date()*1000)));
 		edDescription.setText(event.getEvent_description());
+		this.disableEdits();
 	}
 
 	/**
 	 * Links variables to visual objects.
 	 */
-	public void initVars()
+	private void initVars()
 	{
 		edName= (EditText) findViewById (R.id.etName);
 		edType= (EditText) findViewById (R.id.etType);
@@ -59,10 +66,11 @@ public class ViewEvent extends Activity {
 		phone= (TextView) findViewById (R.id.tvPhone);
 		mail= (TextView) findViewById (R.id.tvMail);
 	}
+	
 	/**
 	 * Checks if contact exists, and enables contact View.
 	 */
-	public void checkContact()
+	private void checkContact()
 	{
 		if(event.getEvent_contact() == null)
 		{
@@ -84,5 +92,19 @@ public class ViewEvent extends Activity {
 			edPhone.setText(event.getEvent_contact().getPhone());
 			edMail.setText(event.getEvent_contact().getEmail());
 		}
+	}
+	/**
+	 * Disables Editing for textviews.
+	 */
+	private void disableEdits()
+	{
+		edName.setFocusable(false);
+		edType.setFocusable(false);
+		edDate.setFocusable(false);
+		edDescription.setFocusable(false);
+		edNameC.setFocusable(false);
+		edLastC.setFocusable(false);
+		edPhone.setFocusable(false);
+		edMail.setFocusable(false);
 	}
 }

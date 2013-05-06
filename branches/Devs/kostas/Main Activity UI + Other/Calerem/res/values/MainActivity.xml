@@ -12,8 +12,11 @@
     <string name="MainActivity_CalendarHeader_IMG">Calendar Header</string>
     <string name="MainActivity_CalendarLeftArrow_IMG">Left Arrow</string>
     <string name="MainActivity_CalendarRightArrow_IMG">Right Arrow</string>
+    
+    <string name="MainActivity_MenuPreferences">Preferences</string>
 
     <item name="GRIDCELL_Date" type="id">1</item>
     <item name="GRIDCELL_Events" type="id">2</item>
+    <item name="MainActivityMenu" type="id">3</item>
 
 </resources>

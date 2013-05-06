@@ -8,7 +8,7 @@ public class Event
 {
 	private String event_type;
 	private String event_name;
-	private int event_date;
+	private long event_date;
 	private Contact event_contact;
 	private Integer event_id;
 	private String event_description;
@@ -22,7 +22,7 @@ public class Event
 	 * @param Integer event_id
 	 * @param String event_description
 	 */
-	public Event(String event_type,String event_name,int event_date,Contact event_contact,Integer event_id,String event_description)
+	public Event(String event_type,String event_name,long event_date,Contact event_contact,Integer event_id,String event_description)
 	{
 		setEvent_type(event_type);
 		setEvent_name(event_name);
@@ -63,14 +63,14 @@ public class Event
 	/**
 	 * @return the event_date
 	 */
-	public int getEvent_date() {
+	public long getEvent_date() {
 		return event_date;
 	}
 
 	/**
 	 * @param event_date2 the event_date to set
 	 */
-	public void setEvent_date(int event_date2) {
+	public void setEvent_date(long event_date2) {
 		if (event_date2 > 0)
 		{
 			this.event_date = event_date2;

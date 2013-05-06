@@ -50,7 +50,8 @@ public class Database extends SQLiteOpenHelper {
 	 * @throws IOException
 	 */
 	private void createDataBase() throws IOException {
-		myContext.openOrCreateDatabase(db_name, Context.MODE_PRIVATE, null);
+		SQLiteDatabase db = myContext.openOrCreateDatabase(db_name, Context.MODE_PRIVATE, null);
+		db.close();
 		try {
 			copyDataBase();
 		} 
@@ -67,7 +68,7 @@ public class Database extends SQLiteOpenHelper {
 	 * @return true if it exists, false if it doesn't
 	 */
 	private boolean checkDataBase() {
-		File file = Database.myContext.getDatabasePath(db_name);
+		File file = new File(sqlite_path);
 		if(file.exists())
 		{
 			return true;
@@ -87,11 +88,8 @@ public class Database extends SQLiteOpenHelper {
 		// Open your local db as the input stream
 		InputStream myInput = myContext.getAssets().open(db_name);
 
-		// Path to the just created empty db
-		String outFileName = sqlite_path;
-
 		// Open the empty db as the output stream
-		OutputStream myOutput = new FileOutputStream(outFileName);
+		OutputStream myOutput = new FileOutputStream(sqlite_path);
 
 		// transfer bytes from the inputfile to the outputfile
 		byte[] buffer = new byte[1024];
@@ -226,6 +224,7 @@ public class Database extends SQLiteOpenHelper {
 				dbCursor.getInt(dbCursor.getColumnIndex(id)),
 				dbCursor.getString(dbCursor.getColumnIndex(description))
 				);
+		dbCursor.close();
 		return event;
 	}	
 
@@ -294,21 +293,22 @@ public class Database extends SQLiteOpenHelper {
 	 * @return ConfigurationCalerem
 	 */
 	public ConfigurationCalerem read_configuration() {
-		String date_format,sound_path,language,skin_path,eortologio_url;
+		String date_format,sound_path,language,skin_path,eortologioURLGR,eortologioURLEN;
 		date_format="date_format";
 		sound_path="sound_path";
 		language="language";
 		skin_path="skin_path";
-		eortologio_url="eortologio_url";
+		eortologioURLGR="eortologiourlgr";
+		eortologioURLEN="eortologiourlen";
 		Cursor dbCursor = myDataBase.query("configuration", null, null, null, null, null, null);
 		dbCursor.moveToFirst();
 		ConfigurationCalerem configuration = new ConfigurationCalerem(
-				myContext,
 				dbCursor.getString(dbCursor.getColumnIndex(date_format)),
 				dbCursor.getString(dbCursor.getColumnIndex(sound_path)),
 				dbCursor.getString(dbCursor.getColumnIndex(language)),
 				dbCursor.getString(dbCursor.getColumnIndex(skin_path)),
-				dbCursor.getString(dbCursor.getColumnIndex(eortologio_url))
+				dbCursor.getString(dbCursor.getColumnIndex(eortologioURLGR)),
+				dbCursor.getString(dbCursor.getColumnIndex(eortologioURLEN))
 				);
 		dbCursor.close();
 		return configuration;
@@ -320,18 +320,20 @@ public class Database extends SQLiteOpenHelper {
 	 * @return long how many rows were affected.
 	 */
 	public long update_configuration(ConfigurationCalerem new_configuration) {
-		String date_format,sound_path,language,skin_path,eortologio_url;
+		String date_format,sound_path,language,skin_path,eortologioURLGR,eortologioURLEN;
 		date_format="date_format";
 		sound_path="sound_path";
 		language="language";
 		skin_path="skin_path";
-		eortologio_url="eortologio_url";
+		eortologioURLGR="eortologiourlgr";
+		eortologioURLEN="eortologiourlen";
 		ContentValues cv = new ContentValues();
 		cv.put(date_format, new_configuration.getDate_format());
 		cv.put(sound_path, new_configuration.getNotification_sound());
 		cv.put(language, new_configuration.getLanguage());
 		cv.put(skin_path, new_configuration.getSkin());
-		cv.put(eortologio_url, new_configuration.getEortologio_xml());
+		cv.put(eortologioURLGR, new_configuration.getEortologioURLGR());
+		cv.put(eortologioURLEN, new_configuration.getEortologioURLEN());
 		long resultCode = myDataBase.update("configuration", cv, null, null);
 		cv.clear();
 		return resultCode;

@@ -34,6 +34,7 @@
         <activity android:name=".ui.SendEmail"></activity>
         <activity android:name=".ui.ViewEvent"></activity>
         <activity android:name=".ui.NewEvent"></activity>
+        <activity android:name=".ui.Configuration"></activity>
     </application>
 
 </manifest>
