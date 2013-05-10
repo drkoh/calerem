@@ -5,11 +5,7 @@
  *  Make sure emulator is running
  */
 
-//XXX Still cant figure out how to pass extras.Works without
-                    //String data = extras.getString("Data") 
-	               //from ShowContactsHavingNamday.class
-
-package com.calerem.test;
+package com.calerem.ui.test;
 
 import junit.framework.Test;
 import android.test.suitebuilder.TestSuiteBuilder; 

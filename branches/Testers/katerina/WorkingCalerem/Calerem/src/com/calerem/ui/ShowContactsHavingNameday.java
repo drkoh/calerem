@@ -40,9 +40,9 @@ public class ShowContactsHavingNameday extends Activity implements View.OnClickL
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.notification);
-	//	Bundle extras = getIntent().getExtras();
-	//	String data = extras.getString("Data");
-	//	contacts = new Gson().fromJson(data, Contact[].class);
+		Bundle extras = getIntent().getExtras();
+		String data = extras.getString("Data");
+		contacts = new Gson().fromJson(data, Contact[].class);
 		initVars();
 		new XmlToDoc().execute();
 		bt1.setOnClickListener(this);
@@ -51,9 +51,9 @@ public class ShowContactsHavingNameday extends Activity implements View.OnClickL
 
 	@Override
 	public void onClick(View arg0) {
-		String finalTitle = "Σήμερα γιορτάζουν οι: ";
-		String noNameday = "Δε γιορτάζει κανείς σήμερα.";
-		String noContactsNameday = "Δε γιορτάζει καμία από τις επαφή.";
+		String finalTitle = "Ξ£Ξ®ΞΌΞµΟΞ± Ξ³ΞΉΞΏΟΟ„Ξ¬Ξ¶ΞΏΟ…Ξ½ ΞΏΞΉ: ";
+		String noNameday = "Ξ”Ξµ Ξ³ΞΉΞΏΟΟ„Ξ¬Ξ¶ΞµΞΉ ΞΊΞ±Ξ½ΞµΞ―Ο‚ ΟƒΞ®ΞΌΞµΟΞ±.";
+		String noContactsNameday = "Ξ”Ξµ Ξ³ΞΉΞΏΟΟ„Ξ¬Ξ¶ΞµΞΉ ΞΊΞ±ΞΌΞ―Ξ± Ξ±Ο€Ο Ο„ΞΉΟ‚ ΞµΟ€Ξ±Ο†Ξ®.";
 
 		if (namedaysToday.isEmpty()) {
 			tvNamedaysToday.setText(noNameday);
