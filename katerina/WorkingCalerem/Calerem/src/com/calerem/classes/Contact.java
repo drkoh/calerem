@@ -1,5 +1,7 @@
 package com.calerem.classes;
 
+import android.test.RenamingDelegatingContext;
+
 /**
  * Class to hold contact's data.
  * @author DarkParadise
@@ -30,6 +32,10 @@ public class Contact
 		setPhone(phone);
 		setEmail(email);
 		setId(id);
+	}
+
+	public Contact(RenamingDelegatingContext context) {
+		// TODO Auto-generated constructor stub
 	}
 
 	/**

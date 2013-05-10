@@ -30,7 +30,7 @@ public class NewEvent extends Activity implements View.OnClickListener {
 	private long epoch;
 	private Date date;
 	private Contact contacts_obj[];
-	private Event v_event;	
+	private static Event v_event;	
 	private Spinner spinner_type,spinner_contact;
 	private DatePicker datePicker;
 	private EditText name,desc;
@@ -115,14 +115,14 @@ public class NewEvent extends Activity implements View.OnClickListener {
 			eventName = name.getText().toString();
 			if(spinner_contact_listener.getContactPosition() == 0)
 			{
-				v_event = new Event(spinner_type_listener.getEventType(),eventName,(int) epoch,(Contact) null,(Integer) null,eventDesc);
+				v_event=new Event(spinner_type_listener.getEventType(),eventName,(int) epoch,(Contact) null,(Integer) null,eventDesc);
 			}
 			else
 			{
-				v_event = new Event(spinner_type_listener.getEventType(),eventName,(int) epoch,contacts_obj[spinner_contact_listener.getContactPosition()-1],(Integer) null,eventDesc);
+				v_event=new Event(spinner_type_listener.getEventType(),eventName,(int) epoch,contacts_obj[spinner_contact_listener.getContactPosition()-1],(Integer) null,eventDesc);
 			}
 			Intent intent_ret = new Intent();
-			intent_ret.putExtra("result", new Gson().toJson(v_event));
+			intent_ret.putExtra("result", new Gson().toJson(getV_event()));
 			setResult(RESULT_OK,intent_ret);
 			finish();
 		} 
@@ -131,6 +131,12 @@ public class NewEvent extends Activity implements View.OnClickListener {
 			name.setError("You need to enter a name for the Event");
 		}
 	}
+
+	public static Event getV_event() {
+		return v_event;
+	}
+
+	
 
 	
 }
