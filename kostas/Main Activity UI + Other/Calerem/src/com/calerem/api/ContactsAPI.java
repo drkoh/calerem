@@ -44,15 +44,15 @@ public class ContactsAPI{
 			while (ContactsCur.moveToNext()) 
 			{
 				String id = ContactsCur.getString(ContactsCur.getColumnIndex(ContactsContract.Contacts._ID));
-				String first_name = this.getFirstName(id);
-				String last_name = this.getLastName(id);
+				String first_name = "" + this.getFirstName(id);
+				String last_name = "" + this.getLastName(id);
 				String phone = "";
 				String email = "";
-				if(this.getPhoneNumbers(id)[0].length() > 0)
+				if(this.getPhoneNumbers(id).length > 0)
 				{
 					phone = this.getPhoneNumbers(id)[0];
 				}
-				if(this.getEmailAddress(id)[0].length() > 0)
+				if(this.getEmailAddress(id).length > 0)
 				{
 					email = this.getEmailAddress(id)[0];
 				}
@@ -60,6 +60,7 @@ public class ContactsAPI{
 				i++;
 			}
 		}
+		this.ContactsCur.close();
 		return v_contact;
 	}
 	
@@ -76,6 +77,7 @@ public class ContactsAPI{
 		{
 			first_name = nameCur.getString(nameCur.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME));
 		}
+		nameCur.close();
 		return first_name;
 	}
 	
@@ -92,6 +94,7 @@ public class ContactsAPI{
 		{
 			last_name = nameCur.getString(nameCur.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME));
 		}
+		nameCur.close();
 		return last_name;
 	}	
 
