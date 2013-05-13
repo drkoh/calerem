@@ -357,6 +357,7 @@ public class Database extends SQLiteOpenHelper {
 					dbCursor.getString(dbCursor.getColumnIndex("date")),
 					dbCursor.getInt(dbCursor.getColumnIndex("_id"))
 					);
+			dbCursor.moveToNext();
 		}
 		dbCursor.close();
 		return celebrations;
