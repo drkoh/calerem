@@ -117,8 +117,7 @@ public class NotificationService extends Service
 	 */
 	private void init_notification(ArrayList<String> finals) 
 	{
-		if(finals.size()>0)
-		{
+		
 			Builder NotificationBuilder = new Notification.Builder(this);
 			NotificationBuilder.setContentTitle("There are " + finals.size() + " people celebrating today");
 			NotificationBuilder.setContentText(this.CompileNotificationText(finals));
@@ -130,7 +129,7 @@ public class NotificationService extends Service
 			NotificationManager notificationManager = (NotificationManager) this.getSystemService(NOTIFICATION_SERVICE);
 			notificationManager.notify(CALEREM_ID, notification);
 			stopSelf();
-		}
+		
 	}
 	/**
 	 * Creates a CharSequence containing celebrating contacts names
@@ -140,9 +139,19 @@ public class NotificationService extends Service
 	private CharSequence CompileNotificationText(ArrayList<String> finals)
 	{
 		CharSequence NotificationText = "";
-		for(int i=0;i<finals.size();i++)
+		if(finals.size()>0)
 		{
-			NotificationText = NotificationText +  finals.get(i) + ", "  ;
+			
+			for(int i=0;i<finals.size();i++)
+			{
+				NotificationText = NotificationText +  finals.get(i) + ", "  ;
+			}
+			
+		}
+		else
+		{
+			
+			NotificationText="no one is celebrating";
 		}
 		return NotificationText;
 	}
