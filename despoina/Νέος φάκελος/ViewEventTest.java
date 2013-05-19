@@ -1,4 +1,4 @@
-package com.calerem.ui;
+package com.calerem.tests.ui;
 
 //import junit.framework.TestCase;
 
@@ -7,6 +7,8 @@ import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.core.UiScrollable;
 import com.android.uiautomator.core.UiSelector;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
+
+
 
 
 public class ViewEventTest extends UiAutomatorTestCase {
@@ -52,9 +54,16 @@ public class ViewEventTest extends UiAutomatorTestCase {
 	         .packageName("com.calerem"));
 	      assertTrue("Unable to detect Calerem",CaleremValidation.exists());  
 	      //
-	      UiObject buttonViewEvent = new UiObject(new UiSelector().text("View existing event"));
+	      UiObject buttonSelectDay = new UiObject(new UiSelector().text("1"));
 	      
-	      //Ean uparxei to buttonViewEvent to kanei click
+	      //Ean uparxei to h 1h hmera tou mhna kanei click
+	      if(buttonSelectDay.exists() && buttonSelectDay.isEnabled()) 
+	      {
+	    	  buttonSelectDay.click();
+	      }
+	      
+	      UiObject buttonViewEvent = new UiObject(new UiSelector().text("View Event:TestName"));
+	     //Ean uparxei to buttonViewEvent to kanei click
 	      if(buttonViewEvent.exists() && buttonViewEvent.isEnabled()) 
 	      {
 	    	  buttonViewEvent.click();
