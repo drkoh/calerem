@@ -1,4 +1,4 @@
-package com.calerem.ui;
+package com.calerem.tests.ui;
 
 //import junit.framework.TestCase;
 
@@ -14,7 +14,8 @@ public class NewEventTest extends UiAutomatorTestCase {
     {
     }
 
-	public void testNewEventTest() throws UiObjectNotFoundException {   
+	public void testNewEventTest() throws UiObjectNotFoundException {  
+		
 	      
 	      // Apo to menu pataei to home gia na ksekinisei
 	      getUiDevice().pressHome();
@@ -51,12 +52,21 @@ public class NewEventTest extends UiAutomatorTestCase {
 	         .packageName("com.calerem"));
 	      assertTrue("Unable to detect Calerem",CaleremValidation.exists());  
 	      //
-	      UiObject buttonCreateNewEvent = new UiObject(new UiSelector().text("Create new event"));
+	      UiObject buttonCreateNewEvent = new UiObject(new UiSelector().text("1"));
 	      
 	      //Ean uparxei to buttonCreateNewEvent to kanei click
-	      if(buttonCreateNewEvent.exists() && buttonCreateNewEvent.isEnabled()) 
+    	  if(buttonCreateNewEvent.exists() && buttonCreateNewEvent.isEnabled()) 
+    	  {
+    		  buttonCreateNewEvent.click();
+    	  }
+	      
+	      UiObject buttonCreateNewEventExists = new UiObject(new UiSelector().text("New Event"));
+	      //Ean uparxei hdh mia kataxwrisei emfanizete to menu New Event kai to kanei click alliws sunexizei kanonika
+	      
+	      if(buttonCreateNewEventExists.exists() && buttonCreateNewEventExists.isEnabled()) 
 	      {
-	    	  buttonCreateNewEvent.click();
+	    	  buttonCreateNewEventExists.click();
+	      }
 	    	  
 	      //TO-DO:Dokimi gia Birthday kai Nameday - Default einai to Birthday
 	    	  
@@ -83,8 +93,8 @@ public class NewEventTest extends UiAutomatorTestCase {
 	      //Clickare to koumbi save
 	      buttonSave.click();
 
-	}
-	      
 
-	}
+	}     
+
 }
+
