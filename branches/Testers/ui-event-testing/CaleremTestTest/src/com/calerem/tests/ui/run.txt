@@ -1,0 +1,4 @@
+cd sto .../sdk/platform-tools
+adb push C:\EventTest.jar /data/local/tmp/   [path EventTest]
+adb shell uiautomator runtest EventTest.jar -c com.NewEventTest
+adb shell uiautomator runtest EventTest.jar -c com.ViewEventTest
