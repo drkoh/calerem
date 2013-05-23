@@ -4,6 +4,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.provider.ContactsContract;
+import android.util.Log;
 
 import com.calerem.classes.Contact;
 
@@ -13,22 +14,28 @@ import com.calerem.classes.Contact;
  * @version 1.0
  */
 public class ContactsAPI{
-	
+
 	private Context basecontext;
 	private ContentResolver cr;
 	private Cursor ContactsCur;
-	
+
 	/**
 	 * Base constructor that initializes some basic value.
 	 * Also queries all contacts from contact API.
 	 * @param Context context
 	 */
 	public ContactsAPI(Context context) {
-		basecontext = context;
-		cr = basecontext.getContentResolver();
-		ContactsCur = cr.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
+		this.basecontext = context;		
+		try 
+		{
+			cr = basecontext.getContentResolver();
+		} 
+		catch (Exception e) 
+		{
+			Log.e("ContactsAPI", "Couldnt retrieve content resolver. Context seems to be invalid.");
+		}
 	}
-	
+
 	/**
 	 * Fetches the query from contacts API
 	 * Requests additional data from other functions.
@@ -37,6 +44,7 @@ public class ContactsAPI{
 	 */
 	private Contact[] readDatabase()
 	{
+		ContactsCur = cr.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
 		Contact v_contact[] = new Contact[ContactsCur.getCount()];
 		if (ContactsCur.getCount() > 0) 
 		{
@@ -63,7 +71,7 @@ public class ContactsAPI{
 		this.ContactsCur.close();
 		return v_contact;
 	}
-	
+
 	/**
 	 * Requests first name for a specific Contact.
 	 * @param String id Contact ID in android database.
@@ -72,15 +80,16 @@ public class ContactsAPI{
 	private String getFirstName(String id)
 	{
 		String first_name = "";
-		Cursor nameCur = cr.query(ContactsContract.Data.CONTENT_URI, null, ContactsContract.CommonDataKinds.StructuredName.CONTACT_ID + " = ?", new String[]{id}, null);
-		while(nameCur.moveToNext())
+		Cursor nameCur = cr.query(ContactsContract.Data.CONTENT_URI, null, ContactsContract.CommonDataKinds.StructuredName.RAW_CONTACT_ID + " = ?", new String[]{id}, null);
+		nameCur.moveToFirst();
+		if(nameCur.getString(nameCur.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME)) != null)
 		{
 			first_name = nameCur.getString(nameCur.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME));
 		}
 		nameCur.close();
 		return first_name;
 	}
-	
+
 	/**
 	 * Requests last name for a specific Contact.
 	 * @param String id Contact ID in android database.
@@ -89,8 +98,9 @@ public class ContactsAPI{
 	private String getLastName(String id)
 	{
 		String last_name = "";
-		Cursor nameCur = cr.query(ContactsContract.Data.CONTENT_URI, null, ContactsContract.CommonDataKinds.StructuredName.CONTACT_ID + " = ?", new String[]{id}, null);
-		while(nameCur.moveToNext())
+		Cursor nameCur = cr.query(ContactsContract.Data.CONTENT_URI, null, ContactsContract.CommonDataKinds.StructuredName.RAW_CONTACT_ID + " = ?", new String[]{id}, null);
+		nameCur.moveToFirst();
+		if(nameCur.getString(nameCur.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME)) != null)
 		{
 			last_name = nameCur.getString(nameCur.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME));
 		}
@@ -105,21 +115,22 @@ public class ContactsAPI{
 	 */
 	private String[] getPhoneNumbers(String id)
 	{
-		String phone[] = new String[Integer.parseInt(ContactsCur.getString(ContactsCur.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)))];
+		String[] phone = new String[0];
 		int i = 0;
 		if (Integer.parseInt(ContactsCur.getString(ContactsCur.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))) > 0) 
 		{
 			Cursor pCur = cr.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = ?", new String[]{id}, null);
- 	        while (pCur.moveToNext()) 
- 	        {
- 	        	phone[i] = pCur.getString(pCur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)).replaceAll("[\\D]", "");
- 	        	i++;
- 	        } 
- 	        pCur.close();
+			phone = new String[pCur.getCount()];
+			while (pCur.moveToNext()) 
+			{
+				phone[i] = pCur.getString(pCur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)).replaceAll("[\\D]", "");
+				i++;
+			} 
+			pCur.close();
 		}
 		return phone;
 	}
-	
+
 	/**
 	 * Requests all email addresses for a specific Contact.
 	 * @param String id Contact ID in android database.
@@ -127,25 +138,38 @@ public class ContactsAPI{
 	 */
 	private String[] getEmailAddress(String id)
 	{
-		String email[] = {""};
 		int i = 0;
 		Cursor emailCur = cr.query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, null, ContactsContract.CommonDataKinds.Email.CONTACT_ID + " = ?", new String[]{id}, null);
+		String[] email = new String[emailCur.getCount()];
 		while (emailCur.moveToNext()) 
 		{ 
-			email[i] = emailCur.getString(emailCur.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA));
+			email[i] = "";
+			if(emailCur.getString(emailCur.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA)) != null)
+			{
+				email[i] = emailCur.getString(emailCur.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA));
+			}
 			i++;
 		} 
 		emailCur.close();
 		return email;
 	}
-	
+
 	/**
 	 * Returns all contact from the API
+	 * If an error is encounter it returns null.
 	 * @return Contact array
 	 * @see com.calerem.classes.Contact
 	 */
 	public Contact[] getContacts()
 	{
-		return this.readDatabase();
+		try
+		{
+			return this.readDatabase();
+		}
+		catch(Exception e)
+		{
+			Log.e("ContactsAPI", "Couldnt read database. If no previous error exists, check the database for errors.");
+			return null;
+		}
 	}
 }
