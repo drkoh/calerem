@@ -74,3 +74,4 @@ public class NewEventTest extends ActivityInstrumentationTestCase2<NewEvent> {
 	} 
 
 }
+
