@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Calerem" default="help">
+
+<property file="build.properties" />
+<property file="C:/Users/AnastasiaSwthria/Documents/AATEXNOLOGIA LOGISMIKOY/upw.properties"/>
+<path id="svnant.classpath">
+    <fileset dir="${svnant}">
+		<include name="javahl.jar"/>
+		<include name="svnkit.jar"/>
+        <include name="svnant.jar"/>
+        <include name="svnClientAdapter.jar"/>
+		<include name="ganymed.jar"/>
+    </fileset>
+</path>
+<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" 
+	classpathref="svnant.classpath" 
+/>
+<svnSetting 
+	svnkit="false" 
+	javahl="false" 
+	id="svn.settings"
+	username="${mail.user}" 
+	password="${svn.password}"
+/>
+
+ <target name="help">
+    <echo>
+&#009;Build file for the class of Software Engineering 2
+&#009;Author: Philippou Anastasia Sotiria	
+&#009;Thanks to http://ant.apache.org/manual/Tasks
+&#009;and
+&#009;http://developer.android.com/
+
+
+
+&#009;svn-update&#009;Updates the current directory
+&#009;svn-info&#009;Gets information from subversion for 
+&#009;&#009;&#009;the current directory -- depends on 
+&#009;&#009;&#009;clean, init, svn-update and debug targets
+&#009;svn-commit&#009;Commit the changes to google code
+&#009;svn-copy&#009;Creates a tag and commits the project
+&#009;mailto&#009;&#009;sends mail to ${rec.mail} with a zip 
+&#009;&#009;&#009;file attached -- depends on zip target
+&#009;zip	&#009;Creates a zip file that includes the 
+&#009;&#009;&#009;generated javadocs, the jar with the 
+&#009;&#009;&#009;tests and the apk
+&#009;clean &#009;&#009;Cleans the project. Deletes ${dist.dir},
+&#009;&#009;&#009;${jar.dir}, ${javadoc.dir} directories 
+&#009;&#009;&#009;and the apk's
+&#009;init&#009;&#009;Initializes the project. Creates ${dist.dir},
+&#009;&#009;&#009;${jar.dir}, ${javadoc.dir} directories
+&#009;jar&#009;&#009;Generates a jar file including the test classes
+&#009;&#009;&#009;-- must run 'ant build -f test.xml' first
+&#009;javadoc&#009;&#009;Generates the help files of the application 
+&#009;&#009;&#009;in the ${javadoc.dir} directory
+&#009;debug&#009;&#009;Debugs the application. Automated by 
+&#009;&#009;&#009;'android ant tools'</echo>
+  </target>
+
+<target name="all" depends="mailto,svn-commit,svn-copy"/>
+
+<target name="svn-update">
+	<svn refid="svn.settings">
+        	<update dir="."/>
+    	</svn>
+</target>
+
+<target name="svn-info" depends="clean,init,svn-update,debug">
+    	<svn refid="svn.settings">
+			<info target="."/>
+    	</svn>
+    	<move file="bin\Calerem.apk" tofile="bin\${app.name}-V${app.version}.${svn.info.lastRev}.apk"/>
+</target>
+
+<target name="svn-commit" description="Commit trunk">
+	   	<svn 	
+		refid="svn.settings">
+        	<commit dir="." message="${svn.message}"/>
+		</svn>
+</target>
+
+<target name="svn-copy">  
+  <fail message="Error: app.version has not been set" unless="app.version"/>  
+  <property name="svn.url-rel" value="https://calerem.googlecode.com/svn/tags/${app.version}.0"/>  
+  <svn refid="svn.settings">  
+    <copy srcurl="${svn.url}" desturl="${svn.url-rel}"  
+        message="${svn.message}"/>  
+  </svn>  
+</target>  
+
+<target name="mailto" description="Sends e-mail to team leader" depends="zip"> 
+  	<mail	
+		tolist="${rec.mail}"
+    		from="${sen.mail}"
+    		subject="${sub.mail}"
+    		mailhost="smtp.gmail.com"
+    		mailport="465"
+    		ssl="true"
+    		user="${mail.user}"
+    		password="${mail.pass}">
+    		<message>${mess.mail}</message>
+		<attachments>
+    			<fileset dir="dist">
+      				<include name="CaleRem.zip"/>
+    			</fileset>
+  		</attachments>
+  	</mail>
+</target>
+
+<target name="clean">
+	<delete dir="${dist.dir}"/>
+	<delete dir="${jar.dir}"/>
+	<delete dir="${javadoc.dir}"/>
+	<delete file="*.apk"/>
+</target>
+
+<target name="init">
+	<mkdir dir="${jar.dir}"/>
+	<mkdir dir="${dist.dir}"/>
+	<mkdir dir="${javadoc.dir}"/>
+</target>
+
+<target name="jar"  description="Generates CeleRem.jar file.">
+	<jar jarfile="${jar.dir}\${app.name}Test.jar" basedir="${classes.dir}\com\calerem\tests\classes">
+	<manifest>
+		<attribute name="Class-Path" value="${lib.dir}"/>
+		<attribute name="Main-Class" value="${classes.dir}"/>
+	</manifest>
+	</jar>
+</target>
+
+<target name="javadoc" description="generate documentation">
+    	<javadoc 
+			packagenames="src" 
+			sourcepath="${src.dir}" 
+			destdir="${javadoc.dir}" 
+			docfilessubdirs="true"
+			author="true"
+			excludepackagenames="com.calerem.tests"
+		>
+		<fileset dir="${src.dir}">
+                <include name="**" />
+        </fileset>
+		</javadoc>  
+</target>
+
+<target name="zip" depends="javadoc, jar, svn-info">
+	<zip 
+		destfile="${dist.dir}/CaleRem.zip" 
+		basedir="${main.trunk}" 
+		includes="${javadoc.dir}\**,bin\Calerem-V*.apk" 
+	/>
+</target>
+
+    <!-- The local.properties file is created and updated by the 'android' tool.
+         It contains the path to the SDK. It should *NOT* be checked into
+         Version Control Systems. -->
+    <property file="local.properties" />
+
+    <!-- The ant.properties file can be created by you. It is only edited by the
+         'android' tool to add properties to it.
+         This is the place to change some Ant specific build properties.
+         Here are some properties you may want to change/update:
+
+         source.dir
+             The name of the source directory. Default is 'src'.
+         out.dir
+             The name of the output directory. Default is 'bin'.
+
+         For other overridable properties, look at the beginning of the rules
+         files in the SDK, at tools/ant/build.xml
+
+         Properties related to the SDK location or the project target should
+         be updated using the 'android' tool with the 'update' action.
+
+         This file is an integral part of the build system for your
+         application and should be checked into Version Control Systems.
+
+         -->
+    <property file="ant.properties" />
+
+    <!-- if sdk.dir was not set from one of the property file, then
+         get it from the ANDROID_HOME env var.
+         This must be done before we load project.properties since
+         the proguard config can use sdk.dir -->
+    <property environment="env" />
+    <condition property="sdk.dir" value="${env.ANDROID_HOME}">
+        <isset property="env.ANDROID_HOME" />
+    </condition>
+
+    <!-- The project.properties file is created and updated by the 'android'
+         tool, as well as ADT.
+
+         This contains project specific properties such as project target, and library
+         dependencies. Lower level build properties are stored in ant.properties
+         (or in .classpath for Eclipse projects).
+
+         This file is an integral part of the build system for your
+         application and should be checked into Version Control Systems. -->
+    <loadproperties srcFile="project.properties" />
+
+    <!-- quick check on sdk.dir -->
+    <fail
+            message="sdk.dir is missing. Make sure to generate local.properties using 'android update project' or to inject it through the ANDROID_HOME environment variable."
+            unless="sdk.dir"
+    />
+
+    <!--
+        Import per project custom build rules if present at the root of the project.
+        This is the place to put custom intermediary targets such as:
+            -pre-build
+            -pre-compile
+            -post-compile (This is typically used for code obfuscation.
+                           Compiled code location: ${out.classes.absolute.dir}
+                           If this is not done in place, override ${out.dex.input.absolute.dir})
+            -post-package
+            -post-build
+            -pre-clean
+    -->
+    <import file="custom_rules.xml" optional="true" />
+
+    <!-- Import the actual build file.
+
+         To customize existing targets, there are two options:
+         - Customize only one target:
+             - copy/paste the target into this file, *before* the
+               <import> task.
+             - customize it to your needs.
+         - Customize the whole content of build.xml
+             - copy/paste the content of the rules files (minus the top node)
+               into this file, replacing the <import> task.
+             - customize to your needs.
+
+         ***********************
+         ****** IMPORTANT ******
+         ***********************
+         In all cases you must update the value of version-tag below to read 'custom' instead of an integer,
+         in order to avoid having your file be overridden by tools such as "android update project"
+    -->
+    <!-- version-tag: 1 -->
+    <import file="${sdk.dir}/tools/ant/build.xml" />
+</project>
