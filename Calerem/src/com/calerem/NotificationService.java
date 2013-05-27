@@ -10,6 +10,7 @@ import java.util.Date;
 import com.calerem.classes.Celebration;
 import com.calerem.classes.Contact;
 import com.calerem.controllers.Database;
+import com.calerem.controllers.EventController;
 import com.calerem.controllers.SyncController;
 import com.google.gson.Gson;
 
@@ -109,6 +110,23 @@ public class NotificationService extends Service
 		 cele=db.get_celebrations(sdf.format(new Date()));
 		 
 		 return cele;
+	}
+
+	/**
+	 * @author Agapi
+	 * this method finalizes the string that will be displayed in the thrown Notification.
+	 * @return String
+	 */
+	public String upcommingEvents () {
+		String finalString;
+		try {
+	    	 db = new Database(getBaseContext());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		EventController ev = new EventController(db);
+		finalString = ev.upcommingEventsDatabase();
+		return finalString;
 	}
 			
 	/**
