@@ -1,5 +1,11 @@
 package com.calerem.classes;
 
+/**
+ * Sample class that represents the Database. Used to test if the EventController works successful
+ * @author Agapi
+ *
+ */
+
 public class MockDB {
 	Event event1=new Event("Birthday","Maria",System.currentTimeMillis(),
 			new Contact("Maria","Manikaki","6980234421","manikaki_mar@yahoo.gr",0),0,"21th birthday");
