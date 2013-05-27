@@ -5,6 +5,13 @@ import android.content.Context;
 import com.calerem.classes.Event;
 import com.calerem.classes.MockDB;
 
+
+/**
+ * EventController is a class that takes the Events of the next day from the Database
+ * and passes them there where they are needed.
+ * @author Agapi
+ *
+ */
 public class EventController {
 	
 	private MockDB mDB;
@@ -20,6 +27,10 @@ public class EventController {
 		this.db = database;
 	}
 	
+	/**
+	 * This method generades the string with the upcomming events with the necessary information within it. (Taken from the Database)
+	 * @return String
+	 */
 	public String upcommingEventsDatabase () {
 		Event[] even;
 		String notifyString = "Upcomming Event: ";
@@ -33,6 +44,10 @@ public class EventController {
 		return notifyString;
 	}
 	
+	/**
+	 * This method generades the string with the upcomming events with the necessary information within it. (Taken from the Mock Database)
+	 * @return String
+	 */
 	public String upcommingEventsMDatabase () {
 		Event[] even;
 		String notifyString = "Upcomming Event: ";

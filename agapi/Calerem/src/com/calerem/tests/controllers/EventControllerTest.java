@@ -8,7 +8,12 @@ import com.calerem.controllers.EventController;
 
 import junit.framework.TestCase;
 
-
+/**
+ * This test verifies the class EventController.
+ * Runs 4 tests. Passes them successfully.
+ * @author Agapi
+ *
+ */
 public class EventControllerTest extends TestCase {
 
 	private MockDB mDB;

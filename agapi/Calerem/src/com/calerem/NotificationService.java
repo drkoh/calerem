@@ -111,7 +111,12 @@ public class NotificationService extends Service
 		 
 		 return cele;
 	}
-	
+
+	/**
+	 * @author Agapi
+	 * this method finalizes the string that will be displayed in the thrown Notification.
+	 * @return String
+	 */
 	public String upcommingEvents () {
 		String finalString;
 		try {
