@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="SendEmail_Email_Address">Email Address :</string>
+    <string name="SendEmail_Text_Message">Write Message :</string>
+    <string name="SendEmail_Send_Email">Send Email</string>
+    <string name="SendEmail_Subject">Subject :</string>
+    
+</resources>
