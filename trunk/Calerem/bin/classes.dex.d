@@ -53,5 +53,3 @@ C:\Users\AnastasiaSwthria\Desktop\Kwstas\trunk\Calerem\bin\classes\com\calerem\u
 C:\Users\AnastasiaSwthria\Desktop\Kwstas\trunk\Calerem\bin\classes\com\calerem\ui\SendEmail.class \
 C:\Users\AnastasiaSwthria\Desktop\Kwstas\trunk\Calerem\bin\classes\com\calerem\ui\ViewEvent.class \
 C:\Users\AnastasiaSwthria\Desktop\Kwstas\trunk\Calerem\bin\classes\R.java.d \
-C:\Users\AnastasiaSwthria\Desktop\Kwstas\trunk\Calerem\bin\dexedLibs\gson-2.2.2-a56178bd0f5129eb6ba71271051f7693.jar \
-C:\Users\AnastasiaSwthria\Desktop\Kwstas\trunk\Calerem\bin\dexedLibs\android-support-v4-475839455d154eab182d90673f31b545.jar \
