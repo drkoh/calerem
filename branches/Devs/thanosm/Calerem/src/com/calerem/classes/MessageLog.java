@@ -5,7 +5,7 @@ package com.calerem.classes;
  * @author DarkParadise
  */
 public class MessageLog {
-	private Integer date;
+	private long date;
 	private Integer id;
 	private String type;
 	private String message;
@@ -19,9 +19,9 @@ public class MessageLog {
 	 * @param String message
 	 * @param Contact contact
 	 */
-	public MessageLog(Integer date,Integer id,String type,String message,Contact contact)
+	public MessageLog(long l,Integer id,String type,String message,Contact contact)
 	{
-		setDate(date);
+		setDate(l);
 		setId(id);
 		setType(type);
 		setMessage(message);
@@ -31,15 +31,15 @@ public class MessageLog {
 	/**
 	 * @return the date
 	 */
-	public Integer getDate() {
+	public long getDate() {
 		return date;
 	}
 
 	/**
-	 * @param date the date to set
+	 * @param l the date to set
 	 */
-	public void setDate(Integer date) {
-		this.date = date;
+	public void setDate(long l) {
+		this.date = l;
 	}
 
 	/**
