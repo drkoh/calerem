@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="false" >
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+
+        <TableRow
+            android:id="@+id/RowTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:id="@+id/ConfigTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="51dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/Configuration_Title"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/RowDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/DateFormatText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/Configuration_DateFormat"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <Spinner
+                android:id="@+id/SpinnerDateFormat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/RowLanguage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/LanguageText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/Configuration_Language"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <Spinner
+                android:id="@+id/SpinnerLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/RowSkin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/SkinText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/Configuration_Skin_Path"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <Spinner
+                android:id="@+id/SpinnerSkin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/RowNotificationSound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/NotificationSoundText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Configuration_NotificationSound"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/RowSave"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:showDividers="none" >
+
+            <Button
+                android:id="@+id/SaveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:minHeight="32dp"
+                android:minWidth="48dp"
+                android:text="@string/Configuration_Button_Save" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</ScrollView>
