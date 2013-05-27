@@ -1,0 +1,27 @@
+# view AndroidManifest.xml #generated:14
+-keep class android.test.InstrumentationTestRunner { <init>(...); }
+
+# view AndroidManifest.xml #generated:52
+-keep class com.calerem.AutoStart { <init>(...); }
+
+# view AndroidManifest.xml #generated:35
+-keep class com.calerem.MainActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:49
+-keep class com.calerem.NotificationService { <init>(...); }
+
+# view AndroidManifest.xml #generated:29
+-keep class com.calerem.Sheduler { <init>(...); }
+
+# view AndroidManifest.xml #generated:47
+-keep class com.calerem.ui.Configuration { <init>(...); }
+
+# view AndroidManifest.xml #generated:46
+-keep class com.calerem.ui.NewEvent { <init>(...); }
+
+# view AndroidManifest.xml #generated:44
+-keep class com.calerem.ui.SendEmail { <init>(...); }
+
+# view AndroidManifest.xml #generated:45
+-keep class com.calerem.ui.ViewEvent { <init>(...); }
+
