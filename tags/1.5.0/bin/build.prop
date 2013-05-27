@@ -1,0 +1,15 @@
+#Last build type
+#Tue, 28 May 2013 02:55:13 +0300
+<<<<<<<=.working
+#Tue, 28 May 2013 01:27:11 +0300
+=\=\=\=\=\=\=
+#Mon, 27 May 2013 13:26:00 +0300
+>>>>>>>=.merge-right.r215
+
+build.last.target=debug
+
+build.last.is.instrumented=false
+
+build.last.is.packaging.debug=true
+
+build.last.is.signing.debug=true
