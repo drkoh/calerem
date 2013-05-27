@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="symptom_color_selected">#003366</color>
+    <color name="reaction_color_selected">#003366</color>
+    <color name="static_text_color">#000000</color>
+    <color name="journal_entry_listitem_text_color">#003366</color>
+    <color name="note_text_disabled">#333333</color>
+
+    <string name="MainActivity_CalendarHeader_IMG">Calendar Header</string>
+    <string name="MainActivity_CalendarLeftArrow_IMG">Left Arrow</string>
+    <string name="MainActivity_CalendarRightArrow_IMG">Right Arrow</string>
+    
+    <string name="MainActivity_MenuPreferences">Preferences</string>
+
+    <item name="GRIDCELL_Date" type="id">1</item>
+    <item name="GRIDCELL_Events" type="id">2</item>
+    <item name="MainActivityMenu" type="id">3</item>
+
+</resources>
