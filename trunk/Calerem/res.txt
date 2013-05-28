@@ -1,0 +1,997 @@
+Buildfile: C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\build.xml
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 21.1.0
+ [checkenv] Installed at C:\Program Files\Java\jdk1.7.0_15\sdk
+
+-setup:
+     [echo] Project Name: Calerem
+  [gettype] Project Type: Test Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+     [echo] Resolving Build Target for Calerem...
+[gettarget] Project Target:   Android 4.2.2
+[gettarget] API level:        17
+     [echo] ----------
+     [echo] Creating output directories if needed...
+     [echo] ----------
+     [echo] Resolving Dependencies for Calerem...
+[dependency] Library dependencies:
+[dependency] No Libraries
+     [echo] ----------
+     [echo] Building Libraries with 'debug'...
+   [subant] No sub-builds to iterate on
+     [echo] ----------
+     [echo] Building tested project at C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem with 'debug'...
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 21.1.0
+ [checkenv] Installed at C:\Program Files\Java\jdk1.7.0_15\sdk
+
+-setup:
+     [echo] Project Name: CaleremTest
+  [gettype] Project Type: Test Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+     [echo] Resolving Build Target for CaleremTest...
+[gettarget] Project Target:   Android 4.2.2
+[gettarget] API level:        17
+     [echo] ----------
+     [echo] Creating output directories if needed...
+     [echo] ----------
+     [echo] Resolving Dependencies for CaleremTest...
+[dependency] Library dependencies:
+[dependency] No Libraries
+     [echo] ----------
+     [echo] Building Libraries with 'debug'...
+   [subant] No sub-builds to iterate on
+     [echo] ----------
+     [echo] Building tested project at C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem with 'debug'...
+   [subant] Failure for target 'debug' of: C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\test.xml
+   [subant] subant task calling a target that depends on its parent target '-build-setup'.
+[testedprojectclasspath] Resolved classpath:
+[testedprojectclasspath] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\libs\gson-2.2.2.jar
+[testedprojectclasspath] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\libs\android-support-v4.jar
+[testedprojectclasspath] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\classes
+
+-code-gen:
+[mergemanifest] Found Deleted Target File
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+[renderscript] No RenderScript files to compile.
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Found Deleted Target File
+     [aapt] Generating resource IDs...
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] No need to generate new BuildConfig.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 61 source files to C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\classes
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:3: error: package org.junit does not exist
+    [javac] import org.junit.Test;
+    [javac]                 ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:5: error: package com.android.uiautomator.core does not exist
+    [javac] import com.android.uiautomator.core.UiObject;
+    [javac]                                    ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:6: error: package com.android.uiautomator.core does not exist
+    [javac] import com.android.uiautomator.core.UiObjectNotFoundException;
+    [javac]                                    ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:7: error: package com.android.uiautomator.core does not exist
+    [javac] import com.android.uiautomator.core.UiScrollable;
+    [javac]                                    ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:8: error: package com.android.uiautomator.core does not exist
+    [javac] import com.android.uiautomator.core.UiSelector;
+    [javac]                                    ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:9: error: package com.android.uiautomator.testrunner does not exist
+    [javac] import com.android.uiautomator.testrunner.UiAutomatorTestCase;
+    [javac]                                          ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:11: error: cannot find symbol
+    [javac] public class NewEventTest extends UiAutomatorTestCase {
+    [javac]                                   ^
+    [javac]   symbol: class UiAutomatorTestCase
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:17: error: cannot find symbol
+    [javac] 	public void testNewEventTest() throws UiObjectNotFoundException {  
+    [javac] 	                                      ^
+    [javac]   symbol:   class UiObjectNotFoundException
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:5: error: package com.android.uiautomator.core does not exist
+    [javac] import com.android.uiautomator.core.UiObject;
+    [javac]                                    ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:6: error: package com.android.uiautomator.core does not exist
+    [javac] import com.android.uiautomator.core.UiObjectNotFoundException;
+    [javac]                                    ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:7: error: package com.android.uiautomator.core does not exist
+    [javac] import com.android.uiautomator.core.UiScrollable;
+    [javac]                                    ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:8: error: package com.android.uiautomator.core does not exist
+    [javac] import com.android.uiautomator.core.UiSelector;
+    [javac]                                    ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:9: error: package com.android.uiautomator.testrunner does not exist
+    [javac] import com.android.uiautomator.testrunner.UiAutomatorTestCase;
+    [javac]                                          ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:14: error: cannot find symbol
+    [javac] public class ViewEventTest extends UiAutomatorTestCase {
+    [javac]                                    ^
+    [javac]   symbol: class UiAutomatorTestCase
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:20: error: cannot find symbol
+    [javac] 	public void testViewEvent() throws UiObjectNotFoundException {   
+    [javac] 	                                   ^
+    [javac]   symbol:   class UiObjectNotFoundException
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:13: error: cannot find symbol
+    [javac] 	@Test 
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:19: error: cannot find symbol
+    [javac] 	@Test 
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:25: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:31: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:37: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:43: error: cannot find symbol
+    [javac] 	@Test 
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:49: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:55: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:61: error: cannot find symbol
+    [javac] 	@Test 
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:68: error: cannot find symbol
+    [javac] 	@Test 
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:75: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:82: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:89: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:96: error: cannot find symbol
+    [javac] 	@Test 
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:103: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:111: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\controllers\DatabaseTest.java:844: error: constructor MessageLog in class MessageLog cannot be applied to given types;
+    [javac] 		return new MessageLog((System.currentTimeMillis()/1000),null,"my_type","my_message",this.DefaultContact());
+    [javac] 		       ^
+    [javac]   required: Integer,Integer,String,String,Contact
+    [javac]   found: long,<null>,String,String,Contact
+    [javac]   reason: actual argument long cannot be converted to Integer by method invocation conversion
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:21: error: cannot find symbol
+    [javac] 	      getUiDevice().pressHome();
+    [javac] 	      ^
+    [javac]   symbol:   method getUiDevice()
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:24: error: cannot find symbol
+    [javac] 	      UiObject allAppsButton = new UiObject(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:24: error: cannot find symbol
+    [javac] 	      UiObject allAppsButton = new UiObject(new UiSelector()
+    [javac] 	                                   ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:24: error: cannot find symbol
+    [javac] 	      UiObject allAppsButton = new UiObject(new UiSelector()
+    [javac] 	                                                ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:31: error: cannot find symbol
+    [javac] 	      UiObject appsTab = new UiObject(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:31: error: cannot find symbol
+    [javac] 	      UiObject appsTab = new UiObject(new UiSelector()
+    [javac] 	                             ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:31: error: cannot find symbol
+    [javac] 	      UiObject appsTab = new UiObject(new UiSelector()
+    [javac] 	                                          ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:38: error: cannot find symbol
+    [javac] 	      UiScrollable appViews = new UiScrollable(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiScrollable
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:38: error: cannot find symbol
+    [javac] 	      UiScrollable appViews = new UiScrollable(new UiSelector()
+    [javac] 	                                  ^
+    [javac]   symbol:   class UiScrollable
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:38: error: cannot find symbol
+    [javac] 	      UiScrollable appViews = new UiScrollable(new UiSelector()
+    [javac] 	                                                   ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:45: error: cannot find symbol
+    [javac] 	      UiObject Calerem = appViews.getChildByText(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:45: error: cannot find symbol
+    [javac] 	      UiObject Calerem = appViews.getChildByText(new UiSelector()
+    [javac] 	                                                     ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:51: error: cannot find symbol
+    [javac] 	      UiObject CaleremValidation = new UiObject(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:51: error: cannot find symbol
+    [javac] 	      UiObject CaleremValidation = new UiObject(new UiSelector()
+    [javac] 	                                       ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:51: error: cannot find symbol
+    [javac] 	      UiObject CaleremValidation = new UiObject(new UiSelector()
+    [javac] 	                                                    ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:55: error: cannot find symbol
+    [javac] 	      UiObject buttonCreateNewEvent = new UiObject(new UiSelector().text("1"));
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:55: error: cannot find symbol
+    [javac] 	      UiObject buttonCreateNewEvent = new UiObject(new UiSelector().text("1"));
+    [javac] 	                                          ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:55: error: cannot find symbol
+    [javac] 	      UiObject buttonCreateNewEvent = new UiObject(new UiSelector().text("1"));
+    [javac] 	                                                       ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:63: error: cannot find symbol
+    [javac] 	      UiObject buttonCreateNewEventExists = new UiObject(new UiSelector().text("New Event"));
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:63: error: cannot find symbol
+    [javac] 	      UiObject buttonCreateNewEventExists = new UiObject(new UiSelector().text("New Event"));
+    [javac] 	                                                ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:63: error: cannot find symbol
+    [javac] 	      UiObject buttonCreateNewEventExists = new UiObject(new UiSelector().text("New Event"));
+    [javac] 	                                                             ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:74: error: cannot find symbol
+    [javac] 	      UiObject textEventName = new UiObject(new UiSelector().text("Event Name"));
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:74: error: cannot find symbol
+    [javac] 	      UiObject textEventName = new UiObject(new UiSelector().text("Event Name"));
+    [javac] 	                                   ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:74: error: cannot find symbol
+    [javac] 	      UiObject textEventName = new UiObject(new UiSelector().text("Event Name"));
+    [javac] 	                                                ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:81: error: cannot find symbol
+    [javac] 	      UiObject textDescription = new UiObject(new UiSelector().text("Description"));
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:81: error: cannot find symbol
+    [javac] 	      UiObject textDescription = new UiObject(new UiSelector().text("Description"));
+    [javac] 	                                     ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:81: error: cannot find symbol
+    [javac] 	      UiObject textDescription = new UiObject(new UiSelector().text("Description"));
+    [javac] 	                                                  ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:92: error: cannot find symbol
+    [javac] 	      UiObject buttonSave = new UiObject(new UiSelector().text("Save"));
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:92: error: cannot find symbol
+    [javac] 	      UiObject buttonSave = new UiObject(new UiSelector().text("Save"));
+    [javac] 	                                ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:92: error: cannot find symbol
+    [javac] 	      UiObject buttonSave = new UiObject(new UiSelector().text("Save"));
+    [javac] 	                                             ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:23: error: cannot find symbol
+    [javac] 	      getUiDevice().pressHome();
+    [javac] 	      ^
+    [javac]   symbol:   method getUiDevice()
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:26: error: cannot find symbol
+    [javac] 	      UiObject allAppsButton = new UiObject(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:26: error: cannot find symbol
+    [javac] 	      UiObject allAppsButton = new UiObject(new UiSelector()
+    [javac] 	                                   ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:26: error: cannot find symbol
+    [javac] 	      UiObject allAppsButton = new UiObject(new UiSelector()
+    [javac] 	                                                ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:33: error: cannot find symbol
+    [javac] 	      UiObject appsTab = new UiObject(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:33: error: cannot find symbol
+    [javac] 	      UiObject appsTab = new UiObject(new UiSelector()
+    [javac] 	                             ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:33: error: cannot find symbol
+    [javac] 	      UiObject appsTab = new UiObject(new UiSelector()
+    [javac] 	                                          ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:40: error: cannot find symbol
+    [javac] 	      UiScrollable appViews = new UiScrollable(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiScrollable
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:40: error: cannot find symbol
+    [javac] 	      UiScrollable appViews = new UiScrollable(new UiSelector()
+    [javac] 	                                  ^
+    [javac]   symbol:   class UiScrollable
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:40: error: cannot find symbol
+    [javac] 	      UiScrollable appViews = new UiScrollable(new UiSelector()
+    [javac] 	                                                   ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:47: error: cannot find symbol
+    [javac] 	      UiObject Calerem = appViews.getChildByText(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:47: error: cannot find symbol
+    [javac] 	      UiObject Calerem = appViews.getChildByText(new UiSelector()
+    [javac] 	                                                     ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:53: error: cannot find symbol
+    [javac] 	      UiObject CaleremValidation = new UiObject(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:53: error: cannot find symbol
+    [javac] 	      UiObject CaleremValidation = new UiObject(new UiSelector()
+    [javac] 	                                       ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:53: error: cannot find symbol
+    [javac] 	      UiObject CaleremValidation = new UiObject(new UiSelector()
+    [javac] 	                                                    ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:57: error: cannot find symbol
+    [javac] 	      UiObject buttonSelectDay = new UiObject(new UiSelector().text("1"));
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:57: error: cannot find symbol
+    [javac] 	      UiObject buttonSelectDay = new UiObject(new UiSelector().text("1"));
+    [javac] 	                                     ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:57: error: cannot find symbol
+    [javac] 	      UiObject buttonSelectDay = new UiObject(new UiSelector().text("1"));
+    [javac] 	                                                  ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:65: error: cannot find symbol
+    [javac] 	      UiObject buttonViewEvent = new UiObject(new UiSelector().text("View Event:TestName"));
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:65: error: cannot find symbol
+    [javac] 	      UiObject buttonViewEvent = new UiObject(new UiSelector().text("View Event:TestName"));
+    [javac] 	                                     ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:65: error: cannot find symbol
+    [javac] 	      UiObject buttonViewEvent = new UiObject(new UiSelector().text("View Event:TestName"));
+    [javac] 	                                                  ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:73: error: cannot find symbol
+    [javac] 	      UiObject textNameCheck = new UiObject(new UiSelector().index(1));
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:73: error: cannot find symbol
+    [javac] 	      UiObject textNameCheck = new UiObject(new UiSelector().index(1));
+    [javac] 	                                   ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:73: error: cannot find symbol
+    [javac] 	      UiObject textNameCheck = new UiObject(new UiSelector().index(1));
+    [javac] 	                                                ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:75: error: cannot find symbol
+    [javac] 	      UiObject textDescriptionCheck = new UiObject(new UiSelector().index(7));
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:75: error: cannot find symbol
+    [javac] 	      UiObject textDescriptionCheck = new UiObject(new UiSelector().index(7));
+    [javac] 	                                          ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:75: error: cannot find symbol
+    [javac] 	      UiObject textDescriptionCheck = new UiObject(new UiSelector().index(7));
+    [javac] 	                                                       ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:88: error: cannot find symbol
+    [javac] 	    		 assertTrue(true); 
+    [javac] 	    		 ^
+    [javac]   symbol:   method assertTrue(boolean)
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:92: error: cannot find symbol
+    [javac] 	    		  fail();
+    [javac] 	    		  ^
+    [javac]   symbol:   method fail()
+    [javac]   location: class ViewEventTest
+    [javac] Note: C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\NotificationService.java uses or overrides a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+    [javac] 91 errors
+   [subant] Failure for target 'debug' of: C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\test.xml
+   [subant] The following error occurred while executing this line:
+   [subant] C:\Program Files\Java\jdk1.7.0_15\sdk\tools\ant\build.xml:710: The following error occurred while executing this line:
+   [subant] C:\Program Files\Java\jdk1.7.0_15\sdk\tools\ant\build.xml:723: Compile failed; see the compiler error output for details.
+[testedprojectclasspath] Resolved classpath:
+[testedprojectclasspath] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\libs\gson-2.2.2.jar
+[testedprojectclasspath] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\libs\android-support-v4.jar
+[testedprojectclasspath] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\classes
+
+-code-gen:
+[mergemanifest] Found Deleted Target File
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+[renderscript] No RenderScript files to compile.
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Found Deleted Target File
+     [aapt] Generating resource IDs...
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] No need to generate new BuildConfig.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 61 source files to C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\classes
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:3: error: package org.junit does not exist
+    [javac] import org.junit.Test;
+    [javac]                 ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:5: error: package com.android.uiautomator.core does not exist
+    [javac] import com.android.uiautomator.core.UiObject;
+    [javac]                                    ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:6: error: package com.android.uiautomator.core does not exist
+    [javac] import com.android.uiautomator.core.UiObjectNotFoundException;
+    [javac]                                    ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:7: error: package com.android.uiautomator.core does not exist
+    [javac] import com.android.uiautomator.core.UiScrollable;
+    [javac]                                    ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:8: error: package com.android.uiautomator.core does not exist
+    [javac] import com.android.uiautomator.core.UiSelector;
+    [javac]                                    ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:9: error: package com.android.uiautomator.testrunner does not exist
+    [javac] import com.android.uiautomator.testrunner.UiAutomatorTestCase;
+    [javac]                                          ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:11: error: cannot find symbol
+    [javac] public class NewEventTest extends UiAutomatorTestCase {
+    [javac]                                   ^
+    [javac]   symbol: class UiAutomatorTestCase
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:17: error: cannot find symbol
+    [javac] 	public void testNewEventTest() throws UiObjectNotFoundException {  
+    [javac] 	                                      ^
+    [javac]   symbol:   class UiObjectNotFoundException
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:5: error: package com.android.uiautomator.core does not exist
+    [javac] import com.android.uiautomator.core.UiObject;
+    [javac]                                    ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:6: error: package com.android.uiautomator.core does not exist
+    [javac] import com.android.uiautomator.core.UiObjectNotFoundException;
+    [javac]                                    ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:7: error: package com.android.uiautomator.core does not exist
+    [javac] import com.android.uiautomator.core.UiScrollable;
+    [javac]                                    ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:8: error: package com.android.uiautomator.core does not exist
+    [javac] import com.android.uiautomator.core.UiSelector;
+    [javac]                                    ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:9: error: package com.android.uiautomator.testrunner does not exist
+    [javac] import com.android.uiautomator.testrunner.UiAutomatorTestCase;
+    [javac]                                          ^
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:14: error: cannot find symbol
+    [javac] public class ViewEventTest extends UiAutomatorTestCase {
+    [javac]                                    ^
+    [javac]   symbol: class UiAutomatorTestCase
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:20: error: cannot find symbol
+    [javac] 	public void testViewEvent() throws UiObjectNotFoundException {   
+    [javac] 	                                   ^
+    [javac]   symbol:   class UiObjectNotFoundException
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:13: error: cannot find symbol
+    [javac] 	@Test 
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:19: error: cannot find symbol
+    [javac] 	@Test 
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:25: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:31: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:37: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:43: error: cannot find symbol
+    [javac] 	@Test 
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:49: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:55: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:61: error: cannot find symbol
+    [javac] 	@Test 
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:68: error: cannot find symbol
+    [javac] 	@Test 
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:75: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:82: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:89: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:96: error: cannot find symbol
+    [javac] 	@Test 
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:103: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\classes\CelebrationTest.java:111: error: cannot find symbol
+    [javac] 	@Test
+    [javac] 	 ^
+    [javac]   symbol:   class Test
+    [javac]   location: class CelebrationTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\controllers\DatabaseTest.java:844: error: constructor MessageLog in class MessageLog cannot be applied to given types;
+    [javac] 		return new MessageLog((System.currentTimeMillis()/1000),null,"my_type","my_message",this.DefaultContact());
+    [javac] 		       ^
+    [javac]   required: Integer,Integer,String,String,Contact
+    [javac]   found: long,<null>,String,String,Contact
+    [javac]   reason: actual argument long cannot be converted to Integer by method invocation conversion
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:21: error: cannot find symbol
+    [javac] 	      getUiDevice().pressHome();
+    [javac] 	      ^
+    [javac]   symbol:   method getUiDevice()
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:24: error: cannot find symbol
+    [javac] 	      UiObject allAppsButton = new UiObject(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:24: error: cannot find symbol
+    [javac] 	      UiObject allAppsButton = new UiObject(new UiSelector()
+    [javac] 	                                   ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:24: error: cannot find symbol
+    [javac] 	      UiObject allAppsButton = new UiObject(new UiSelector()
+    [javac] 	                                                ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:31: error: cannot find symbol
+    [javac] 	      UiObject appsTab = new UiObject(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:31: error: cannot find symbol
+    [javac] 	      UiObject appsTab = new UiObject(new UiSelector()
+    [javac] 	                             ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:31: error: cannot find symbol
+    [javac] 	      UiObject appsTab = new UiObject(new UiSelector()
+    [javac] 	                                          ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:38: error: cannot find symbol
+    [javac] 	      UiScrollable appViews = new UiScrollable(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiScrollable
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:38: error: cannot find symbol
+    [javac] 	      UiScrollable appViews = new UiScrollable(new UiSelector()
+    [javac] 	                                  ^
+    [javac]   symbol:   class UiScrollable
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:38: error: cannot find symbol
+    [javac] 	      UiScrollable appViews = new UiScrollable(new UiSelector()
+    [javac] 	                                                   ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:45: error: cannot find symbol
+    [javac] 	      UiObject Calerem = appViews.getChildByText(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:45: error: cannot find symbol
+    [javac] 	      UiObject Calerem = appViews.getChildByText(new UiSelector()
+    [javac] 	                                                     ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:51: error: cannot find symbol
+    [javac] 	      UiObject CaleremValidation = new UiObject(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:51: error: cannot find symbol
+    [javac] 	      UiObject CaleremValidation = new UiObject(new UiSelector()
+    [javac] 	                                       ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:51: error: cannot find symbol
+    [javac] 	      UiObject CaleremValidation = new UiObject(new UiSelector()
+    [javac] 	                                                    ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:55: error: cannot find symbol
+    [javac] 	      UiObject buttonCreateNewEvent = new UiObject(new UiSelector().text("1"));
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:55: error: cannot find symbol
+    [javac] 	      UiObject buttonCreateNewEvent = new UiObject(new UiSelector().text("1"));
+    [javac] 	                                          ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:55: error: cannot find symbol
+    [javac] 	      UiObject buttonCreateNewEvent = new UiObject(new UiSelector().text("1"));
+    [javac] 	                                                       ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:63: error: cannot find symbol
+    [javac] 	      UiObject buttonCreateNewEventExists = new UiObject(new UiSelector().text("New Event"));
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:63: error: cannot find symbol
+    [javac] 	      UiObject buttonCreateNewEventExists = new UiObject(new UiSelector().text("New Event"));
+    [javac] 	                                                ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:63: error: cannot find symbol
+    [javac] 	      UiObject buttonCreateNewEventExists = new UiObject(new UiSelector().text("New Event"));
+    [javac] 	                                                             ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:74: error: cannot find symbol
+    [javac] 	      UiObject textEventName = new UiObject(new UiSelector().text("Event Name"));
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:74: error: cannot find symbol
+    [javac] 	      UiObject textEventName = new UiObject(new UiSelector().text("Event Name"));
+    [javac] 	                                   ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:74: error: cannot find symbol
+    [javac] 	      UiObject textEventName = new UiObject(new UiSelector().text("Event Name"));
+    [javac] 	                                                ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:81: error: cannot find symbol
+    [javac] 	      UiObject textDescription = new UiObject(new UiSelector().text("Description"));
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:81: error: cannot find symbol
+    [javac] 	      UiObject textDescription = new UiObject(new UiSelector().text("Description"));
+    [javac] 	                                     ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:81: error: cannot find symbol
+    [javac] 	      UiObject textDescription = new UiObject(new UiSelector().text("Description"));
+    [javac] 	                                                  ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:92: error: cannot find symbol
+    [javac] 	      UiObject buttonSave = new UiObject(new UiSelector().text("Save"));
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:92: error: cannot find symbol
+    [javac] 	      UiObject buttonSave = new UiObject(new UiSelector().text("Save"));
+    [javac] 	                                ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\NewEventTest.java:92: error: cannot find symbol
+    [javac] 	      UiObject buttonSave = new UiObject(new UiSelector().text("Save"));
+    [javac] 	                                             ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class NewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:23: error: cannot find symbol
+    [javac] 	      getUiDevice().pressHome();
+    [javac] 	      ^
+    [javac]   symbol:   method getUiDevice()
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:26: error: cannot find symbol
+    [javac] 	      UiObject allAppsButton = new UiObject(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:26: error: cannot find symbol
+    [javac] 	      UiObject allAppsButton = new UiObject(new UiSelector()
+    [javac] 	                                   ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:26: error: cannot find symbol
+    [javac] 	      UiObject allAppsButton = new UiObject(new UiSelector()
+    [javac] 	                                                ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:33: error: cannot find symbol
+    [javac] 	      UiObject appsTab = new UiObject(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:33: error: cannot find symbol
+    [javac] 	      UiObject appsTab = new UiObject(new UiSelector()
+    [javac] 	                             ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:33: error: cannot find symbol
+    [javac] 	      UiObject appsTab = new UiObject(new UiSelector()
+    [javac] 	                                          ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:40: error: cannot find symbol
+    [javac] 	      UiScrollable appViews = new UiScrollable(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiScrollable
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:40: error: cannot find symbol
+    [javac] 	      UiScrollable appViews = new UiScrollable(new UiSelector()
+    [javac] 	                                  ^
+    [javac]   symbol:   class UiScrollable
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:40: error: cannot find symbol
+    [javac] 	      UiScrollable appViews = new UiScrollable(new UiSelector()
+    [javac] 	                                                   ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:47: error: cannot find symbol
+    [javac] 	      UiObject Calerem = appViews.getChildByText(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:47: error: cannot find symbol
+    [javac] 	      UiObject Calerem = appViews.getChildByText(new UiSelector()
+    [javac] 	                                                     ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:53: error: cannot find symbol
+    [javac] 	      UiObject CaleremValidation = new UiObject(new UiSelector()
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:53: error: cannot find symbol
+    [javac] 	      UiObject CaleremValidation = new UiObject(new UiSelector()
+    [javac] 	                                       ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:53: error: cannot find symbol
+    [javac] 	      UiObject CaleremValidation = new UiObject(new UiSelector()
+    [javac] 	                                                    ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:57: error: cannot find symbol
+    [javac] 	      UiObject buttonSelectDay = new UiObject(new UiSelector().text("1"));
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:57: error: cannot find symbol
+    [javac] 	      UiObject buttonSelectDay = new UiObject(new UiSelector().text("1"));
+    [javac] 	                                     ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:57: error: cannot find symbol
+    [javac] 	      UiObject buttonSelectDay = new UiObject(new UiSelector().text("1"));
+    [javac] 	                                                  ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:65: error: cannot find symbol
+    [javac] 	      UiObject buttonViewEvent = new UiObject(new UiSelector().text("View Event:TestName"));
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:65: error: cannot find symbol
+    [javac] 	      UiObject buttonViewEvent = new UiObject(new UiSelector().text("View Event:TestName"));
+    [javac] 	                                     ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:65: error: cannot find symbol
+    [javac] 	      UiObject buttonViewEvent = new UiObject(new UiSelector().text("View Event:TestName"));
+    [javac] 	                                                  ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:73: error: cannot find symbol
+    [javac] 	      UiObject textNameCheck = new UiObject(new UiSelector().index(1));
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:73: error: cannot find symbol
+    [javac] 	      UiObject textNameCheck = new UiObject(new UiSelector().index(1));
+    [javac] 	                                   ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:73: error: cannot find symbol
+    [javac] 	      UiObject textNameCheck = new UiObject(new UiSelector().index(1));
+    [javac] 	                                                ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:75: error: cannot find symbol
+    [javac] 	      UiObject textDescriptionCheck = new UiObject(new UiSelector().index(7));
+    [javac] 	      ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:75: error: cannot find symbol
+    [javac] 	      UiObject textDescriptionCheck = new UiObject(new UiSelector().index(7));
+    [javac] 	                                          ^
+    [javac]   symbol:   class UiObject
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:75: error: cannot find symbol
+    [javac] 	      UiObject textDescriptionCheck = new UiObject(new UiSelector().index(7));
+    [javac] 	                                                       ^
+    [javac]   symbol:   class UiSelector
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:88: error: cannot find symbol
+    [javac] 	    		 assertTrue(true); 
+    [javac] 	    		 ^
+    [javac]   symbol:   method assertTrue(boolean)
+    [javac]   location: class ViewEventTest
+    [javac] C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\tests\ui\ViewEventTest.java:92: error: cannot find symbol
+    [javac] 	    		  fail();
+    [javac] 	    		  ^
+    [javac]   symbol:   method fail()
+    [javac]   location: class ViewEventTest
+    [javac] Note: C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\src\com\calerem\NotificationService.java uses or overrides a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+    [javac] 91 errors
