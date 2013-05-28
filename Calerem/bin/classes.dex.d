@@ -45,10 +45,14 @@ C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\cl
 C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\classes\com\calerem\R$style.class \
 C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\classes\com\calerem\R.class \
 C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\classes\com\calerem\Sheduler.class \
+C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\classes\com\calerem\tests\test\NotificationServiceStartTest.class \
+C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\classes\com\calerem\tests\ui\NewEventTest.class \
+C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\classes\com\calerem\tests\ui\ViewEventTest.class \
 C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\classes\com\calerem\ui\Configuration.class \
 C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\classes\com\calerem\ui\NewEvent.class \
 C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\classes\com\calerem\ui\SendEmail.class \
 C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\classes\com\calerem\ui\ViewEvent.class \
 C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\classes\EventControllerTest.class \
+C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\classes\R.java.d \
 C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\dexedLibs\gson-2.2.2-c18476a2fbceec2e0c3b06dac61fe79a.jar \
 C:\Users\AnastasiaSwthria\Documents\AATEXNOLOGIA LOGISMIKOY\trunk\Calerem\bin\dexedLibs\android-support-v4-b238acd112ed3631e341d7e94974115e.jar \
